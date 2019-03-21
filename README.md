@@ -1,7 +1,8 @@
-ConfuserEx
+ConfuserEx | Beds Protector
 ========
-ConfuserEx is a open-source protector for .NET applications.
-It is the successor of [Confuser](http://confuser.codeplex.com) project.
+A quick mod i put together and will be updating
+
+I updated the constants/renaming/control flow ill update the anti tamper/anti dump soon and ill add mutations into constants. Ill update the constants and make them dynamic soon.
 
 Features
 --------
