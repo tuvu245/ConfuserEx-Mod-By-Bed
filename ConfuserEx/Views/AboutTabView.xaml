@@ -38,14 +38,14 @@
                 <Separator DockPanel.Dock="Bottom" />
 
                 <StackPanel TextBlock.FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                    <Label FontWeight="Bold">ConfuserEx, a .NET protector</Label>
-                    <Label>Developed by Ki, open sourced under MIT license.</Label>
+                    <Label FontWeight="Bold"> Beds Protector, A modified version of ConfuserEx, a .NET protector</Label>
+                    <Label>Developed by Ki, Modified by Bed/@FuckTeapots.</Label>
                     <Label>
                         <TextBlock>
-                            <Hyperlink NavigateUri="http://yck1509.github.io/ConfuserEx/"
+                            <Hyperlink NavigateUri="https://www.instagram.com/fuckteapots/"
                                        Command="{Binding LaunchBrowser}"
-                                       CommandParameter="http://yck1509.github.io/ConfuserEx/">
-                                Visit the project page for details.
+                                       CommandParameter="https://www.instagram.com/fuckteapots/">
+                                Visit the instagram for more.
                             </Hyperlink>
                         </TextBlock>
                     </Label>
@@ -57,22 +57,14 @@
                             <Hyperlink NavigateUri="http://yck1509.github.io/ConfuserEx/#donation"
                                        Command="{Binding LaunchBrowser}"
                                        CommandParameter="http://yck1509.github.io/ConfuserEx/#donation">
-                                feel free to support the project by making a donation!
+                                feel free to support the project by making a donation to the developed (yck)!
                             </Hyperlink>
                         </TextBlock>
                     </Label>
                 </StackPanel>
             </DockPanel>
 
-            <Button Grid.Row="2" Grid.Column="0" Command="{Binding LaunchBrowser}"
-                    CommandParameter="http://board.b-at-s.info/" Focusable="False" Cursor="Hand">
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <ContentPresenter />
-                    </ControlTemplate>
-                </Button.Template>
-                <Image Source="{DynamicResource TeamLogo}" Width="400" Height="100" />
-            </Button>
+         
 
             <StackPanel Grid.Column="1" Grid.RowSpan="3" TextBlock.FontSize="13" Margin="10"
                         VerticalAlignment="Stretch" HorizontalAlignment="Center">
@@ -84,7 +76,7 @@
                 <Label HorizontalContentAlignment="Center">Kurapica</Label>
                 <Label HorizontalContentAlignment="Center">UbbeLoL</Label>
                 <Label HorizontalContentAlignment="Center">whoknows</Label>
-                <Label HorizontalContentAlignment="Center">Members of Black Storm Forum</Label>
+                <Label HorizontalContentAlignment="Center">Bed/@FuckTeapots</Label>
                 <Label HorizontalContentAlignment="Center">and You!</Label>
             </StackPanel>
         </Grid>

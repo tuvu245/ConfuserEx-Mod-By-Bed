@@ -2,30 +2,24 @@
 using System.Collections.Generic;
 using dnlib.DotNet;
 
-namespace Confuser.Core {
-	using ProtectionParams = Dictionary<string, object>;
-
+namespace Confuser.Core
+{
 	/// <summary>
-	///     Parameters of <see cref="ConfuserComponent" />.
+	///     Parameters of <see cref="T:Confuser.Core.ConfuserComponent" />.
 	/// </summary>
-	public class ProtectionParameters {
-		static readonly object ParametersKey = new object();
-
+	// Token: 0x02000079 RID: 121
+	public class ProtectionParameters
+	{
 		/// <summary>
-		///     A empty instance of <see cref="ProtectionParameters" />.
-		/// </summary>
-		public static readonly ProtectionParameters Empty = new ProtectionParameters(null, new IDnlibDef[0]);
-
-		readonly ConfuserComponent comp;
-
-		/// <summary>
-		///     Initializes a new instance of the <see cref="ProtectionParameters" /> class.
+		///     Initializes a new instance of the <see cref="T:Confuser.Core.ProtectionParameters" /> class.
 		/// </summary>
 		/// <param name="component">The component that this parameters applied to.</param>
 		/// <param name="targets">The protection targets.</param>
-		internal ProtectionParameters(ConfuserComponent component, IList<IDnlibDef> targets) {
-			comp = component;
-			Targets = targets;
+		// Token: 0x060002F2 RID: 754 RVA: 0x00012645 File Offset: 0x00010845
+		internal ProtectionParameters(ConfuserComponent component, IList<IDnlibDef> targets)
+		{
+			this.comp = component;
+			this.Targets = targets;
 		}
 
 		/// <summary>
@@ -33,8 +27,14 @@ namespace Confuser.Core {
 		///     Possible targets are module, types, methods, fields, events, properties.
 		/// </summary>
 		/// <value>A list of protection targets.</value>
-		public IList<IDnlibDef> Targets { get; private set; }
-
+		// Token: 0x1700007D RID: 125
+		// (get) Token: 0x060002F3 RID: 755 RVA: 0x0001265B File Offset: 0x0001085B
+		// (set) Token: 0x060002F4 RID: 756 RVA: 0x00012663 File Offset: 0x00010863
+		public IList<IDnlibDef> Targets
+		{
+			get;
+			private set;
+		}
 
 		/// <summary>
 		///     Obtains the value of a parameter of the specified target.
@@ -45,35 +45,43 @@ namespace Confuser.Core {
 		/// <param name="name">The name of the parameter.</param>
 		/// <param name="defValue">Default value if the parameter does not exist.</param>
 		/// <returns>The value of the parameter.</returns>
-		public T GetParameter<T>(ConfuserContext context, IDnlibDef target, string name, T defValue = default(T)) {
-			Dictionary<string, string> parameters;
-
-			if (comp == null)
+		// Token: 0x060002F5 RID: 757 RVA: 0x0001266C File Offset: 0x0001086C
+		public T GetParameter<T>(ConfuserContext context, IDnlibDef target, string name, T defValue = default(T))
+		{
+			if (this.comp == null)
+			{
 				return defValue;
-
-			if (comp is Packer && target == null) {
-				// Packer parameters are stored in modules
+			}
+			if (this.comp is Packer && target == null)
+			{
 				target = context.Modules[0];
 			}
-
-			var objParams = context.Annotations.Get<ProtectionSettings>(target, ParametersKey);
+			ProtectionSettings objParams = context.Annotations.Get<ProtectionSettings>(target, ProtectionParameters.ParametersKey, null);
 			if (objParams == null)
+			{
 				return defValue;
-			if (!objParams.TryGetValue(comp, out parameters))
-				return defValue;
-
-			string ret;
-			if (parameters.TryGetValue(name, out ret)) {
-				Type paramType = typeof(T);
-				Type nullable = Nullable.GetUnderlyingType(paramType);
-				if (nullable != null)
-					paramType = nullable;
-
-				if (paramType.IsEnum)
-					return (T)Enum.Parse(paramType, ret, true);
-				return (T)Convert.ChangeType(ret, paramType);
 			}
-			return defValue;
+			Dictionary<string, string> parameters;
+			if (!objParams.TryGetValue(this.comp, out parameters))
+			{
+				return defValue;
+			}
+			string ret;
+			if (!parameters.TryGetValue(name, out ret))
+			{
+				return defValue;
+			}
+			Type paramType = typeof(T);
+			Type nullable = Nullable.GetUnderlyingType(paramType);
+			if (nullable != null)
+			{
+				paramType = nullable;
+			}
+			if (paramType.IsEnum)
+			{
+				return (T)((object)Enum.Parse(paramType, ret, true));
+			}
+			return (T)((object)Convert.ChangeType(ret, paramType));
 		}
 
 		/// <summary>
@@ -82,9 +90,10 @@ namespace Confuser.Core {
 		/// <param name="context">The context.</param>
 		/// <param name="target">The protection target.</param>
 		/// <param name="parameters">The parameters.</param>
-		public static void SetParameters(
-			ConfuserContext context, IDnlibDef target, ProtectionSettings parameters) {
-			context.Annotations.Set(target, ParametersKey, parameters);
+		// Token: 0x060002F6 RID: 758 RVA: 0x0001271E File Offset: 0x0001091E
+		public static void SetParameters(ConfuserContext context, IDnlibDef target, ProtectionSettings parameters)
+		{
+			context.Annotations.Set<ProtectionSettings>(target, ProtectionParameters.ParametersKey, parameters);
 		}
 
 		/// <summary>
@@ -93,9 +102,22 @@ namespace Confuser.Core {
 		/// <param name="context">The context.</param>
 		/// <param name="target">The protection target.</param>
 		/// <returns>The parameters.</returns>
-		public static ProtectionSettings GetParameters(
-			ConfuserContext context, IDnlibDef target) {
-			return context.Annotations.Get<ProtectionSettings>(target, ParametersKey);
+		// Token: 0x060002F7 RID: 759 RVA: 0x00012732 File Offset: 0x00010932
+		public static ProtectionSettings GetParameters(ConfuserContext context, IDnlibDef target)
+		{
+			return context.Annotations.Get<ProtectionSettings>(target, ProtectionParameters.ParametersKey, null);
 		}
+
+		// Token: 0x040001CE RID: 462
+		private static readonly object ParametersKey = new object();
+
+		/// <summary>
+		///     A empty instance of <see cref="T:Confuser.Core.ProtectionParameters" />.
+		/// </summary>
+		// Token: 0x040001CF RID: 463
+		public static readonly ProtectionParameters Empty = new ProtectionParameters(null, new IDnlibDef[0]);
+
+		// Token: 0x040001D0 RID: 464
+		private readonly ConfuserComponent comp;
 	}
 }

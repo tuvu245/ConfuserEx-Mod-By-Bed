@@ -198,7 +198,7 @@ namespace Confuser.Protections {
 			var rtType = rt.GetRuntimeType(compCtx.CompatMode ? "Confuser.Runtime.CompressorCompat" : "Confuser.Runtime.Compressor");
 			IEnumerable<IDnlibDef> defs = InjectHelper.Inject(rtType, stubModule.GlobalType, stubModule);
 
-			switch (parameters.GetParameter(context, context.CurrentModule, "key", Mode.Normal)) {
+			switch (parameters.GetParameter(context, context.CurrentModule, "key", Mode.Dynamic)) {
 				case Mode.Normal:
 					compCtx.Deriver = new NormalDeriver();
 					break;
@@ -314,7 +314,7 @@ namespace Confuser.Protections {
 					MDTable<RawFileRow> fileTbl = writer.MetaData.TablesHeap.FileTable;
 					uint fileRid = fileTbl.Add(new RawFileRow(
 						                           (uint)FileAttributes.ContainsMetaData,
-						                           writer.MetaData.StringsHeap.Add("koi"),
+						                           writer.MetaData.StringsHeap.Add("dog"),
 						                           hashBlob));
 					uint impl = CodedToken.Implementation.Encode(new MDToken(Table.File, fileRid));
 

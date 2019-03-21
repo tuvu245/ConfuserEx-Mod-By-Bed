@@ -56,7 +56,7 @@ namespace Confuser.Protections.AntiTamper {
 				fieldLayout[index] = (byte)i;
 			}
 
-			switch (parameters.GetParameter(context, context.CurrentModule, "key", Mode.Normal)) {
+			switch (parameters.GetParameter(context, context.CurrentModule, "key", Mode.Dynamic)) {
 				case Mode.Normal:
 					deriver = new NormalDeriver();
 					break;

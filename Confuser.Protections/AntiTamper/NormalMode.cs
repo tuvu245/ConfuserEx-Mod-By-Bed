@@ -34,7 +34,7 @@ namespace Confuser.Protections.AntiTamper {
 			name1 = random.NextUInt32() & 0x7f7f7f7f;
 			name2 = random.NextUInt32() & 0x7f7f7f7f;
 
-			switch (parameters.GetParameter(context, context.CurrentModule, "key", Mode.Normal)) {
+			switch (parameters.GetParameter(context, context.CurrentModule, "key", Mode.Dynamic)) {
 				case Mode.Normal:
 					deriver = new NormalDeriver();
 					break;

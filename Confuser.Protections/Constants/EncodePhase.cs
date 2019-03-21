@@ -125,7 +125,8 @@ namespace Confuser.Protections.Constants {
 					typeof(RuntimeHelpers).GetMethod("InitializeArray"))));
 				return repl.ToArray();
 			});
-		}
+        
+        }
 
 		void EncodeString(CEContext moduleCtx, string value, List<Tuple<MethodDef, Instruction>> references) {
 			int buffIndex = EncodeByteArray(moduleCtx, Encoding.UTF8.GetBytes(value));

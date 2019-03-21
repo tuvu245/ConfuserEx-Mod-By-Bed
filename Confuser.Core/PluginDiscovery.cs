@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
-namespace Confuser.Core {
+namespace Confuser.Core
+{
 	/// <summary>
 	///     Discovers available protection plugins.
 	/// </summary>
-	public class PluginDiscovery {
+	// Token: 0x0200004E RID: 78
+	public class PluginDiscovery
+	{
 		/// <summary>
-		///     The default plugin discovery service.
+		///     Initializes a new instance of the <see cref="T:Confuser.Core.PluginDiscovery" /> class.
 		/// </summary>
-		internal static readonly PluginDiscovery Instance = new PluginDiscovery();
-
-		/// <summary>
-		///     Initializes a new instance of the <see cref="PluginDiscovery" /> class.
-		/// </summary>
-		protected PluginDiscovery() { }
+		// Token: 0x060001D0 RID: 464 RVA: 0x0000F537 File Offset: 0x0000D737
+		protected PluginDiscovery()
+		{
+		}
 
 		/// <summary>
 		///     Retrieves the available protection plugins.
@@ -25,11 +26,13 @@ namespace Confuser.Core {
 		/// <param name="protections">A list of resolved protections.</param>
 		/// <param name="packers">A list of resolved packers.</param>
 		/// <param name="components">A list of resolved components.</param>
-		public void GetPlugins(ConfuserContext context, out IList<Protection> protections, out IList<Packer> packers, out IList<ConfuserComponent> components) {
+		// Token: 0x060001D1 RID: 465 RVA: 0x0000F53F File Offset: 0x0000D73F
+		public void GetPlugins(ConfuserContext context, out IList<Protection> protections, out IList<Packer> packers, out IList<ConfuserComponent> components)
+		{
 			protections = new List<Protection>();
 			packers = new List<Packer>();
 			components = new List<ConfuserComponent>();
-			GetPluginsInternal(context, protections, packers, components);
+			this.GetPluginsInternal(context, protections, packers, components);
 		}
 
 		/// <summary>
@@ -37,10 +40,11 @@ namespace Confuser.Core {
 		/// </summary>
 		/// <param name="type">The type.</param>
 		/// <returns><c>true</c> if the specified type has an accessible default constructor; otherwise, <c>false</c>.</returns>
-		public static bool HasAccessibleDefConstructor(Type type) {
+		// Token: 0x060001D2 RID: 466 RVA: 0x0000F568 File Offset: 0x0000D768
+		public static bool HasAccessibleDefConstructor(Type type)
+		{
 			ConstructorInfo ctor = type.GetConstructor(Type.EmptyTypes);
-			if (ctor == null) return false;
-			return ctor.IsPublic;
+			return !(ctor == null) && ctor.IsPublic;
 		}
 
 		/// <summary>
@@ -51,39 +55,60 @@ namespace Confuser.Core {
 		/// <param name="packers">The working list of packers.</param>
 		/// <param name="components">The working list of components.</param>
 		/// <param name="asm">The assembly.</param>
-		protected static void AddPlugins(
-			ConfuserContext context, IList<Protection> protections, IList<Packer> packers,
-			IList<ConfuserComponent> components, Assembly asm) {
-			foreach(var module in asm.GetLoadedModules())
-				foreach (var i in module.GetTypes()) {
-					if (i.IsAbstract || !HasAccessibleDefConstructor(i))
-						continue;
-
-					if (typeof(Protection).IsAssignableFrom(i)) {
-						try {
-							protections.Add((Protection)Activator.CreateInstance(i));
+		// Token: 0x060001D3 RID: 467 RVA: 0x0000F594 File Offset: 0x0000D794
+		protected static void AddPlugins(ConfuserContext context, IList<Protection> protections, IList<Packer> packers, IList<ConfuserComponent> components, Assembly asm)
+		{
+			Module[] loadedModules = asm.GetLoadedModules();
+			for (int j = 0; j < loadedModules.Length; j++)
+			{
+				Module module = loadedModules[j];
+				Type[] types = module.GetTypes();
+				for (int k = 0; k < types.Length; k++)
+				{
+					Type i = types[k];
+					if (!i.IsAbstract && PluginDiscovery.HasAccessibleDefConstructor(i))
+					{
+						if (typeof(Protection).IsAssignableFrom(i))
+						{
+							try
+							{
+								protections.Add((Protection)Activator.CreateInstance(i));
+								goto IL_126;
+							}
+							catch (Exception ex)
+							{
+								context.Logger.ErrorException("Failed to instantiate protection '" + i.Name + "'.", ex);
+								goto IL_126;
+							}
 						}
-						catch (Exception ex) {
-							context.Logger.ErrorException("Failed to instantiate protection '" + i.Name + "'.", ex);
+						if (typeof(Packer).IsAssignableFrom(i))
+						{
+							try
+							{
+								packers.Add((Packer)Activator.CreateInstance(i));
+								goto IL_126;
+							}
+							catch (Exception ex2)
+							{
+								context.Logger.ErrorException("Failed to instantiate packer '" + i.Name + "'.", ex2);
+								goto IL_126;
+							}
+						}
+						if (typeof(ConfuserComponent).IsAssignableFrom(i))
+						{
+							try
+							{
+								components.Add((ConfuserComponent)Activator.CreateInstance(i));
+							}
+							catch (Exception ex3)
+							{
+								context.Logger.ErrorException("Failed to instantiate component '" + i.Name + "'.", ex3);
+							}
 						}
 					}
-					else if (typeof(Packer).IsAssignableFrom(i)) {
-						try {
-							packers.Add((Packer)Activator.CreateInstance(i));
-						}
-						catch (Exception ex) {
-							context.Logger.ErrorException("Failed to instantiate packer '" + i.Name + "'.", ex);
-						}
-					}
-					else if (typeof(ConfuserComponent).IsAssignableFrom(i)) {
-						try {
-							components.Add((ConfuserComponent)Activator.CreateInstance(i));
-						}
-						catch (Exception ex) {
-							context.Logger.ErrorException("Failed to instantiate component '" + i.Name + "'.", ex);
-						}
-					}
+					IL_126:;
 				}
+			}
 			context.CheckCancellation();
 		}
 
@@ -94,43 +119,55 @@ namespace Confuser.Core {
 		/// <param name="protections">The working list of protections.</param>
 		/// <param name="packers">The working list of packers.</param>
 		/// <param name="components">The working list of components.</param>
-		protected virtual void GetPluginsInternal(
-			ConfuserContext context, IList<Protection> protections,
-			IList<Packer> packers, IList<ConfuserComponent> components) {
-			try {
+		// Token: 0x060001D4 RID: 468 RVA: 0x0000F718 File Offset: 0x0000D918
+		protected virtual void GetPluginsInternal(ConfuserContext context, IList<Protection> protections, IList<Packer> packers, IList<ConfuserComponent> components)
+		{
+			try
+			{
 				Assembly protAsm = Assembly.Load("Confuser.Protections");
-				AddPlugins(context, protections, packers, components, protAsm);
+				PluginDiscovery.AddPlugins(context, protections, packers, components, protAsm);
 			}
-			catch (Exception ex) {
+			catch (Exception ex)
+			{
 				context.Logger.WarnException("Failed to load built-in protections.", ex);
 			}
-
-			try {
+			try
+			{
 				Assembly renameAsm = Assembly.Load("Confuser.Renamer");
-				AddPlugins(context, protections, packers, components, renameAsm);
+				PluginDiscovery.AddPlugins(context, protections, packers, components, renameAsm);
 			}
-			catch (Exception ex) {
-				context.Logger.WarnException("Failed to load renamer.", ex);
+			catch (Exception ex2)
+			{
+				context.Logger.WarnException("Failed to load renamer.", ex2);
 			}
-
-			try {
-				Assembly renameAsm = Assembly.Load("Confuser.DynCipher");
-				AddPlugins(context, protections, packers, components, renameAsm);
+			try
+			{
+				Assembly renameAsm2 = Assembly.Load("Confuser.DynCipher");
+				PluginDiscovery.AddPlugins(context, protections, packers, components, renameAsm2);
 			}
-			catch (Exception ex) {
-				context.Logger.WarnException("Failed to load dynamic cipher library.", ex);
+			catch (Exception ex3)
+			{
+				context.Logger.WarnException("Failed to load dynamic cipher library.", ex3);
 			}
-
-			foreach (string pluginPath in context.Project.PluginPaths) {
+			foreach (string pluginPath in context.Project.PluginPaths)
+			{
 				string realPath = Path.Combine(context.BaseDirectory, pluginPath);
-				try {
+				try
+				{
 					Assembly plugin = Assembly.LoadFile(realPath);
-					AddPlugins(context, protections, packers, components, plugin);
+					PluginDiscovery.AddPlugins(context, protections, packers, components, plugin);
 				}
-				catch (Exception ex) {
-					context.Logger.WarnException("Failed to load plugin '" + pluginPath + "'.", ex);
+				catch (Exception ex4)
+				{
+					context.Logger.WarnException("Failed to load plugin '" + pluginPath + "'.", ex4);
 				}
 			}
 		}
+
+		/// <summary>
+		///     The default plugin discovery service.
+		/// </summary>
+		// Token: 0x0400015F RID: 351
+		internal static readonly PluginDiscovery Instance = new PluginDiscovery();
 	}
 }

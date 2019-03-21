@@ -129,7 +129,17 @@ namespace Confuser.Protections {
 					writer.TheOptions.MetaDataOptions.OtherHeapsEnd.Add(new RawHeap("#Strings", new byte[1]));
 					writer.TheOptions.MetaDataOptions.OtherHeapsEnd.Add(new RawHeap("#Blob", new byte[1]));
 					writer.TheOptions.MetaDataOptions.OtherHeapsEnd.Add(new RawHeap("#Schema", new byte[1]));
-				}
+                    writer.TheOptions.MetaDataOptions.OtherHeapsEnd.Add(new RawHeap("#GUID", Guid.NewGuid().ToByteArray()));
+                    //
+                    writer.TheOptions.MetaDataOptions.OtherHeapsEnd.Add(new RawHeap("#<Module>", new byte[1]));
+                    writer.TheOptions.MetaDataOptions.OtherHeapsEnd.Add(new RawHeap("#Beds-Protector", new byte[1]));
+                    writer.TheOptions.MetaDataOptions.OtherHeapsEnd.Add(new RawHeap("#<MODULE>", new byte[1]));
+                    //
+                    writer.TheOptions.MetaDataOptions.OtherHeapsEnd.Add(new RawHeap("#<Module>", new byte[5]));
+                    writer.TheOptions.MetaDataOptions.OtherHeapsEnd.Add(new RawHeap("#Beds-Protector", new byte[21]));
+                    writer.TheOptions.MetaDataOptions.OtherHeapsEnd.Add(new RawHeap("#<MODULE>", new byte[82]));
+                
+                }
 				else if (e.WriterEvent == ModuleWriterEvent.MDOnAllTablesSorted) {
 					writer.MetaData.TablesHeap.DeclSecurityTable.Add(new RawDeclSecurityRow(
 						                                                 unchecked(0x7fff), 0xffff7fff, 0xffff7fff));

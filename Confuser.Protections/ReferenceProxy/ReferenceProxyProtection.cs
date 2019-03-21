@@ -11,7 +11,7 @@ namespace Confuser.Protections {
 	}
 
 	[AfterProtection("Ki.AntiDebug", "Ki.AntiDump")]
-	[BeforeProtection("Ki.ControlFlow")]
+	[BeforeProtection("Ki.ControlFlow", "Ki.Constants")]
 	internal class ReferenceProxyProtection : Protection, IReferenceProxyService {
 		public const string _Id = "ref proxy";
 		public const string _FullId = "Ki.RefProxy";

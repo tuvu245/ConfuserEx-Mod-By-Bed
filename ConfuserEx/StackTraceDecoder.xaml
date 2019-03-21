@@ -4,6 +4,28 @@
         xmlns:local="clr-namespace:ConfuserEx"
         Style="{StaticResource DarkWindow}" ShowInTaskbar="False"
         Title="Stack Trace Decoder" Height="400" Width="600">
+    <Window.Background>
+        <DrawingBrush TileMode="FlipXY" Viewport="0,0,10,10" ViewportUnits="Absolute">
+            <DrawingBrush.Drawing>
+                <GeometryDrawing>
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush EndPoint="1,1" SpreadMethod="Repeat" StartPoint="0,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <ScaleTransform ScaleY="0.5" ScaleX="0.5"/>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#101010" Offset="0"/>
+                            <GradientStop Color="#101010" Offset="0.5"/>
+                            <GradientStop Color="#202020" Offset="0.5"/>
+                            <GradientStop Color="#202020" Offset="1"/>
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,10,10"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </Window.Background>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="36px" />

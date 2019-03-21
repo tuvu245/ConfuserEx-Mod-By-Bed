@@ -2,158 +2,188 @@
 using System.Collections.Generic;
 using dnlib.DotNet;
 
-namespace Confuser.Renamer {
-	/// <summary>
-	///     Resolves generic arguments
-	/// </summary>
-	public struct GenericArgumentResolver {
-		GenericArguments genericArguments;
-		RecursionCounter recursionCounter;
+namespace Confuser.Renamer
+{
+    // Token: 0x0200005D RID: 93
+    public struct GenericArgumentResolver
+    {
+        // Token: 0x0600022C RID: 556 RVA: 0x0001F2CC File Offset: 0x0001D4CC
+        public static TypeSig Resolve(TypeSig typeSig, IList<TypeSig> typeGenArgs)
+        {
+            if (typeGenArgs == null)
+            {
+                throw new ArgumentException("No generic arguments to resolve.");
+            }
+            GenericArgumentResolver resolver = default(GenericArgumentResolver);
+            resolver.genericArguments = new GenericArguments();
+            resolver.recursionCounter = default(RecursionCounter);
+            if (typeGenArgs != null)
+            {
+                resolver.genericArguments.PushTypeArgs(typeGenArgs);
+            }
+            return resolver.ResolveGenericArgs(typeSig);
+        }
 
-		/// <summary>
-		///     Resolves the type signature with the specified generic arguments.
-		/// </summary>
-		/// <param name="typeSig">The type signature.</param>
-		/// <param name="typeGenArgs">The type generic arguments.</param>
-		/// <returns>Resolved type signature.</returns>
-		/// <exception cref="System.ArgumentException">No generic arguments to resolve.</exception>
-		public static TypeSig Resolve(TypeSig typeSig, IList<TypeSig> typeGenArgs) {
-			if (typeGenArgs == null)
-				throw new ArgumentException("No generic arguments to resolve.");
+        // Token: 0x0600022D RID: 557 RVA: 0x0001F320 File Offset: 0x0001D520
+        public static MethodSig Resolve(MethodSig methodSig, IList<TypeSig> typeGenArgs)
+        {
+            if (typeGenArgs == null)
+            {
+                throw new ArgumentException("No generic arguments to resolve.");
+            }
+            GenericArgumentResolver resolver = default(GenericArgumentResolver);
+            resolver.genericArguments = new GenericArguments();
+            resolver.recursionCounter = default(RecursionCounter);
+            if (typeGenArgs != null)
+            {
+                resolver.genericArguments.PushTypeArgs(typeGenArgs);
+            }
+            return resolver.ResolveGenericArgs(methodSig);
+        }
 
-			var resolver = new GenericArgumentResolver();
-			resolver.genericArguments = new GenericArguments();
-			resolver.recursionCounter = new RecursionCounter();
+        // Token: 0x0600022E RID: 558 RVA: 0x0001F374 File Offset: 0x0001D574
+        private bool ReplaceGenericArg(ref TypeSig typeSig)
+        {
+            if (this.genericArguments == null)
+            {
+                return false;
+            }
+            TypeSig newTypeSig = this.genericArguments.Resolve(typeSig);
+            if (newTypeSig != typeSig)
+            {
+                typeSig = newTypeSig;
+                return true;
+            }
+            return false;
+        }
 
-			if (typeGenArgs != null)
-				resolver.genericArguments.PushTypeArgs(typeGenArgs);
+        // Token: 0x0600022F RID: 559 RVA: 0x0001F3A4 File Offset: 0x0001D5A4
+        private MethodSig ResolveGenericArgs(MethodSig sig)
+        {
+            if (sig == null)
+            {
+                return null;
+            }
+            if (!this.recursionCounter.Increment())
+            {
+                return null;
+            }
+            MethodSig result = this.ResolveGenericArgs(new MethodSig(sig.GetCallingConvention()), sig);
+            this.recursionCounter.Decrement();
+            return result;
+        }
 
-			return resolver.ResolveGenericArgs(typeSig);
-		}
+        // Token: 0x06000230 RID: 560 RVA: 0x0001F3E4 File Offset: 0x0001D5E4
+        private MethodSig ResolveGenericArgs(MethodSig sig, MethodSig old)
+        {
+            sig.RetType = this.ResolveGenericArgs(old.RetType);
+            foreach (TypeSig p in old.Params)
+            {
+                sig.Params.Add(this.ResolveGenericArgs(p));
+            }
+            sig.GenParamCount = old.GenParamCount;
+            if (sig.ParamsAfterSentinel != null)
+            {
+                foreach (TypeSig p2 in old.ParamsAfterSentinel)
+                {
+                    sig.ParamsAfterSentinel.Add(this.ResolveGenericArgs(p2));
+                }
+            }
+            return sig;
+        }
 
-		/// <summary>
-		///     Resolves the method signature with the specified generic arguments.
-		/// </summary>
-		/// <param name="methodSig">The method signature.</param>
-		/// <param name="typeGenArgs">The type generic arguments.</param>
-		/// <returns>Resolved method signature.</returns>
-		/// <exception cref="System.ArgumentException">No generic arguments to resolve.</exception>
-		public static MethodSig Resolve(MethodSig methodSig, IList<TypeSig> typeGenArgs) {
-			if (typeGenArgs == null)
-				throw new ArgumentException("No generic arguments to resolve.");
+        // Token: 0x06000231 RID: 561 RVA: 0x0001F4AC File Offset: 0x0001D6AC
+        private TypeSig ResolveGenericArgs(TypeSig typeSig)
+        {
+            if (!this.recursionCounter.Increment())
+            {
+                return null;
+            }
+            if (this.ReplaceGenericArg(ref typeSig))
+            {
+                this.recursionCounter.Decrement();
+                return typeSig;
+            }
+            ElementType elementType = typeSig.ElementType;
+            TypeSig result;
+            switch (elementType)
+            {
+                case ElementType.Ptr:
+                    result = new PtrSig(this.ResolveGenericArgs(typeSig.Next));
+                    goto IL_265;
+                case ElementType.ByRef:
+                    result = new ByRefSig(this.ResolveGenericArgs(typeSig.Next));
+                    goto IL_265;
+                case ElementType.ValueType:
+                case ElementType.Class:
+                case ElementType.TypedByRef:
+                case ElementType.I:
+                case ElementType.U:
+                case ElementType.R:
+                case ElementType.Object:
+                    break;
+                case ElementType.Var:
+                    result = new GenericVar((typeSig as GenericVar).Number);
+                    goto IL_265;
+                case ElementType.Array:
+                    {
+                        ArraySig arraySig = (ArraySig)typeSig;
+                        List<uint> sizes = new List<uint>(arraySig.Sizes);
+                        List<int> lbounds = new List<int>(arraySig.LowerBounds);
+                        result = new ArraySig(this.ResolveGenericArgs(typeSig.Next), arraySig.Rank, sizes, lbounds);
+                        goto IL_265;
+                    }
+                case ElementType.GenericInst:
+                    {
+                        GenericInstSig gis = (GenericInstSig)typeSig;
+                        List<TypeSig> genArgs = new List<TypeSig>(gis.GenericArguments.Count);
+                        foreach (TypeSig ga in gis.GenericArguments)
+                        {
+                            genArgs.Add(this.ResolveGenericArgs(ga));
+                        }
+                        result = new GenericInstSig(this.ResolveGenericArgs(gis.GenericType) as ClassOrValueTypeSig, genArgs);
+                        goto IL_265;
+                    }
+                case ElementType.ValueArray:
+                    result = new ValueArraySig(this.ResolveGenericArgs(typeSig.Next), (typeSig as ValueArraySig).Size);
+                    goto IL_265;
+                case ElementType.FnPtr:
+                    throw new NotSupportedException("FnPtr is not supported.");
+                case ElementType.SZArray:
+                    result = new SZArraySig(this.ResolveGenericArgs(typeSig.Next));
+                    goto IL_265;
+                case ElementType.MVar:
+                    result = new GenericMVar((typeSig as GenericMVar).Number);
+                    goto IL_265;
+                case ElementType.CModReqd:
+                    result = new CModReqdSig((typeSig as ModifierSig).Modifier, this.ResolveGenericArgs(typeSig.Next));
+                    goto IL_265;
+                case ElementType.CModOpt:
+                    result = new CModOptSig((typeSig as ModifierSig).Modifier, this.ResolveGenericArgs(typeSig.Next));
+                    goto IL_265;
+                default:
+                    if (elementType == ElementType.Module)
+                    {
+                        result = new ModuleSig((typeSig as ModuleSig).Index, this.ResolveGenericArgs(typeSig.Next));
+                        goto IL_265;
+                    }
+                    if (elementType == ElementType.Pinned)
+                    {
+                        result = new PinnedSig(this.ResolveGenericArgs(typeSig.Next));
+                        goto IL_265;
+                    }
+                    break;
+            }
+            result = typeSig;
+            IL_265:
+            this.recursionCounter.Decrement();
+            return result;
+        }
 
-			var resolver = new GenericArgumentResolver();
-			resolver.genericArguments = new GenericArguments();
-			resolver.recursionCounter = new RecursionCounter();
+        // Token: 0x040004D3 RID: 1235
+        private GenericArguments genericArguments;
 
-			if (typeGenArgs != null)
-				resolver.genericArguments.PushTypeArgs(typeGenArgs);
-
-			return resolver.ResolveGenericArgs(methodSig);
-		}
-
-		bool ReplaceGenericArg(ref TypeSig typeSig) {
-			if (genericArguments == null)
-				return false;
-			TypeSig newTypeSig = genericArguments.Resolve(typeSig);
-			if (newTypeSig != typeSig) {
-				typeSig = newTypeSig;
-				return true;
-			}
-			return false;
-		}
-
-		MethodSig ResolveGenericArgs(MethodSig sig) {
-			if (sig == null)
-				return null;
-			if (!recursionCounter.Increment())
-				return null;
-
-			MethodSig result = ResolveGenericArgs(new MethodSig(sig.GetCallingConvention()), sig);
-
-			recursionCounter.Decrement();
-			return result;
-		}
-
-		MethodSig ResolveGenericArgs(MethodSig sig, MethodSig old) {
-			sig.RetType = ResolveGenericArgs(old.RetType);
-			foreach (TypeSig p in old.Params)
-				sig.Params.Add(ResolveGenericArgs(p));
-			sig.GenParamCount = old.GenParamCount;
-			if (sig.ParamsAfterSentinel != null) {
-				foreach (TypeSig p in old.ParamsAfterSentinel)
-					sig.ParamsAfterSentinel.Add(ResolveGenericArgs(p));
-			}
-			return sig;
-		}
-
-		TypeSig ResolveGenericArgs(TypeSig typeSig) {
-			if (!recursionCounter.Increment())
-				return null;
-
-			if (ReplaceGenericArg(ref typeSig)) {
-				recursionCounter.Decrement();
-				return typeSig;
-			}
-
-			TypeSig result;
-			switch (typeSig.ElementType) {
-				case ElementType.Ptr:
-					result = new PtrSig(ResolveGenericArgs(typeSig.Next));
-					break;
-				case ElementType.ByRef:
-					result = new ByRefSig(ResolveGenericArgs(typeSig.Next));
-					break;
-				case ElementType.Var:
-					result = new GenericVar((typeSig as GenericVar).Number);
-					break;
-				case ElementType.ValueArray:
-					result = new ValueArraySig(ResolveGenericArgs(typeSig.Next), (typeSig as ValueArraySig).Size);
-					break;
-				case ElementType.SZArray:
-					result = new SZArraySig(ResolveGenericArgs(typeSig.Next));
-					break;
-				case ElementType.MVar:
-					result = new GenericMVar((typeSig as GenericMVar).Number);
-					break;
-				case ElementType.CModReqd:
-					result = new CModReqdSig((typeSig as ModifierSig).Modifier, ResolveGenericArgs(typeSig.Next));
-					break;
-				case ElementType.CModOpt:
-					result = new CModOptSig((typeSig as ModifierSig).Modifier, ResolveGenericArgs(typeSig.Next));
-					break;
-				case ElementType.Module:
-					result = new ModuleSig((typeSig as ModuleSig).Index, ResolveGenericArgs(typeSig.Next));
-					break;
-				case ElementType.Pinned:
-					result = new PinnedSig(ResolveGenericArgs(typeSig.Next));
-					break;
-				case ElementType.FnPtr:
-					throw new NotSupportedException("FnPtr is not supported.");
-
-				case ElementType.Array:
-					var arraySig = (ArraySig)typeSig;
-					var sizes = new List<uint>(arraySig.Sizes);
-					var lbounds = new List<int>(arraySig.LowerBounds);
-					result = new ArraySig(ResolveGenericArgs(typeSig.Next), arraySig.Rank, sizes, lbounds);
-					break;
-				case ElementType.GenericInst:
-					var gis = (GenericInstSig)typeSig;
-					var genArgs = new List<TypeSig>(gis.GenericArguments.Count);
-					foreach (TypeSig ga in gis.GenericArguments) {
-						genArgs.Add(ResolveGenericArgs(ga));
-					}
-					result = new GenericInstSig(ResolveGenericArgs(gis.GenericType) as ClassOrValueTypeSig, genArgs);
-					break;
-
-				default:
-					result = typeSig;
-					break;
-			}
-
-			recursionCounter.Decrement();
-
-			return result;
-		}
-	}
+        // Token: 0x040004D4 RID: 1236
+        private RecursionCounter recursionCounter;
+    }
 }

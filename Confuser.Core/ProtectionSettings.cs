@@ -1,35 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Confuser.Core {
+namespace Confuser.Core
+{
 	/// <summary>
 	///     Protection settings for a certain component
 	/// </summary>
-	public class ProtectionSettings : Dictionary<ConfuserComponent, Dictionary<string, string>> {
+	// Token: 0x02000076 RID: 118
+	public class ProtectionSettings : Dictionary<ConfuserComponent, Dictionary<string, string>>
+	{
 		/// <summary>
-		///     Initializes a new instance of the <see cref="ProtectionSettings" /> class.
+		///     Initializes a new instance of the <see cref="T:Confuser.Core.ProtectionSettings" /> class.
 		/// </summary>
-		public ProtectionSettings() { }
+		// Token: 0x060002C4 RID: 708 RVA: 0x00012312 File Offset: 0x00010512
+		public ProtectionSettings()
+		{
+		}
 
 		/// <summary>
-		///     Initializes a new instance of the <see cref="ProtectionSettings" /> class
-		///     from an existing <see cref="ProtectionSettings" />.
+		///     Initializes a new instance of the <see cref="T:Confuser.Core.ProtectionSettings" /> class
+		///     from an existing <see cref="T:Confuser.Core.ProtectionSettings" />.
 		/// </summary>
 		/// <param name="settings">The settings to copy from.</param>
-		public ProtectionSettings(ProtectionSettings settings) {
-			if (settings == null)
-				return;
-
-			foreach (var i in settings)
-				Add(i.Key, new Dictionary<string, string>(i.Value));
+		// Token: 0x060002C5 RID: 709 RVA: 0x0001231C File Offset: 0x0001051C
+		public ProtectionSettings(ProtectionSettings settings)
+		{
+			foreach (KeyValuePair<ConfuserComponent, Dictionary<string, string>> i in settings)
+			{
+				base.Add(i.Key, new Dictionary<string, string>(i.Value));
+			}
 		}
 
 		/// <summary>
 		///     Determines whether the settings is empty.
 		/// </summary>
 		/// <returns><c>true</c> if the settings is empty; otherwise, <c>false</c>.</returns>
-		public bool IsEmpty() {
-			return Count == 0;
+		// Token: 0x060002C6 RID: 710 RVA: 0x00012384 File Offset: 0x00010584
+		public bool IsEmpty()
+		{
+			return base.Count == 0;
 		}
 	}
 }

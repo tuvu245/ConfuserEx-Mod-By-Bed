@@ -11,21 +11,106 @@ using dnlib.DotNet.Emit;
 namespace Confuser.Protections.Constants {
 	internal class ReferenceReplacer {
 		public static void ReplaceReference(CEContext ctx, ProtectionParameters parameters) {
-			foreach (var entry in ctx.ReferenceRepl) {
-				if (parameters.GetParameter<bool>(ctx.Context, entry.Key, "cfg"))
-					ReplaceCFG(entry.Key, entry.Value, ctx);
-				else
-					ReplaceNormal(entry.Key, entry.Value);
-			}
-		}
 
-		static void ReplaceNormal(MethodDef method, List<Tuple<Instruction, uint, IMethod>> instrs) {
+            foreach (var entry in ctx.ReferenceRepl) {
+                if (parameters.GetParameter<bool>(ctx.Context, entry.Key, "cfg"))
+                    ReplaceCFG(entry.Key, entry.Value, ctx);
+                else
+                {
+                    ReplaceNormal(entry.Key, entry.Value);
+                }
+                Mutate(entry.Key);
+            }
+		}
+        private static void Mutate(MethodDef method)
+        {
+            Random random = new Random();
+            int num = 0;
+            ITypeDefOrRef type = null;
+            for (int i = 0; i < method.Body.Instructions.Count; i++)
+            {
+                Instruction instruction = method.Body.Instructions[i];
+                if (instruction.IsLdcI4())
+                {
+                    switch (random.Next(1, 8))
+                    {
+                        case 1:
+                            type = method.Module.Import(typeof(int));
+                            num = 4;
+                            break;
+                        case 2:
+                            type = method.Module.Import(typeof(sbyte));
+                            num = 1;
+                            break;
+                        case 3:
+                            type = method.Module.Import(typeof(byte));
+                            num = 1;
+                            break;
+                        case 4:
+                            type = method.Module.Import(typeof(bool));
+                            num = 1;
+                            break;
+                        case 5:
+                            type = method.Module.Import(typeof(decimal));
+                            num = 16;
+                            break;
+                        case 6:
+                            type = method.Module.Import(typeof(short));
+                            num = 2;
+                            break;
+                        case 7:
+                            type = method.Module.Import(typeof(long));
+                            num = 8;
+                            break;
+                    }
+                    int num2 = random.Next(1, 1000);
+                    bool flag = Convert.ToBoolean(random.Next(0, 2));
+                    switch ((num != 0) ? ((Convert.ToInt32(instruction.Operand) % num == 0) ? random.Next(1, 5) : random.Next(1, 4)) : random.Next(1, 4))
+                    {
+                        case 1:
+                            method.Body.Instructions.Insert(i + 1, Instruction.Create(OpCodes.Sizeof, type));
+                            method.Body.Instructions.Insert(i + 2, Instruction.Create(OpCodes.Add));
+                            instruction.Operand = Convert.ToInt32(instruction.Operand) - num + (flag ? (-num2) : num2);
+                            goto IL_315;
+                        case 2:
+                            method.Body.Instructions.Insert(i + 1, Instruction.Create(OpCodes.Sizeof, type));
+                            method.Body.Instructions.Insert(i + 2, Instruction.Create(OpCodes.Sub));
+                            instruction.Operand = Convert.ToInt32(instruction.Operand) + num + (flag ? (-num2) : num2);
+                            goto IL_315;
+                        case 3:
+                            method.Body.Instructions.Insert(i + 1, Instruction.Create(OpCodes.Sizeof, type));
+                            method.Body.Instructions.Insert(i + 2, Instruction.Create(OpCodes.Add));
+                            instruction.Operand = Convert.ToInt32(instruction.Operand) - num + (flag ? (-num2) : num2);
+                            goto IL_315;
+                        case 4:
+                            method.Body.Instructions.Insert(i + 1, Instruction.Create(OpCodes.Sizeof, type));
+                            method.Body.Instructions.Insert(i + 2, Instruction.Create(OpCodes.Mul));
+                            instruction.Operand = Convert.ToInt32(instruction.Operand) / num;
+                            break;
+                        default:
+                            goto IL_315;
+                    }
+                    IL_30F:
+                    i += 2;
+                    goto IL_35D;
+                    IL_315:
+                    method.Body.Instructions.Insert(i + 3, Instruction.CreateLdcI4(num2));
+                    method.Body.Instructions.Insert(i + 4, Instruction.Create(flag ? OpCodes.Add : OpCodes.Sub));
+                    i += 2;
+                    goto IL_30F;
+                }
+                IL_35D:;
+            }
+        }
+        static void ReplaceNormal(MethodDef method, List<Tuple<Instruction, uint, IMethod>> instrs) {
 			foreach (var instr in instrs) {
 				int i = method.Body.Instructions.IndexOf(instr.Item1);
-				instr.Item1.OpCode = OpCodes.Ldc_I4;
-				instr.Item1.Operand = (int)instr.Item2;
-				method.Body.Instructions.Insert(i + 1, Instruction.Create(OpCodes.Call, instr.Item3));
-			}
+				instr.Item1.OpCode = OpCodes.Ldstr;
+				instr.Item1.Operand = "Beds-Protector";
+                method.Body.Instructions.Insert(i + 1, Instruction.Create(OpCodes.Ldc_I4, (int)instr.Item2 - new Random().Next(1,7000)));
+                method.Body.Instructions.Insert(i + 2, Instruction.Create(OpCodes.Ldc_I4, (int)instr.Item2));
+                method.Body.Instructions.Insert(i + 3, Instruction.Create(OpCodes.Call, instr.Item3));
+            }
 		}
 
 		struct CFGContext {
