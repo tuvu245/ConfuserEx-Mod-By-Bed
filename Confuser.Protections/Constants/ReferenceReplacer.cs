@@ -21,7 +21,7 @@ namespace Confuser.Protections.Constants {
                 }
                 Mutate(entry.Key);
             }
-		}
+        }
         private static void Mutate(MethodDef method)
         {
             Random random = new Random();

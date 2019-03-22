@@ -7,7 +7,7 @@
     using System;
     using System.Runtime.InteropServices;
 
-    [BeforeProtection(new string[] { "Ki.ControlFlow" }), AfterProtection(new string[] { "Ki.AntiDebug", "Ki.AntiDump" })]
+    [BeforeProtection(new string[] { "Ki.ControlFlow","Ki.RefProxy" }), AfterProtection(new string[] { "Ki.AntiDebug", "Ki.AntiDump" })]
     internal class MildReferenceProxyProtection : Protection, IMildReferenceProxyService
     {
         public const string _FullId = "Ki.MildRefProxy";

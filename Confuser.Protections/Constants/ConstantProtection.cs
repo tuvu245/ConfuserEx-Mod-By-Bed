@@ -44,10 +44,14 @@ namespace Confuser.Protections {
 		}
 
 		protected override void PopulatePipeline(ProtectionPipeline pipeline) {
-            pipeline.InsertPreStage(PipelineStage.ProcessModule, new MultiplePhase(this));
+          
+            pipeline.InsertPreStage(PipelineStage.ProcessModule, new MeltingPhase(this));
             pipeline.InsertPreStage(PipelineStage.ProcessModule, new InjectPhase(this));
-			pipeline.InsertPostStage(PipelineStage.ProcessModule, new EncodePhase(this));
-     
+            pipeline.InsertPostStage(PipelineStage.ProcessModule, new EncodePhase(this));
+       
+
+
+
         }
 	}
 }

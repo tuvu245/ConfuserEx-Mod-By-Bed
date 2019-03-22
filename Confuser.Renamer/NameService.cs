@@ -124,7 +124,13 @@ namespace Confuser.Renamer
                 }
             }
         }
-
+        public static string RandomString(int length)
+        {
+            Random random = new Random();
+            const string chars = "ᅠᅠOPVWXYZ0123456789qwertyuiopasdfghjklzxxcvbnm,./;[]*^$&@$!|}{><?_+";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
         // Token: 0x06000262 RID: 610 RVA: 0x0001FAF8 File Offset: 0x0001DCF8
         public string ObfuscateName(string name, RenameMode mode)
         {
@@ -173,7 +179,7 @@ namespace Confuser.Renamer
                                     return this.nameMap1[name];
                                 }
                                 this.IncrementNameId();
-                                string newName2 = "ᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠᅠ" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset);
+                                string newName2 = "ᅠ" +Utils.EncodeString(this.nameId, NameService.unicodeCharset )+RandomString(name.Length + new Random().Next(5,10));
                                 //string newName2 = "Beds-Protector-The-Quick-Brown-Fox-Jumped-Over-The-Lazy-Dog" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset)+ "The-Quick-Brown-Fox-Jumped-Over-The-Lazy-Dog" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "The-Quick-Brown-Fox-Jumped-Over-The-La";
                                 // string newName2 = "Kill-Yourself-<3" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "Kill-Yourself-<3" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "Kill-Yourself-<3" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "Kill-Yourself-<3" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "Kill-Yourself-<3" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset);
                                 this.nameMap2[newName2] = name;
