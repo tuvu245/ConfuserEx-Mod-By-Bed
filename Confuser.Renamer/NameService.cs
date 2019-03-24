@@ -179,8 +179,8 @@ namespace Confuser.Renamer
                                     return this.nameMap1[name];
                                 }
                                 this.IncrementNameId();
-                                string newName2 = "ᅠ" +Utils.EncodeString(this.nameId, NameService.unicodeCharset )+RandomString(name.Length + new Random().Next(5,10));
-                                //string newName2 = "Beds-Protector-The-Quick-Brown-Fox-Jumped-Over-The-Lazy-Dog" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset)+ "The-Quick-Brown-Fox-Jumped-Over-The-Lazy-Dog" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "The-Quick-Brown-Fox-Jumped-Over-The-La";
+                                //string newName2 = "ᅠ" +Utils.EncodeString(this.nameId, NameService.unicodeCharset )+RandomString(name.Length + new Random().Next(5,10));
+                                string newName2 = "Beds-Protector-The-Quick-Brown-FoxᅠᅠᅠᅠᅠJumped-Over-The-Lazy-Dog" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "The-ᅠᅠᅠᅠQuick-Brown-ᅠᅠᅠᅠᅠᅠe-Lazy-Dog" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "ᅠᅠᅠᅠᅠThe-Quick-Brown-Fox-Jumped-Over-The-Laᅠᅠᅠᅠzyᅠ";
                                 // string newName2 = "Kill-Yourself-<3" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "Kill-Yourself-<3" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "Kill-Yourself-<3" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "Kill-Yourself-<3" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + Utils.EncodeString(this.nameId, NameService.alphaNumCharset) + "Kill-Yourself-<3" + Utils.EncodeString(this.nameId, NameService.alphaNumCharset);
                                 this.nameMap2[newName2] = name;
                                 this.nameMap1[name] = newName2;
