@@ -12,10 +12,10 @@
                             <LinearGradientBrush.RelativeTransform>
                                 <ScaleTransform ScaleY="0.5" ScaleX="0.5"/>
                             </LinearGradientBrush.RelativeTransform>
-                            <GradientStop Color="#FF101010" Offset="0"/>
-                            <GradientStop Color="#FF101010" Offset="0.5"/>
-                            <GradientStop Color="#FF202020" Offset="0.5"/>
-                            <GradientStop Color="#FF202020" Offset="1"/>
+                            <GradientStop Color="#FF101020" Offset="0"/>
+                            <GradientStop Color="#FF101020" Offset="0.5"/>
+                            <GradientStop Color="#FF102030" Offset="0.5"/>
+                            <GradientStop Color="#FF102030" Offset="1"/>
                         </LinearGradientBrush>
                     </GeometryDrawing.Brush>
                     <GeometryDrawing.Geometry>
@@ -38,7 +38,7 @@
                     <TransformGroup>
                         <ScaleTransform ScaleY="1" ScaleX="1"/>
                         <SkewTransform AngleY="0" AngleX="0"/>
-                        <RotateTransform Angle="0"/>
+                        <RotateTransform/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </DrawingBrush.RelativeTransform>
@@ -49,10 +49,10 @@
                                 <LinearGradientBrush.RelativeTransform>
                                     <ScaleTransform ScaleY="0.5" ScaleX="0.5"/>
                                 </LinearGradientBrush.RelativeTransform>
-                                <GradientStop Color="#FF101010" Offset="0"/>
-                                <GradientStop Color="#FF101010" Offset="0.5"/>
-                                <GradientStop Color="#FF202020" Offset="0.5"/>
-                                <GradientStop Color="#FF202020" Offset="1"/>
+                                <GradientStop Color="#FF101020" Offset="0"/>
+                                <GradientStop Color="#FF101020" Offset="0.5"/>
+                                <GradientStop Color="#FF102030" Offset="0.5"/>
+                                <GradientStop Color="#FF102030" Offset="1"/>
                             </LinearGradientBrush>
                         </GeometryDrawing.Brush>
                         <GeometryDrawing.Geometry>
@@ -70,6 +70,14 @@
                  KeyboardNavigation.TabNavigation="Continue">
             <ToolBar.Background>
                 <DrawingBrush TileMode="FlipXY" Viewport="0,0,10,10" ViewportUnits="Absolute">
+                    <DrawingBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </DrawingBrush.RelativeTransform>
                     <DrawingBrush.Drawing>
                         <GeometryDrawing>
                             <GeometryDrawing.Brush>
@@ -77,10 +85,10 @@
                                     <LinearGradientBrush.RelativeTransform>
                                         <ScaleTransform ScaleY="0.5" ScaleX="0.5"/>
                                     </LinearGradientBrush.RelativeTransform>
-                                    <GradientStop Color="#101010" Offset="0"/>
-                                    <GradientStop Color="#101010" Offset="0.5"/>
-                                    <GradientStop Color="#202020" Offset="0.5"/>
-                                    <GradientStop Color="#202020" Offset="1"/>
+                                    <GradientStop Color="#101020" Offset="0"/>
+                                    <GradientStop Color="#101020" Offset="0.5"/>
+                                    <GradientStop Color="#102030" Offset="0.5"/>
+                                    <GradientStop Color="#102030" Offset="1"/>
                                 </LinearGradientBrush>
                             </GeometryDrawing.Brush>
                             <GeometryDrawing.Geometry>
@@ -113,7 +121,7 @@
                     <Image Source="{StaticResource Tools}" Margin="0,0,4,0" />
                     <TextBlock Text="Tools" VerticalAlignment="Center" />
                     <Path Data="M 0.5 4 L 6.5 4 L 3.5 9 Z" Fill="{StaticResource Foreground}" Margin="4,0,0,0"
-                          VerticalAlignment="Center" />
+                        VerticalAlignment="Center" />
                 </StackPanel>
                 <Button.ContextMenu>
                     <ContextMenu
@@ -126,9 +134,16 @@
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
+            <Button Click="Button_Click_2">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="discord.ico" Height="26" Width="39"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </ToolBar>
         <TabControl Grid.Row="1" Grid.ColumnSpan="2" Margin="10" ItemsSource="{Binding Tabs}" Padding="5"
-                    SelectedIndex="0" local:Skin.TabsDisabled="{Binding NavigationDisabled}">
+                    SelectedIndex="0" local:Skin.TabsDisabled="{Binding NavigationDisabled}" Background="#FF202028">
             <TabControl.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>

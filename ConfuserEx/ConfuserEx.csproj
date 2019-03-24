@@ -269,6 +269,9 @@
   <ItemGroup>
     <Resource Include="ConfuserEx.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="discord.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

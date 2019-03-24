@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -58,5 +59,20 @@ namespace ConfuserEx {
 			base.OnClosing(e);
 			e.Cancel = !((AppVM)DataContext).OnWindowClosing();
 		}
-	}
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+          
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://discord.gg/3y3n2GG");
+        }
+    }
 }
