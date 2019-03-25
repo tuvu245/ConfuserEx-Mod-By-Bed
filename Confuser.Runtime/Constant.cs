@@ -39,10 +39,11 @@ namespace Confuser.Runtime {
 			b = Lzma.Decompress(o);
 		}
 
-		static T Get<T>(string id3,uint id2, uint id) {
+		static T Get<T>(string id3,uint id2, uint id , uint neo) {
+       
 			id = (uint)Mutation.Placeholder((int)id);
 			uint t = id >> 30;
-
+            uint coon = neo;
 			T ret = default(T);
 			id &= 0x3fffffff;
 			id <<= 2;
@@ -52,6 +53,7 @@ namespace Confuser.Runtime {
 				int l = b[id++] | (b[id++] << 8) | (b[id++] << 16) | (b[id++] << 24);
 				ret = (T)(object)string.Intern(Encoding.UTF8.GetString(b, (int)id, l));
                 id3 = id.ToString();
+                neo = id;
             }
 			// NOTE: Assume little-endian
 			else if (t == Mutation.KeyI1) {

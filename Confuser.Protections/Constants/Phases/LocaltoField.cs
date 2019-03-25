@@ -25,6 +25,7 @@ namespace Confuser.Protections.Constants {
 		public override string Name {
 			get { return "Local to Field"; }
 		}
+        string newName2 = "Beds-Protector-The-Quick-Brown-FoxᅠᅠᅠᅠᅠJumped-Over-The-Lazy-Dog" + RandomString(3) + "The-ᅠᅠᅠᅠQuick-Brown-ᅠᅠᅠᅠᅠᅠe-Lazy-Dog" + RandomString(3) + "ᅠᅠᅠᅠᅠThe-Quick-Brown-Fox-Jumped-Over-The-Laᅠᅠᅠᅠzyᅠ";
         public static string RandomString(int length)
         {
             Random random = new Random();
@@ -57,7 +58,7 @@ namespace Confuser.Protections.Constants {
                                 FieldDef def;
                                 if (flag3)
                                 {
-                                    def = new FieldDefUser(RandomString(20), new FieldSig(local.Type), FieldAttributes.FamANDAssem | FieldAttributes.Family | FieldAttributes.Static);
+                                    def = new FieldDefUser(RandomString(3), new FieldSig(local.Type), FieldAttributes.FamANDAssem | FieldAttributes.Family | FieldAttributes.Static);
                                     context.CurrentModule.GlobalType.Fields.Add(def);
                                     this.convertedLocals.Add(local, def);
                                 }

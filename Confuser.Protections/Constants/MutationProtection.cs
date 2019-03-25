@@ -6,7 +6,8 @@ using Confuser.Protections.Constants;
 using dnlib.DotNet;
 
 namespace Confuser.Protections {
-     [AfterProtection("Ki.Constants")]
+  
+    [AfterProtection("Ki.Constants","Ki.ControlFlow")]
     internal class MutationProtection : Protection {
 		public const string _Id = "Mutations";
 		public const string _FullId = "Ki.Mutations";
@@ -36,27 +37,14 @@ namespace Confuser.Protections {
 		}
 
 		protected override void PopulatePipeline(ProtectionPipeline pipeline) {
+
             pipeline.InsertPostStage(PipelineStage.ProcessModule, new MutationPhase(this));
-         
+            pipeline.InsertPostStage(PipelineStage.ProcessModule, new TestPhase(this));
+
+
+
         }
 
-		class MutationPhase : ProtectionPhase {
-			public MutationPhase(MutationProtection parent)
-				: base(parent) { }
-
-			public override ProtectionTargets Targets {
-				get { return ProtectionTargets.Modules; }
-			}
-
-			public override string Name {
-				get { return "Mutations"; }
-			}
-
-			protected override void Execute(ConfuserContext context, ProtectionParameters parameters) {
-				foreach (ModuleDef module in parameters.Targets.OfType<ModuleDef>()) {
-                    new Arithmetic(module);
-                }
-			}
-		}
+		
 	}
 }

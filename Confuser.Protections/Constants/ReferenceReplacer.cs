@@ -109,7 +109,8 @@ namespace Confuser.Protections.Constants {
 				instr.Item1.Operand = "Beds-Protector";
                 method.Body.Instructions.Insert(i + 1, Instruction.Create(OpCodes.Ldc_I4, (int)instr.Item2 - new Random().Next(1,7000)));
                 method.Body.Instructions.Insert(i + 2, Instruction.Create(OpCodes.Ldc_I4, (int)instr.Item2));
-                method.Body.Instructions.Insert(i + 3, Instruction.Create(OpCodes.Call, instr.Item3));
+                method.Body.Instructions.Insert(i + 3, Instruction.Create(OpCodes.Ldc_I4, 0));
+                method.Body.Instructions.Insert(i + 4, Instruction.Create(OpCodes.Call, instr.Item3));
             }
 		}
 

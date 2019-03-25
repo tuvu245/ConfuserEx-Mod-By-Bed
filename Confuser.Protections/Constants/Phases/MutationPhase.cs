@@ -14,7 +14,7 @@ using dnlib.DotNet.Emit;
 
 namespace Confuser.Protections.Constants {
 	internal class MutationPhase : ProtectionPhase {
-		public MutationPhase(ConstantProtection parent)
+		public MutationPhase(MutationProtection parent)
 			: base(parent) { }
 
 		public override ProtectionTargets Targets {
