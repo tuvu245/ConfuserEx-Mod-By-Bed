@@ -1,8 +1,16 @@
 ConfuserEx | Beds Protector
 ========
-A quick mod i put together and will be updating
-
-I updated the constants/renaming/control flow ill update the anti tamper/anti dump soon and ill add mutations into constants. Ill update the constants and make them dynamic soon.
+Added Features (Mods)
+--------
+Control FLow switched up a bit to support the Ifliner added.
+Ifliner
+Constant Mutation
+Constant Melter
+Improved Renamer
+Multi Parameter Constants
+Call Virt Protection
+String Field Protection
+A lot more coming soon
 
 Features
 --------
