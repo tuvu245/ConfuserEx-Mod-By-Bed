@@ -2,15 +2,15 @@ ConfuserEx | Beds Protector
 ========
 Added Features (Mods)
 --------
-Control FLow switched up a bit to support the Ifliner added.
-Ifliner
-Constant Mutation
-Constant Melter
-Improved Renamer
-Multi Parameter Constants
-Call Virt Protection
-String Field Protection
-A lot more coming soon
+* Control FLow switched up a bit to support the Ifliner added.
+* Ifliner
+* Constant Mutation
+* Constant Melter
+* Improved Renamer
+* Multi Parameter Constants
+* Call Virt Protection
+* String Field Protection
+* A lot more coming soon
 
 Features
 --------
