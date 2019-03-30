@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Text;
 
 namespace Confuser.Runtime {
@@ -39,39 +40,46 @@ namespace Confuser.Runtime {
 			b = Lzma.Decompress(o);
 		}
 
-		static T Get<T>(string id3,uint id2, uint id , uint neo) {
-       
-			id = (uint)Mutation.Placeholder((int)id);
-			uint t = id >> 30;
-            uint coon = neo;
-			T ret = default(T);
-			id &= 0x3fffffff;
-			id <<= 2;
-            id2 &= 0x3fffffff;
-            id2 <<= 2;
-            if (t == Mutation.KeyI0) {
-				int l = b[id++] | (b[id++] << 8) | (b[id++] << 16) | (b[id++] << 24);
-				ret = (T)(object)string.Intern(Encoding.UTF8.GetString(b, (int)id, l));
-                id3 = id.ToString();
-                neo = id;
+        static T Get<T>(string id3, uint id2, uint id, uint neo)
+        {
+            if (Equals(Assembly.GetCallingAssembly(), Assembly.GetExecutingAssembly()))
+            {
+                id = (uint)Mutation.Placeholder((int)id);
+                uint t = id >> 30;
+                uint coon = neo;
+                T ret = default(T);
+                id &= 0x3fffffff;
+                id <<= 2;
+                id2 &= 0x3fffffff;
+                id2 <<= 2;
+                if (t == Mutation.KeyI0)
+                {
+                    int l = b[id++] | (b[id++] << 8) | (b[id++] << 16) | (b[id++] << 24);
+                    ret = (T)(object)string.Intern(Encoding.UTF8.GetString(b, (int)id, l));
+                    id3 = id.ToString();
+                    neo = id;
+                }
+                // NOTE: Assume little-endian
+                else if (t == Mutation.KeyI1)
+                {
+                    var v = new T[1];
+                    Buffer.BlockCopy(b, (int)id, v, 0, Mutation.Value<int>());
+                    ret = v[0];
+                    id3 = id.ToString();
+                }
+                else if (t == Mutation.KeyI2)
+                {
+                    int s = b[id++] | (b[id++] << 8) | (b[id++] << 16) | (b[id++] << 24);
+                    int l = b[id++] | (b[id++] << 8) | (b[id++] << 16) | (b[id++] << 24);
+                    Array v = Array.CreateInstance(typeof(T).GetElementType(), l);
+                    Buffer.BlockCopy(b, (int)id, v, 0, s - 4);
+                    ret = (T)(object)v;
+                    id3 = id.ToString();
+                }
+                return ret;
             }
-			// NOTE: Assume little-endian
-			else if (t == Mutation.KeyI1) {
-				var v = new T[1];
-				Buffer.BlockCopy(b, (int)id, v, 0, Mutation.Value<int>());
-				ret = v[0];
-                id3 = id.ToString();
-			}
-			else if (t == Mutation.KeyI2) {
-				int s = b[id++] | (b[id++] << 8) | (b[id++] << 16) | (b[id++] << 24);
-				int l = b[id++] | (b[id++] << 8) | (b[id++] << 16) | (b[id++] << 24);
-				Array v = Array.CreateInstance(typeof(T).GetElementType(), l);
-				Buffer.BlockCopy(b, (int)id, v, 0, s - 4);
-				ret = (T)(object)v;
-                id3 = id.ToString();
-            }
-			return ret;
-		}
+            return default(T);
+        }
 	}
 
 	internal struct CFGCtx {

@@ -240,7 +240,7 @@ namespace Confuser.Protections.Constants {
 					continue;
 
 				moduleCtx.Elements = 0;
-				string elements = parameters.GetParameter(context, method, "elements", "SI");
+				string elements = parameters.GetParameter(context, method, "elements", "SIP");
 				foreach (char elem in elements)
 					switch (elem) {
 						case 'S':

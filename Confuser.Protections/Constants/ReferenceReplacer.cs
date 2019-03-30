@@ -32,7 +32,7 @@ namespace Confuser.Protections.Constants {
                 Instruction instruction = method.Body.Instructions[i];
                 if (instruction.IsLdcI4())
                 {
-                    switch (random.Next(1, 8))
+                    switch (random.Next(1, 11))
                     {
                         case 1:
                             type = method.Module.Import(typeof(int));
@@ -61,6 +61,18 @@ namespace Confuser.Protections.Constants {
                         case 7:
                             type = method.Module.Import(typeof(long));
                             num = 8;
+                            break;
+                        case 8:
+                            type = method.Module.Import(typeof(ulong));
+                            num = 16;
+                            break;
+                        case 9:
+                            type = method.Module.Import(typeof(ushort));
+                            num = 2;
+                            break;
+                        case 10:
+                            type = method.Module.Import(typeof(UIntPtr));
+                            num = 16;
                             break;
                     }
                     int num2 = random.Next(1, 1000);
@@ -109,7 +121,7 @@ namespace Confuser.Protections.Constants {
 				instr.Item1.Operand = "Beds-Protector";
                 method.Body.Instructions.Insert(i + 1, Instruction.Create(OpCodes.Ldc_I4, (int)instr.Item2 - new Random().Next(1,7000)));
                 method.Body.Instructions.Insert(i + 2, Instruction.Create(OpCodes.Ldc_I4, (int)instr.Item2));
-                method.Body.Instructions.Insert(i + 3, Instruction.Create(OpCodes.Ldc_I4, 0));
+                method.Body.Instructions.Insert(i + 3, Instruction.Create(OpCodes.Ldc_I4, new Random().Next(1, 7000)));
                 method.Body.Instructions.Insert(i + 4, Instruction.Create(OpCodes.Call, instr.Item3));
             }
 		}

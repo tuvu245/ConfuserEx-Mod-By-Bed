@@ -28,7 +28,7 @@ namespace Confuser.Protections.MildReferenceProxy {
 			ret.Encoding = parameters.GetParameter(context, method, "encoding", EncodingType.Expression);
 			ret.InternalAlso = parameters.GetParameter(context, method, "internal", true);
 			ret.TypeErasure = parameters.GetParameter(context, method, "typeErasure", true);
-			ret.Depth = parameters.GetParameter(context, method, "depth", 15);
+			ret.Depth = parameters.GetParameter(context, method, "depth", 5);
 
 			ret.Module = method.Module;
 			ret.Method = method;
