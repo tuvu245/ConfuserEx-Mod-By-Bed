@@ -12,6 +12,7 @@
 [assembly: AssemblyConfiguration("Release")]
 #endif
 
-[assembly: AssemblyVersion("1.2")]
-[assembly: AssemblyFileVersion("1.2")]
-[assembly: AssemblyInformationalVersion("v1.2 | Public Version")]
+
+[assembly: AssemblyVersion("1.3")]
+[assembly: AssemblyFileVersion("1.3")]
+[assembly: AssemblyInformationalVersion("v1.3 | Public Version")]

@@ -43,6 +43,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="CalliInj.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="ModuleFlood.cs" />
     <Compile Include="AntiDump.cs" />

@@ -59,6 +59,7 @@
     <Compile Include="AntiTamper\JITMode.cs" />
     <Compile Include="AntiTamper\NormalDeriver.cs" />
     <Compile Include="AntiTamper\NormalMode.cs" />
+    <Compile Include="CalliProtection.cs" />
     <Compile Include="Compress\Compressor.cs" />
     <Compile Include="Compress\CompressorContext.cs" />
     <Compile Include="Compress\DynamicDeriver.cs" />
