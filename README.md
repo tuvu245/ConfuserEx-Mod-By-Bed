@@ -13,6 +13,7 @@ Added Features (Mods)
 * Multi Parameter Constants
 * Call Virt Protection
 * String Field Protection
+* Call to Calli
 * A lot more coming soon
 
 Features
