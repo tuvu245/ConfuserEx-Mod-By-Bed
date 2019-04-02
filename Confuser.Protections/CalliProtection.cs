@@ -118,12 +118,15 @@ namespace Confuser.Protections
 
                                                 if (method.Body.Instructions[i].OpCode == OpCodes.Call || method.Body.Instructions[i].OpCode == OpCodes.Callvirt/* || method.Body.Instructions[i].OpCode == OpCodes.Ldloc_S*/)
                                                 {
+                                                    Console.WriteLine(method.Body.Instructions[i].Operand.ToString());
                                                     if (!method.Body.Instructions[i].Operand.ToString().Contains("System.Type"))
-                                                    try
                                                     {
-                                                           
-                                                        MemberRef membertocalli = (MemberRef)method.Body.Instructions[i].Operand;
-                                                        tokentocalli = membertocalli.MDToken.ToInt32();
+                                                        if (!method.Body.Instructions[i].Operand.ToString().Contains("MessageBoxButtons"))
+                                                            try
+                                                        {
+
+                                                            MemberRef membertocalli = (MemberRef)method.Body.Instructions[i].Operand;
+                                                            tokentocalli = membertocalli.MDToken.ToInt32();
                                                             if (CanObfuscate(membertocalli, method.Body.Instructions[i]))
                                                             {
 
@@ -149,15 +152,16 @@ namespace Confuser.Protections
                                                                             method.Body.Instructions[i].Operand = MethodSign;
                                                                             method.Body.Instructions.Insert(i, Instruction.Create(OpCodes.Call, init));
                                                                             method.Body.Instructions.Insert(i, Instruction.CreateLdcI4(tokentocalli));
- 
+
                                                                         }
                                                                     }
                                                                 }
                                                             }
-                                                    }
-                                                    catch (Exception ex)
-                                                    {
-                                                        string str = ex.Message;
+                                                        }
+                                                        catch (Exception ex)
+                                                        {
+                                                            string str = ex.Message;
+                                                        }
                                                     }
                                                 }
                                             }
