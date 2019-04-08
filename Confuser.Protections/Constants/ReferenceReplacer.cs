@@ -64,7 +64,7 @@ namespace Confuser.Protections.Constants {
                             break;
                         case 8:
                             type = method.Module.Import(typeof(ulong));
-                            num = 16;
+                            num = 2;
                             break;
                         case 9:
                             type = method.Module.Import(typeof(ushort));

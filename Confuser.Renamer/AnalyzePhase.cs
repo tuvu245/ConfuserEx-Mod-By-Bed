@@ -205,11 +205,11 @@ namespace Confuser.Renamer
         {
             if (AnalyzePhase.IsVisibleOutside(context, parameters, type))
             {
-                service.SetCanRename(type, false);
+                service.SetCanRename(type, true);
             }
             else if (type.IsRuntimeSpecialName || type.IsGlobalModuleType)
             {
-                service.SetCanRename(type, false);
+                service.SetCanRename(type, true);
             }
             else if (type.FullName == "ConfusedBy")
             {
@@ -234,7 +234,7 @@ namespace Confuser.Renamer
         {
             if (method.DeclaringType.IsVisibleOutside(true) && (method.IsFamily || method.IsFamilyOrAssembly || method.IsPublic) && AnalyzePhase.IsVisibleOutside(context, parameters, method))
             {
-                service.SetCanRename(method, false);
+                service.SetCanRename(method, true);
                 return;
             }
             if (method.IsRuntimeSpecialName)
