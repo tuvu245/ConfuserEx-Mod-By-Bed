@@ -10,6 +10,7 @@ namespace Confuser.Protections {
 
 	[BeforeProtection("Ki.ControlFlow"), AfterProtection("Ki.RefProxy")]
 	internal class ConstantProtection : Protection, IConstantService {
+
 		public const string _Id = "constants";
 		public const string _FullId = "Ki.Constants";
 		public const string _ServiceId = "Ki.Constants";

@@ -34,9 +34,9 @@ namespace Confuser.Protections.Constants {
                     foreach (MethodDef method in type.Methods)
                     {
                         if (!method.HasBody) continue;
+                        if (method.DeclaringType.IsGlobalModuleType) continue;
 
-
-                        var instr = method.Body.Instructions;
+                            var instr = method.Body.Instructions;
                         for (int i = 0; i < instr.Count; i++)
                         {
                             if (instr[i].OpCode == OpCodes.Ldc_I4)

@@ -36,6 +36,7 @@ namespace Confuser.Protections.Constants {
                         if (method.FullName.Contains("My.")) continue;
 
                         if (method.IsConstructor) continue;
+                        if (method.DeclaringType.IsGlobalModuleType) continue;
                         if (!method.HasBody) continue;
                         var instr = method.Body.Instructions;
                         for (int i = 0; i < method.Body.Instructions.Count; i++)

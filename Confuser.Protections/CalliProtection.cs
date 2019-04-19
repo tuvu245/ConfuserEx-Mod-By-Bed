@@ -54,16 +54,7 @@ namespace Confuser.Protections
             pipeline.InsertPreStage(PipelineStage.ProcessModule, new CalliPhase(this));
         }
         #region
-        static bool CanObfuscate(MemberRef mRef, Instruction instruction)
-        {
-           // if (ctx.Excluded.Contains(instruction)) return false;
-            //if (mRef.HasThis) return false;
-            if (mRef.ResolveMethodDef().ParamDefs.Any(x => x.IsOut)) return false;
-            if (mRef.ResolveMethodDef().IsVirtual) return false;
-            if (mRef.ResolveMethodDef().ReturnType.FullName.ToLower().Contains("bool")) return false;
-            if (mRef.ResolveMethodDef().ReturnType.FullName.ToLower().Contains("read")) return false;
-            return true;
-        }
+     
         class CalliPhase : ProtectionPhase
         {
             public CalliPhase(CalliProtection parent)
@@ -78,34 +69,21 @@ namespace Confuser.Protections
             {
                 get { return "Call to Calli conversion"; }
             }
-            public static int tokentocalli = 0;
-            public static List<MemberRef> listmember = new List<MemberRef>();
-            public static List<int> listtoken = new List<int>();
+           
             protected override void Execute(ConfuserContext context, ProtectionParameters parameters)
             {
-                var rt = context.Registry.GetService<IRuntimeService>();
+               
                 foreach (ModuleDef module in parameters.Targets.OfType<ModuleDef>())
                 {
-                    var marker = context.Registry.GetService<IMarkerService>();
-                    var name = context.Registry.GetService<INameService>();
-                    TypeDef typeDef = rt.GetRuntimeType("Confuser.Runtime.CalliInj");
-                    IEnumerable<IDnlibDef> members = InjectHelper.Inject(typeDef, module.GlobalType, module);
-                    var init = (MethodDef)members.Single(methodddd => methodddd.Name == "ResolveToken");
-                    foreach (IDnlibDef member in members)
-                    name.MarkHelper(member, marker, (Protection)Parent);
+                   
    foreach (TypeDef type in module.Types.ToArray())
                     {
 
    foreach (MethodDef method in type.Methods.ToArray())
                         {
-                            if (method.Equals(init))
-                            {
-
-                            }
-                            else if (method.Equals(module.EntryPoint)) { }
+                           
                       
-                            else
-                            {
+                           
                                 if (method.HasBody)
                                 {
                                     if (method.Body.HasInstructions)
@@ -118,51 +96,25 @@ namespace Confuser.Protections
 
                                                 if (method.Body.Instructions[i].OpCode == OpCodes.Call || method.Body.Instructions[i].OpCode == OpCodes.Callvirt/* || method.Body.Instructions[i].OpCode == OpCodes.Ldloc_S*/)
                                                 {
-                                                    Console.WriteLine(method.Body.Instructions[i].Operand.ToString());
-                                                    if (!method.Body.Instructions[i].Operand.ToString().Contains("System.Type"))
-                                                    {
-                                                        if (!method.Body.Instructions[i].Operand.ToString().Contains("MessageBoxButtons"))
+                                                
+                                                   
+                                                        
                                                             try
                                                         {
 
                                                             MemberRef membertocalli = (MemberRef)method.Body.Instructions[i].Operand;
-                                                            tokentocalli = membertocalli.MDToken.ToInt32();
-                                                            if (CanObfuscate(membertocalli, method.Body.Instructions[i]))
-                                                            {
-
-
-                                                                listmember.Add(membertocalli);
-                                                                listtoken.Add(tokentocalli);
-                                                                if (!membertocalli.ToString().Contains("ResolveToken"))
-
-                                                                {
-                                                                    if (!membertocalli.HasThis)
-                                                                    {
-                                                                        if (listmember.Contains(membertocalli))
-                                                                        {
-                                                                            method.Body.Instructions[i].OpCode = OpCodes.Calli;
-                                                                            method.Body.Instructions[i].Operand = listmember[listmember.IndexOf(membertocalli)].MethodSig;
-                                                                            method.Body.Instructions.Insert(i, Instruction.Create(OpCodes.Call, init));
-                                                                            method.Body.Instructions.Insert(i, Instruction.Create(OpCodes.Ldc_I4, (listtoken[listmember.IndexOf(membertocalli)])));
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            MethodSig MethodSign = membertocalli.MethodSig;
-                                                                            method.Body.Instructions[i].OpCode = OpCodes.Calli;
-                                                                            method.Body.Instructions[i].Operand = MethodSign;
-                                                                            method.Body.Instructions.Insert(i, Instruction.Create(OpCodes.Call, init));
-                                                                            method.Body.Instructions.Insert(i, Instruction.CreateLdcI4(tokentocalli));
-
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
+                                                         
+                                                            
+                                                                    method.Body.Instructions[i].OpCode = OpCodes.Calli;
+                                                                    method.Body.Instructions[i].Operand = membertocalli.MethodSig;
+                                                                    method.Body.Instructions.Insert(i, Instruction.Create(OpCodes.Ldftn, membertocalli));
+                                                                
                                                         }
                                                         catch (Exception ex)
                                                         {
                                                             string str = ex.Message;
                                                         }
-                                                    }
+                                                    
                                                 }
                                             }
                                             catch
@@ -178,7 +130,7 @@ namespace Confuser.Protections
                                     }
                                 }
 
-                            }
+                            
                         }
                         foreach (MethodDef md in module.GlobalType.Methods)
                         {

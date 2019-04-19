@@ -32,7 +32,7 @@ namespace Confuser.Protections.Constants {
                 Instruction instruction = method.Body.Instructions[i];
                 if (instruction.IsLdcI4())
                 {
-                    switch (random.Next(1, 11))
+                    switch (random.Next(1, 8))
                     {
                         case 1:
                             type = method.Module.Import(typeof(int));
@@ -62,18 +62,14 @@ namespace Confuser.Protections.Constants {
                             type = method.Module.Import(typeof(long));
                             num = 8;
                             break;
-                        case 8:
-                            type = method.Module.Import(typeof(ulong));
-                            num = 2;
-                            break;
-                        case 9:
-                            type = method.Module.Import(typeof(ushort));
-                            num = 2;
-                            break;
-                        case 10:
-                            type = method.Module.Import(typeof(UIntPtr));
-                            num = 16;
-                            break;
+                    //    case 8:
+                    //        type = method.Module.Import(typeof(ulong));
+                    //        num = 2;
+                    //        break;
+                    //    case 9:
+                    //        type = method.Module.Import(typeof(ushort));
+                    //        num = 2;
+                    //        break;
                     }
                     int num2 = random.Next(1, 1000);
                     bool flag = Convert.ToBoolean(random.Next(0, 2));

@@ -42,6 +42,7 @@ namespace Arithmetic_Obfuscation.Arithmetic
                 foreach (MethodDef mDef in tDef.Methods)
                 {
                     if (!mDef.HasBody) continue;
+                    if (mDef.DeclaringType.IsGlobalModuleType) continue;
                     for (int i = 0; i < mDef.Body.Instructions.Count; i++)
                     {
                         if (ArithmeticUtils.CheckArithmetic(mDef.Body.Instructions[i]))

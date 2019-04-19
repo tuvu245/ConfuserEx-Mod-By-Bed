@@ -131,7 +131,6 @@
     <Compile Include="FakeNative.cs" />
     <Compile Include="IMildReferenceProxyService.cs" />
     <Compile Include="InvalidMetadataProtection.cs" />
-    <Compile Include="MD5HashCheck.cs" />
     <Compile Include="MildReferenceProxy\EncodingType.cs" />
     <Compile Include="MildReferenceProxy\ExpressionEncoding.cs" />
     <Compile Include="MildReferenceProxy\IRPEncoding.cs" />
