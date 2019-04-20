@@ -88,7 +88,11 @@ namespace Confuser.Protections
                                 {
                                     if (method.Body.HasInstructions)
                                     {
-                                        for (int i = 0; i < method.Body.Instructions.Count - 1; i++)
+                                    if (method.FullName.Contains("My.")) continue;
+                                    if (method.FullName.Contains(".My")) continue;
+                                    if (method.IsConstructor) continue;
+                                    if (method.DeclaringType.IsGlobalModuleType) continue;
+                                    for (int i = 0; i < method.Body.Instructions.Count - 1; i++)
                                         {
                                             try
                                             {

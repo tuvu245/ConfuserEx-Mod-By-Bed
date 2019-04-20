@@ -13,10 +13,10 @@
                             <LinearGradientBrush.RelativeTransform>
                                 <ScaleTransform ScaleY="0.5" ScaleX="0.5"/>
                             </LinearGradientBrush.RelativeTransform>
-                            <GradientStop Color="#101020" Offset="0"/>
-                            <GradientStop Color="#101020" Offset="0.5"/>
-                            <GradientStop Color="#102030" Offset="0.5"/>
-                            <GradientStop Color="#102030" Offset="1"/>
+                            <GradientStop Color="#102020" Offset="0"/>
+                            <GradientStop Color="#100020" Offset="0.5"/>
+                            <GradientStop Color="#203030" Offset="0.5"/>
+                            <GradientStop Color="#200030" Offset="1"/>
                         </LinearGradientBrush>
                     </GeometryDrawing.Brush>
                     <GeometryDrawing.Geometry>

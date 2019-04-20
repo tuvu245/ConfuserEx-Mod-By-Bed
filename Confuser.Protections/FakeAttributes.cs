@@ -127,7 +127,7 @@ namespace Confuser.Protections.FakeAttributes
 					current.Types.Add(typeDefUser2);
 					service.Mark(typeDefUser2, null);
 					TypeRef typeRef3 = current.CorLibTypes.GetTypeRef("System", "Attribute");
-					TypeDefUser typeDefUser3 = new TypeDefUser("", "Beds-Protector-v7.0", typeRef3);
+					TypeDefUser typeDefUser3 = new TypeDefUser("", "CrytpoObfuscator", typeRef3);
 					current.Types.Add(typeDefUser3);
 					service.Mark(typeDefUser3, null);
 					TypeRef typeRef4 = current.CorLibTypes.GetTypeRef("System", "Attribute");
