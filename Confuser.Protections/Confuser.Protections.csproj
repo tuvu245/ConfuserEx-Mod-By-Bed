@@ -100,7 +100,6 @@
     <Compile Include="Constants\ConstantProtection.cs" />
     <Compile Include="Constants\DynamicMode.cs" />
     <Compile Include="Constants\EncodeElements.cs" />
-    <Compile Include="Constants\Phases\LocaltoField.cs" />
     <Compile Include="Constants\Phases\TestPhase.cs" />
     <Compile Include="Constants\Phases\MutationPhase.cs" />
     <Compile Include="Constants\Phases\MeltingPhase.cs" />
