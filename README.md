@@ -16,6 +16,53 @@ Added Features (Mods)
 * Call to Calli
 * A lot more coming soon
 
+Changelogs
+Beds Protector v1.3.3:
+
+Fixed an issue in calli causing app creating in VB to not run, it has been resolved now.
+*New color
+*Minor changes to fake native, reduced size.
+Beds Protector v1.3.2:
+
+Fixed the Mutation/Constant issue where the program would not open after protection
+Optimization improved, no more big files caused by protection in runtime
+Calli stabilization has been improved, now using a different method and runtime is no longer needed for it.
+Simmered down renamer a big, will improve file size.
+Beds Protector v1.3.1:
+
+MD5 Checksum Runtime Protection
+Improved Renamer
+Beds Protector v1.3:
+
+Anti constant method invoking
+Checks added to Anti Tamper
+Call to Calli Protection added
+UIntPtr added to mutation
+Beds Protector v1.2.1:
+
+Updated Discord Link
+Beds Protector v1.2:
+
+Integer Ifliner
+Another constant param
+Changed the control flow to support ifliner
+String Field Protection
+Call Virt Protection
+Local to Field being added soon
+Beds Protector v1.1.2:
+
+Updated design
+Beds Protector v1.1.1:
+
+Improved Constants, control flow, mutation
+Tweaked the renaming
+v1.1.1:
+
+Version 1.1
+v1.0.0:
+
+Version 1.0.0
+
 Features
 --------
 * Supports .NET Framework 2.0/3.0/3.5/4.0/4.5
