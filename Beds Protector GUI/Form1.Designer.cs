@@ -1,17 +1,21 @@
-﻿namespace Beds_Protector_GUI
+﻿using System.Net;
+
+namespace Beds_Protector_GUI
 {
     partial class Form1
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
+        /// 
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+    
+          
+/// <summary>
+/// Clean up any resources being used.
+/// </summary>
+/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
@@ -30,16 +34,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.thirteenForm1 = new Teen.ThirteenForm();
-            this.label3 = new System.Windows.Forms.Label();
-            this.thirteenButton5 = new Teen.ThirteenButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.thirteenTextBox2 = new Teen.ThirteenTextBox();
             this.thirteenTextBox1 = new Teen.ThirteenTextBox();
             this.thirteenButton6 = new Teen.ThirteenButton();
-            this.thirteenButton4 = new Teen.ThirteenButton();
             this.thirteenButton3 = new Teen.ThirteenButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.renameAssembly = new System.Windows.Forms.CheckBox();
@@ -58,6 +58,7 @@
             this.thirteenButton2 = new Teen.ThirteenButton();
             this.thirteenButton1 = new Teen.ThirteenButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.thirteenButton4 = new Teen.ThirteenButton();
             this.thirteenForm1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -70,9 +71,8 @@
             this.thirteenForm1.AllowDrop = true;
             this.thirteenForm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.thirteenForm1.ColorScheme = Teen.ThirteenForm.ColorSchemes.Dark;
-            this.thirteenForm1.Controls.Add(this.label3);
-            this.thirteenForm1.Controls.Add(this.thirteenButton5);
             this.thirteenForm1.Controls.Add(this.groupBox2);
+            this.thirteenForm1.Controls.Add(this.label3);
             this.thirteenForm1.Controls.Add(this.groupBox1);
             this.thirteenForm1.Controls.Add(this.thirteenButton2);
             this.thirteenForm1.Controls.Add(this.thirteenButton1);
@@ -82,66 +82,29 @@
             this.thirteenForm1.ForeColor = System.Drawing.Color.White;
             this.thirteenForm1.Location = new System.Drawing.Point(0, 0);
             this.thirteenForm1.Name = "thirteenForm1";
-            this.thirteenForm1.Size = new System.Drawing.Size(800, 490);
+            this.thirteenForm1.Size = new System.Drawing.Size(800, 441);
             this.thirteenForm1.TabIndex = 0;
-            this.thirteenForm1.Text = "Beds Protector | GUI";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(242, 441);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(348, 34);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Note: This GUI is in beta, please be considerate of any issues\r\n and report them " +
-    "to me. Will be updating reguarly.";
-            // 
-            // thirteenButton5
-            // 
-            this.thirteenButton5.AccentColor = System.Drawing.Color.DodgerBlue;
-            this.thirteenButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.thirteenButton5.ColorScheme = Teen.ThirteenButton.ColorSchemes.Dark;
-            this.thirteenButton5.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
-            this.thirteenButton5.ForeColor = System.Drawing.Color.White;
-            this.thirteenButton5.Location = new System.Drawing.Point(314, 225);
-            this.thirteenButton5.Name = "thirteenButton5";
-            this.thirteenButton5.Size = new System.Drawing.Size(172, 24);
-            this.thirteenButton5.TabIndex = 11;
-            this.thirteenButton5.Text = "How to use?";
-            this.thirteenButton5.UseVisualStyleBackColor = false;
-            this.thirteenButton5.Click += new System.EventHandler(this.thirteenButton5_Click);
+            this.thirteenForm1.Text = "Beds Protector | GUI | Version: ";
+            this.thirteenForm1.Click += new System.EventHandler(this.thirteenForm1_Click);
+            this.thirteenForm1.DragDrop += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox1_DragDrop);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.groupBox2.Controls.Add(this.thirteenTextBox2);
+            this.groupBox2.Controls.Add(this.thirteenButton4);
+            this.groupBox2.Controls.Add(this.checkBox4);
             this.groupBox2.Controls.Add(this.thirteenTextBox1);
             this.groupBox2.Controls.Add(this.thirteenButton6);
-            this.groupBox2.Controls.Add(this.thirteenButton4);
             this.groupBox2.Controls.Add(this.thirteenButton3);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(22, 247);
+            this.groupBox2.Location = new System.Drawing.Point(22, 236);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(380, 191);
+            this.groupBox2.Size = new System.Drawing.Size(380, 121);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input/Output";
-            // 
-            // thirteenTextBox2
-            // 
-            this.thirteenTextBox2.AllowDrop = true;
-            this.thirteenTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.thirteenTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.thirteenTextBox2.ColorScheme = Teen.ThirteenTextBox.ColorSchemes.Dark;
-            this.thirteenTextBox2.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
-            this.thirteenTextBox2.ForeColor = System.Drawing.Color.White;
-            this.thirteenTextBox2.Location = new System.Drawing.Point(16, 95);
-            this.thirteenTextBox2.Name = "thirteenTextBox2";
-            this.thirteenTextBox2.Size = new System.Drawing.Size(177, 25);
-            this.thirteenTextBox2.TabIndex = 4;
-            this.thirteenTextBox2.DragDrop += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox2_DragDrop);
+            this.groupBox2.DragDrop += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox1_DragDrop);
             // 
             // thirteenTextBox1
             // 
@@ -151,7 +114,7 @@
             this.thirteenTextBox1.ColorScheme = Teen.ThirteenTextBox.ColorSchemes.Dark;
             this.thirteenTextBox1.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenTextBox1.ForeColor = System.Drawing.Color.White;
-            this.thirteenTextBox1.Location = new System.Drawing.Point(16, 47);
+            this.thirteenTextBox1.Location = new System.Drawing.Point(52, 41);
             this.thirteenTextBox1.Name = "thirteenTextBox1";
             this.thirteenTextBox1.Size = new System.Drawing.Size(177, 25);
             this.thirteenTextBox1.TabIndex = 3;
@@ -164,28 +127,13 @@
             this.thirteenButton6.ColorScheme = Teen.ThirteenButton.ColorSchemes.Dark;
             this.thirteenButton6.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenButton6.ForeColor = System.Drawing.Color.White;
-            this.thirteenButton6.Location = new System.Drawing.Point(94, 142);
+            this.thirteenButton6.Location = new System.Drawing.Point(52, 78);
             this.thirteenButton6.Name = "thirteenButton6";
-            this.thirteenButton6.Size = new System.Drawing.Size(185, 30);
+            this.thirteenButton6.Size = new System.Drawing.Size(177, 30);
             this.thirteenButton6.TabIndex = 10;
             this.thirteenButton6.Text = "Protect";
             this.thirteenButton6.UseVisualStyleBackColor = false;
             this.thirteenButton6.Click += new System.EventHandler(this.thirteenButton6_Click);
-            // 
-            // thirteenButton4
-            // 
-            this.thirteenButton4.AccentColor = System.Drawing.Color.DodgerBlue;
-            this.thirteenButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.thirteenButton4.ColorScheme = Teen.ThirteenButton.ColorSchemes.Dark;
-            this.thirteenButton4.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
-            this.thirteenButton4.ForeColor = System.Drawing.Color.White;
-            this.thirteenButton4.Location = new System.Drawing.Point(199, 96);
-            this.thirteenButton4.Name = "thirteenButton4";
-            this.thirteenButton4.Size = new System.Drawing.Size(90, 24);
-            this.thirteenButton4.TabIndex = 9;
-            this.thirteenButton4.Text = "Browse";
-            this.thirteenButton4.UseVisualStyleBackColor = false;
-            this.thirteenButton4.Click += new System.EventHandler(this.thirteenButton4_Click);
             // 
             // thirteenButton3
             // 
@@ -194,7 +142,7 @@
             this.thirteenButton3.ColorScheme = Teen.ThirteenButton.ColorSchemes.Dark;
             this.thirteenButton3.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenButton3.ForeColor = System.Drawing.Color.White;
-            this.thirteenButton3.Location = new System.Drawing.Point(199, 47);
+            this.thirteenButton3.Location = new System.Drawing.Point(235, 41);
             this.thirteenButton3.Name = "thirteenButton3";
             this.thirteenButton3.Size = new System.Drawing.Size(90, 24);
             this.thirteenButton3.TabIndex = 8;
@@ -205,25 +153,25 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 27);
+            this.label1.Location = new System.Drawing.Point(49, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(261, 17);
+            this.label1.Size = new System.Drawing.Size(308, 17);
             this.label1.TabIndex = 6;
-            this.label1.Text = "File to be Obfuscated: (Drag/Drop supported)";
+            this.label1.Text = "File to be Obfuscated: (Drag/Drop not supported YET)";
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 75);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Project File:";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(54, 375);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(348, 34);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Note: This GUI is in beta, please be considerate of any issues\r\n and report them " +
+    "to me. Will be updating reguarly.";
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.groupBox1.Controls.Add(this.checkBox4);
             this.groupBox1.Controls.Add(this.renameAssembly);
             this.groupBox1.Controls.Add(this.fakeNative);
             this.groupBox1.Controls.Add(this.moduleFlood);
@@ -238,9 +186,9 @@
             this.groupBox1.Controls.Add(this.antiDebug);
             this.groupBox1.Controls.Add(this.antiTamper);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(408, 247);
+            this.groupBox1.Location = new System.Drawing.Point(408, 236);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(380, 191);
+            this.groupBox1.Size = new System.Drawing.Size(380, 173);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Protections";
@@ -248,12 +196,13 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(247, 164);
+            this.checkBox4.Location = new System.Drawing.Point(235, 84);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(94, 21);
             this.checkBox4.TabIndex = 13;
             this.checkBox4.Text = "Dank Preset";
             this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // renameAssembly
             // 
@@ -288,7 +237,7 @@
             // mildRefProxy
             // 
             this.mildRefProxy.AutoSize = true;
-            this.mildRefProxy.Location = new System.Drawing.Point(127, 141);
+            this.mildRefProxy.Location = new System.Drawing.Point(247, 114);
             this.mildRefProxy.Name = "mildRefProxy";
             this.mildRefProxy.Size = new System.Drawing.Size(107, 21);
             this.mildRefProxy.TabIndex = 9;
@@ -425,12 +374,28 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
+            // 
+            // thirteenButton4
+            // 
+            this.thirteenButton4.AccentColor = System.Drawing.Color.DodgerBlue;
+            this.thirteenButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.thirteenButton4.ColorScheme = Teen.ThirteenButton.ColorSchemes.Dark;
+            this.thirteenButton4.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
+            this.thirteenButton4.ForeColor = System.Drawing.Color.White;
+            this.thirteenButton4.Location = new System.Drawing.Point(324, 41);
+            this.thirteenButton4.Name = "thirteenButton4";
+            this.thirteenButton4.Size = new System.Drawing.Size(25, 24);
+            this.thirteenButton4.TabIndex = 14;
+            this.thirteenButton4.Text = "?";
+            this.thirteenButton4.UseVisualStyleBackColor = false;
+            this.thirteenButton4.Click += new System.EventHandler(this.thirteenButton4_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 490);
+            this.ClientSize = new System.Drawing.Size(800, 441);
             this.Controls.Add(this.thirteenForm1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
@@ -453,15 +418,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Teen.ThirteenButton thirteenButton1;
         private Teen.ThirteenButton thirteenButton2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Teen.ThirteenTextBox thirteenTextBox2;
         private Teen.ThirteenTextBox thirteenTextBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private Teen.ThirteenButton thirteenButton4;
         private Teen.ThirteenButton thirteenButton3;
-        private Teen.ThirteenButton thirteenButton5;
         private System.Windows.Forms.Label label3;
         private Teen.ThirteenButton thirteenButton6;
         private System.Windows.Forms.CheckBox renameAssembly;
@@ -478,6 +439,7 @@
         private System.Windows.Forms.CheckBox antiDebug;
         private System.Windows.Forms.CheckBox antiTamper;
         private System.Windows.Forms.CheckBox checkBox4;
+        private Teen.ThirteenButton thirteenButton4;
     }
 }
 

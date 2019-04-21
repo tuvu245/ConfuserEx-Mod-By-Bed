@@ -63,15 +63,22 @@ namespace Confuser.Protections.Constants {
         public void InlineInteger(MethodDef method, int i)
         {
             if (method.DeclaringType.IsGlobalModuleType) return;
+            if (!method.HasBody) return;
             var instr = method.Body.Instructions;
-
-            if (instr[i - 1].OpCode == OpCodes.Callvirt)
+            if ((i - 1) > 0)
+                try
             {
-                if (instr[i + 1].OpCode == OpCodes.Call)
+                
+                if (instr[i - 1].OpCode == OpCodes.Callvirt)
                 {
-                    return;
+                    if (instr[i + 1].OpCode == OpCodes.Call)
+                    {
+                        return;
+                    }
                 }
             }
+            catch { }
+           
             //if (instr[i + 4].IsBr())
             //{
             //    return;
@@ -142,6 +149,7 @@ namespace Confuser.Protections.Constants {
         public void CtorCallProtection(MethodDef method)
         {
             if (method.DeclaringType.IsGlobalModuleType) return;
+            if (!method.HasBody) return;
             var instr = method.Body.Instructions;
 
             for (int i = 0; i < instr.Count; i++)
@@ -150,7 +158,8 @@ namespace Confuser.Protections.Constants {
                 {
                     if (instr[i].Operand.ToString().ToLower().Contains("void"))
                     {
-                        if (instr[i - 1].IsLdarg())
+                        if ((i - 1) > 0)
+                            if (instr[i - 1].IsLdarg())
                         {
                             Local new_local = new Local(method.Module.CorLibTypes.Int32);
                             method.Body.Variables.Add(new_local);
@@ -185,7 +194,8 @@ namespace Confuser.Protections.Constants {
                 {
                     //if (instr[i].Operand.ToString().ToLower().Contains("class"))
                     //{
-                    if (instr[i - 1].IsLdarg())
+                    if ((i - 1) > 0)
+                        if (instr[i - 1].IsLdarg())
                     {
                         Local new_local = new Local(method.Module.CorLibTypes.Int32);
                         method.Body.Variables.Add(new_local);
@@ -220,7 +230,8 @@ namespace Confuser.Protections.Constants {
                 {
                     if (instr[i].Operand.ToString().ToLower().Contains("int32"))
                     {
-                        if (instr[i - 1].IsLdloc())
+                        if ((i - 1) > 0)
+                            if (instr[i - 1].IsLdloc())
                         {
                             Local new_local = new Local(method.Module.CorLibTypes.Int32);
                             method.Body.Variables.Add(new_local);
