@@ -34,14 +34,17 @@ protected override void Dispose(bool disposing)
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.thirteenForm1 = new Teen.ThirteenForm();
+            this.thirteenTabControl1 = new Teen.ThirteenTabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.thirteenButton4 = new Teen.ThirteenButton();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.thirteenTextBox1 = new Teen.ThirteenTextBox();
             this.thirteenButton6 = new Teen.ThirteenButton();
             this.thirteenButton3 = new Teen.ThirteenButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.renameAssembly = new System.Windows.Forms.CheckBox();
             this.fakeNative = new System.Windows.Forms.CheckBox();
             this.moduleFlood = new System.Windows.Forms.CheckBox();
@@ -55,14 +58,19 @@ protected override void Dispose(bool disposing)
             this.antiDump = new System.Windows.Forms.CheckBox();
             this.antiDebug = new System.Windows.Forms.CheckBox();
             this.antiTamper = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.thirteenButton2 = new Teen.ThirteenButton();
             this.thirteenButton1 = new Teen.ThirteenButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.thirteenButton4 = new Teen.ThirteenButton();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.thirteenForm1.SuspendLayout();
+            this.thirteenTabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // thirteenForm1
@@ -71,26 +79,63 @@ protected override void Dispose(bool disposing)
             this.thirteenForm1.AllowDrop = true;
             this.thirteenForm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.thirteenForm1.ColorScheme = Teen.ThirteenForm.ColorSchemes.Dark;
-            this.thirteenForm1.Controls.Add(this.groupBox2);
-            this.thirteenForm1.Controls.Add(this.label3);
-            this.thirteenForm1.Controls.Add(this.groupBox1);
+            this.thirteenForm1.Controls.Add(this.thirteenTabControl1);
             this.thirteenForm1.Controls.Add(this.thirteenButton2);
             this.thirteenForm1.Controls.Add(this.thirteenButton1);
-            this.thirteenForm1.Controls.Add(this.pictureBox1);
             this.thirteenForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.thirteenForm1.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenForm1.ForeColor = System.Drawing.Color.White;
             this.thirteenForm1.Location = new System.Drawing.Point(0, 0);
             this.thirteenForm1.Name = "thirteenForm1";
-            this.thirteenForm1.Size = new System.Drawing.Size(800, 441);
+            this.thirteenForm1.Size = new System.Drawing.Size(831, 464);
             this.thirteenForm1.TabIndex = 0;
             this.thirteenForm1.Text = "Beds Protector | GUI | Version: ";
             this.thirteenForm1.Click += new System.EventHandler(this.thirteenForm1_Click);
             this.thirteenForm1.DragDrop += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox1_DragDrop);
             // 
+            // thirteenTabControl1
+            // 
+            this.thirteenTabControl1.AccentColor = System.Drawing.Color.Crimson;
+            this.thirteenTabControl1.ColorScheme = Teen.ThirteenTabControl.ColorSchemes.Dark;
+            this.thirteenTabControl1.Controls.Add(this.tabPage1);
+            this.thirteenTabControl1.Controls.Add(this.tabPage2);
+            this.thirteenTabControl1.ForeColor = System.Drawing.Color.White;
+            this.thirteenTabControl1.Location = new System.Drawing.Point(0, 33);
+            this.thirteenTabControl1.Name = "thirteenTabControl1";
+            this.thirteenTabControl1.SelectedIndex = 0;
+            this.thirteenTabControl1.Size = new System.Drawing.Size(832, 433);
+            this.thirteenTabControl1.TabIndex = 11;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.pictureBox1);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(824, 404);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Protection";
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(167, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(485, 193);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
+            // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.groupBox2.Controls.Add(this.thirteenButton4);
             this.groupBox2.Controls.Add(this.checkBox4);
             this.groupBox2.Controls.Add(this.thirteenTextBox1);
@@ -98,13 +143,39 @@ protected override void Dispose(bool disposing)
             this.groupBox2.Controls.Add(this.thirteenButton3);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(22, 236);
+            this.groupBox2.Location = new System.Drawing.Point(42, 211);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(380, 121);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input/Output";
             this.groupBox2.DragDrop += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox1_DragDrop);
+            // 
+            // thirteenButton4
+            // 
+            this.thirteenButton4.AccentColor = System.Drawing.Color.DodgerBlue;
+            this.thirteenButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.thirteenButton4.ColorScheme = Teen.ThirteenButton.ColorSchemes.Dark;
+            this.thirteenButton4.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
+            this.thirteenButton4.ForeColor = System.Drawing.Color.White;
+            this.thirteenButton4.Location = new System.Drawing.Point(324, 41);
+            this.thirteenButton4.Name = "thirteenButton4";
+            this.thirteenButton4.Size = new System.Drawing.Size(25, 24);
+            this.thirteenButton4.TabIndex = 14;
+            this.thirteenButton4.Text = "?";
+            this.thirteenButton4.UseVisualStyleBackColor = false;
+            this.thirteenButton4.Click += new System.EventHandler(this.thirteenButton4_Click_1);
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(235, 84);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(94, 21);
+            this.checkBox4.TabIndex = 13;
+            this.checkBox4.Text = "Dank Preset";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // thirteenTextBox1
             // 
@@ -159,19 +230,9 @@ protected override void Dispose(bool disposing)
             this.label1.TabIndex = 6;
             this.label1.Text = "File to be Obfuscated: (Drag/Drop not supported YET)";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(54, 375);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(348, 34);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Note: This GUI is in beta, please be considerate of any issues\r\n and report them " +
-    "to me. Will be updating reguarly.";
-            // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.groupBox1.Controls.Add(this.renameAssembly);
             this.groupBox1.Controls.Add(this.fakeNative);
             this.groupBox1.Controls.Add(this.moduleFlood);
@@ -186,23 +247,12 @@ protected override void Dispose(bool disposing)
             this.groupBox1.Controls.Add(this.antiDebug);
             this.groupBox1.Controls.Add(this.antiTamper);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(408, 236);
+            this.groupBox1.Location = new System.Drawing.Point(428, 211);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(380, 173);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Protections";
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(235, 84);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(94, 21);
-            this.checkBox4.TabIndex = 13;
-            this.checkBox4.Text = "Dank Preset";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // renameAssembly
             // 
@@ -335,6 +385,27 @@ protected override void Dispose(bool disposing)
             this.antiTamper.UseVisualStyleBackColor = true;
             this.antiTamper.CheckedChanged += new System.EventHandler(this.antiTamper_CheckedChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(74, 339);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(348, 34);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Note: This GUI is in beta, please be considerate of any issues\r\n and report them " +
+    "to me. Will be updating reguarly.";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.tabPage2.Controls.Add(this.richTextBox1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(824, 404);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Log";
+            // 
             // thirteenButton2
             // 
             this.thirteenButton2.AccentColor = System.Drawing.Color.DodgerBlue;
@@ -342,7 +413,7 @@ protected override void Dispose(bool disposing)
             this.thirteenButton2.ColorScheme = Teen.ThirteenButton.ColorSchemes.Dark;
             this.thirteenButton2.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenButton2.ForeColor = System.Drawing.Color.White;
-            this.thirteenButton2.Location = new System.Drawing.Point(747, 0);
+            this.thirteenButton2.Location = new System.Drawing.Point(781, 0);
             this.thirteenButton2.Name = "thirteenButton2";
             this.thirteenButton2.Size = new System.Drawing.Size(27, 19);
             this.thirteenButton2.TabIndex = 2;
@@ -357,7 +428,7 @@ protected override void Dispose(bool disposing)
             this.thirteenButton1.ColorScheme = Teen.ThirteenButton.ColorSchemes.Dark;
             this.thirteenButton1.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenButton1.ForeColor = System.Drawing.Color.White;
-            this.thirteenButton1.Location = new System.Drawing.Point(773, 0);
+            this.thirteenButton1.Location = new System.Drawing.Point(804, 0);
             this.thirteenButton1.Name = "thirteenButton1";
             this.thirteenButton1.Size = new System.Drawing.Size(27, 19);
             this.thirteenButton1.TabIndex = 1;
@@ -365,49 +436,46 @@ protected override void Dispose(bool disposing)
             this.thirteenButton1.UseVisualStyleBackColor = false;
             this.thirteenButton1.Click += new System.EventHandler(this.thirteenButton1_Click);
             // 
-            // pictureBox1
+            // richTextBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(147, 31);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(485, 193);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.ForeColor = System.Drawing.Color.White;
+            this.richTextBox1.Location = new System.Drawing.Point(8, 6);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(797, 274);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
-            // thirteenButton4
+            // label2
             // 
-            this.thirteenButton4.AccentColor = System.Drawing.Color.DodgerBlue;
-            this.thirteenButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.thirteenButton4.ColorScheme = Teen.ThirteenButton.ColorSchemes.Dark;
-            this.thirteenButton4.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
-            this.thirteenButton4.ForeColor = System.Drawing.Color.White;
-            this.thirteenButton4.Location = new System.Drawing.Point(324, 41);
-            this.thirteenButton4.Name = "thirteenButton4";
-            this.thirteenButton4.Size = new System.Drawing.Size(25, 24);
-            this.thirteenButton4.TabIndex = 14;
-            this.thirteenButton4.Text = "?";
-            this.thirteenButton4.UseVisualStyleBackColor = false;
-            this.thirteenButton4.Click += new System.EventHandler(this.thirteenButton4_Click_1);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(74, 380);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 17);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "           ";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 441);
+            this.ClientSize = new System.Drawing.Size(831, 464);
             this.Controls.Add(this.thirteenForm1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.thirteenForm1.ResumeLayout(false);
-            this.thirteenForm1.PerformLayout();
+            this.thirteenTabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -440,6 +508,11 @@ protected override void Dispose(bool disposing)
         private System.Windows.Forms.CheckBox antiTamper;
         private System.Windows.Forms.CheckBox checkBox4;
         private Teen.ThirteenButton thirteenButton4;
+        private Teen.ThirteenTabControl thirteenTabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

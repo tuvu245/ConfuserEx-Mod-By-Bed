@@ -74,93 +74,105 @@ namespace Beds_Protector_GUI
         string projectlocation;
         private void thirteenButton6_Click(object sender, EventArgs e)
         {
-            filelocation = thirteenTextBox1.Text;
+            if (thirteenTextBox1.Text == "")
+            {
+                MessageBox.Show("Pick a file first goofball.");
+            }
+            else
+            {
+                filelocation = thirteenTextBox1.Text;
 
-            ConfuserProject project = new ConfuserProject(); //create a project
-            project.BaseDirectory = Path.GetDirectoryName(filelocation);
-            project.OutputDirectory = Path.Combine(Path.GetDirectoryName(filelocation) + @"\Confused"); //output directory
+                ConfuserProject project = new ConfuserProject(); //create a project
+                project.BaseDirectory = Path.GetDirectoryName(filelocation);
+                project.OutputDirectory = Path.Combine(Path.GetDirectoryName(filelocation) + @"\Confused"); //output directory
 
-            //add a module to the project
-            ProjectModule module = new ProjectModule(); //create a instance of ProjectModule
-            module.Path = Path.GetFileName(filelocation); //sets the module name]
-            project.Add(module); //adds module to project
+                //add a module to the project
+                ProjectModule module = new ProjectModule(); //create a instance of ProjectModule
+                module.Path = Path.GetFileName(filelocation); //sets the module name]
+                project.Add(module); //adds module to project
 
-            Rule rule = new Rule("true", ProtectionPreset.None, false); //creates a Global Rule, with no preset and "true" patern, without inherit
+                Rule rule = new Rule("true", ProtectionPreset.None, false); //creates a Global Rule, with no preset and "true" patern, without inherit
 
-            if (antiTamper.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("anti tamper", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (antiDebug.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("anti debug", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (antiDump.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("anti dump", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (calli.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("Calli Protection", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (constants.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("constants", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (controlFlow.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("ctrl flow", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (invalidMetadat.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("invalid metadata", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (renamer.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("rename", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (refProxy.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("ref proxy", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (mildRefProxy.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("Clean ref proxy", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (moduleFlood.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("module flood", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (fakeNative.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("Fake Native", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-            if (renameAssembly.Checked)
-            {
-                SettingItem<Protection> protection = new SettingItem<Protection>("Rename Module", SettingItemAction.Add);
-                rule.Add(protection);
-            }
-
-            project.Rules.Add(rule); //add our Global rule to the project 
-
-            XmlDocument doc = project.Save(); //convert our project to xml document
-            doc.Save("temp.crproj"); //save the xml document as a file
+                if (antiTamper.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("anti tamper", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (antiDebug.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("anti debug", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (antiDump.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("anti dump", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (calli.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("Calli Protection", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (constants.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("constants", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (controlFlow.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("ctrl flow", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (invalidMetadat.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("invalid metadata", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (renamer.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("rename", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (refProxy.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("ref proxy", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (mildRefProxy.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("Clean ref proxy", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (moduleFlood.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("module flood", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (fakeNative.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("Fake Native", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (renameAssembly.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("Rename Module", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
 
 
-            Process.Start("Confuser.CLI.exe", "-n temp.crproj").WaitForExit();
-            File.Delete("temp.crproj");
+                project.Rules.Add(rule); //add our Global rule to the project 
+
+                XmlDocument doc = project.Save(); //convert our project to xml document
+                doc.Save("temp.crproj"); //save the xml document as a file
+
+
+                Process.Start("Confuser.CLI.exe", "-n temp.crproj").WaitForExit();
+                File.Delete("temp.crproj");
+                label2.ForeColor = Color.LimeGreen;
+                label2.Text = "Protection complete, check log tab!";
+         
+            }
+            
         }
 
         private void thirteenButton3_Click(object sender, EventArgs e)
@@ -238,6 +250,11 @@ namespace Beds_Protector_GUI
         private void thirteenButton4_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Simply click browse and choose your file , then choose protections and hit protect. Output will be in the \\ Confused folder of the input file");
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
