@@ -209,6 +209,7 @@ protected override void Dispose(bool disposing)
             this.thirteenTextBox1.Size = new System.Drawing.Size(235, 29);
             this.thirteenTextBox1.TabIndex = 3;
             this.thirteenTextBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox1_DragDrop);
+            this.thirteenTextBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox1_DragEnter);
             // 
             // thirteenButton6
             // 

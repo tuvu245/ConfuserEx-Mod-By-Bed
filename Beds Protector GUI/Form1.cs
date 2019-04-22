@@ -54,11 +54,25 @@ namespace Beds_Protector_GUI
 
         private void thirteenTextBox1_DragDrop(object sender, DragEventArgs e)
         {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (files != null && files.Length != 0)
+            try
             {
-                thirteenTextBox1.Text = files[0];
+                Array array = (Array)e.Data.GetData(DataFormats.FileDrop);
+                if (array != null)
+                {
+                    string path = array.GetValue(0).ToString();
+                    int num = path.LastIndexOf(".");
+                    if (num != -1)
+                    {
+                        string extension = path.Substring(num).ToLower();
+                        if (extension == ".exe" || extension == ".dll")
+                        {
+                            Activate();
+                            thirteenTextBox1.Text = path;
+                        }
+                    }
+                }
             }
+            catch { }
         }
 
         private void thirteenTextBox2_DragDrop(object sender, DragEventArgs e)
@@ -255,6 +269,14 @@ namespace Beds_Protector_GUI
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void thirteenTextBox1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
         }
     }
 }
