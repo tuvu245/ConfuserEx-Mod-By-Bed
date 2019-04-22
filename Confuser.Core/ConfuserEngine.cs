@@ -28,7 +28,22 @@ namespace Confuser.Core
 			AssemblyCopyrightAttribute cpAttr = (AssemblyCopyrightAttribute)assembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0];
 			ConfuserEngine.Version = string.Format("{0} {1}", nameAttr.Product, verAttr.InformationalVersion);
 			ConfuserEngine.Copyright = cpAttr.Copyright;
-		}
+
+            AppDomain.CurrentDomain.AssemblyResolve += (sender, e) => {
+                try
+                {
+                    var asmName = new AssemblyName(e.Name);
+                    foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+                        if (asm.GetName().Name == asmName.Name)
+                            return asm;
+                    return null;
+                }
+                catch
+                {
+                    return null;
+                }
+            };
+        }
 
 		/// <summary>
 		///     Runs the engine with the specified parameters.

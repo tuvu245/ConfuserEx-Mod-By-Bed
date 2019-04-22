@@ -18,10 +18,10 @@ using Rule = Confuser.Core.Project.Rule;
 
 namespace Beds_Protector_GUI
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, ILogger
     {
-        ConfuserProject proj;
         CancellationTokenSource cancelSrc;
+        DateTime begin;
         public Form1()
         {
             InitializeComponent();
@@ -29,150 +29,135 @@ namespace Beds_Protector_GUI
             try
             {
                 version = new WebClient().DownloadString("https://pastebin.com/raw/rQUCwMmL");
-            }
-            catch
-            {
-            }
+            } catch { }
             thirteenForm1.Text += version;
-            proj = new ConfuserProject();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void thirteenButton1_Click(object sender, EventArgs e) => Environment.Exit(0);
 
-        }
-
-        private void thirteenButton1_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void thirteenButton2_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
+        private void thirteenButton2_Click(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
 
         private void thirteenTextBox1_DragDrop(object sender, DragEventArgs e)
         {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            if (files != null && files.Length != 0)
+            try
             {
-                thirteenTextBox1.Text = files[0];
-            }
+                Array array = (Array)e.Data.GetData(DataFormats.FileDrop);
+                if (array != null)
+                {
+                    string path = array.GetValue(0).ToString();
+                    int num = path.LastIndexOf(".");
+                    if (num != -1)
+                    {
+                        string extension = path.Substring(num).ToLower();
+                        if (extension == ".exe" || extension == ".dll")
+                        {
+                            Activate();
+                            thirteenTextBox1.Text = path;
+                        }
+                    }
+                }
+            } catch { }
         }
 
-        private void thirteenTextBox2_DragDrop(object sender, DragEventArgs e)
-        {
-           
-        }
+        private void thirteenButton5_Click(object sender, EventArgs e) => MessageBox.Show("Simply click browse and choose your file or drag/drop it into the test box , then choose protections and hit protect. Output will be in the \\ Confused folder of the input file");
 
-        private void thirteenButton5_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Simply click browse and choose your file or drag/drop it into the test box , then choose protections and hit protect. Output will be in the \\ Confused folder of the input file");
-        }
-        string filelocation;
-        string projectlocation;
         private void thirteenButton6_Click(object sender, EventArgs e)
         {
-            if (thirteenTextBox1.Text == "")
+            if (thirteenButton6.Text == "Protect")
             {
-                MessageBox.Show("Pick a file first goofball.");
+                if (thirteenTextBox1.Text == "")
+                    MessageBox.Show("Pick a file first goofball.");
+                else
+                {
+                    thirteenButton6.Text = "Cancel";
+
+                    ConfuserProject proj = new ConfuserProject();
+                    proj.BaseDirectory = Path.GetDirectoryName(thirteenTextBox1.Text);
+                    proj.OutputDirectory = Path.Combine(Path.GetDirectoryName(thirteenTextBox1.Text) + @"\Confused"); //output directory
+
+                    //add a module to the project
+                    ProjectModule module = new ProjectModule(); //create a instance of ProjectModule
+                    module.Path = Path.GetFileName(thirteenTextBox1.Text); //sets the module name]
+                    proj.Add(module); //adds module to project
+
+                    Rule rule = new Rule("true", ProtectionPreset.None, false); //creates a Global Rule, with no preset and "true" patern, without inherit
+
+                    if (antiTamper.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("anti tamper", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (antiDebug.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("anti debug", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (antiDump.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("anti dump", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (calli.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("Calli Protection", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (constants.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("constants", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (controlFlow.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("ctrl flow", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (invalidMetadat.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("invalid metadata", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (renamer.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("rename", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (refProxy.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("ref proxy", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (mildRefProxy.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("Clean ref proxy", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (moduleFlood.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("module flood", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (fakeNative.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("Fake Native", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (renameAssembly.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("Rename Module", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+
+                    proj.Rules.Add(rule); //add our Global rule to the project
+
+                    RunConfuser(proj);
+                }
             }
             else
             {
-                filelocation = thirteenTextBox1.Text;
-
-                ConfuserProject project = new ConfuserProject(); //create a project
-                project.BaseDirectory = Path.GetDirectoryName(filelocation);
-                project.OutputDirectory = Path.Combine(Path.GetDirectoryName(filelocation) + @"\Confused"); //output directory
-
-                //add a module to the project
-                ProjectModule module = new ProjectModule(); //create a instance of ProjectModule
-                module.Path = Path.GetFileName(filelocation); //sets the module name]
-                project.Add(module); //adds module to project
-
-                Rule rule = new Rule("true", ProtectionPreset.None, false); //creates a Global Rule, with no preset and "true" patern, without inherit
-
-                if (antiTamper.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("anti tamper", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (antiDebug.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("anti debug", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (antiDump.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("anti dump", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (calli.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("Calli Protection", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (constants.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("constants", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (controlFlow.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("ctrl flow", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (invalidMetadat.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("invalid metadata", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (renamer.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("rename", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (refProxy.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("ref proxy", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (mildRefProxy.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("Clean ref proxy", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (moduleFlood.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("module flood", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (fakeNative.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("Fake Native", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (renameAssembly.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("Rename Module", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-
-
-                project.Rules.Add(rule); //add our Global rule to the project 
-
-                XmlDocument doc = project.Save(); //convert our project to xml document
-                doc.Save("temp.crproj"); //save the xml document as a file
-
-
-                Process.Start("Confuser.CLI.exe", "-n temp.crproj").WaitForExit();
-                File.Delete("temp.crproj");
-                label2.ForeColor = Color.LimeGreen;
-                label2.Text = "Protection complete, check log tab!";
-         
+                cancelSrc.Cancel();
+                thirteenButton6.Text = "Protect";
             }
-            
         }
 
         private void thirteenButton3_Click(object sender, EventArgs e)
@@ -183,25 +168,7 @@ namespace Beds_Protector_GUI
             {
                 string file = k.FileName;
                 thirteenTextBox1.Text = file;
-                try
-                {
-                    string text = File.ReadAllText(file);
-                   
-                }
-                catch (IOException)
-                {
-                }
             }
-        }
-
-        private void thirteenButton4_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void antiTamper_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
@@ -237,24 +204,95 @@ namespace Beds_Protector_GUI
 
         }
 
-        private void pictureBox1_DragDrop(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void thirteenForm1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void thirteenButton4_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Simply click browse and choose your file , then choose protections and hit protect. Output will be in the \\ Confused folder of the input file");
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void thirteenTextBox1_DragEnter(object sender, DragEventArgs e)
         {
-
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
         }
+
+        private void RunConfuser(ConfuserProject proj)
+        {
+            var parameters = new ConfuserParameters();
+            parameters.Project = proj;
+            if (File.Exists(Application.ExecutablePath))
+                Environment.CurrentDirectory = Path.GetDirectoryName(Application.ExecutablePath);
+            parameters.Logger = this;
+
+            richTextBox1.Text = "";
+            label2.ForeColor = Color.White;
+            label2.Text = "";
+
+            cancelSrc = new CancellationTokenSource();
+            begin = DateTime.Now;
+
+            ConfuserEngine.Run(parameters, cancelSrc.Token)
+                          .ContinueWith(_ => {
+                              thirteenButton6.Text = "Protect";
+                          });
+        }
+
+        public void Debug(string msg) => AppendToLog("[DEBUG] {0}", msg);
+
+        public void DebugFormat(string format, params object[] args) => AppendToLog("[DEBUG] {0}", string.Format(format, args));
+
+        public void EndProgress() { }
+
+        public void Error(string msg) => AppendToLog("[ERROR] {0}", msg);
+
+        public void ErrorException(string msg, Exception ex)
+        {
+            AppendToLog("[ERROR] {0}", msg);
+            AppendToLog("Exception: {0}", ex);
+        }
+
+        public void ErrorFormat(string format, params object[] args) => AppendToLog("[ERROR] {0}", string.Format(format, args));
+
+        public void Finish(bool successful)
+        {
+            DateTime now = DateTime.Now;
+            string timeString = string.Format(
+                "at {0}, {1}:{2:d2} elapsed.",
+                now.ToShortTimeString(),
+                (int)now.Subtract(begin).TotalMinutes,
+                now.Subtract(begin).Seconds);
+
+            if (successful)
+            {
+                AppendToLog("Finished {0}", timeString);
+                label2.ForeColor = Color.LimeGreen;
+                label2.Text = "Protection complete, check log tab!";
+            }
+            else
+            {
+                AppendToLog("Failed {0}", timeString);
+                label2.ForeColor = Color.Red;
+                label2.Text = "Protection Failed, check log tab!";
+            }
+        }
+
+        public void Info(string msg) => AppendToLog(" [INFO] {0}", msg);
+
+        public void InfoFormat(string format, params object[] args) => AppendToLog(" [INFO] {0}", string.Format(format, args));
+
+        public void Progress(int progress, int overall) { }
+
+        public void Warn(string msg) => AppendToLog(" [WARN] {0}", msg);
+
+        public void WarnException(string msg, Exception ex)
+        {
+            AppendToLog(" [WARN] {0}", msg);
+            AppendToLog("Exception: {0}", ex);
+        }
+
+        public void WarnFormat(string format, params object[] args) => AppendToLog(" [WARN] {0}", string.Format(format, args));
+
+        private void AppendToLog(string format, params object[] args) => richTextBox1.Text += (string.Format(format, args) + "\n");
     }
 }
