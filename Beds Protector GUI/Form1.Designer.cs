@@ -86,12 +86,11 @@ protected override void Dispose(bool disposing)
             this.thirteenForm1.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenForm1.ForeColor = System.Drawing.Color.White;
             this.thirteenForm1.Location = new System.Drawing.Point(0, 0);
-            this.thirteenForm1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.thirteenForm1.Margin = new System.Windows.Forms.Padding(4);
             this.thirteenForm1.Name = "thirteenForm1";
             this.thirteenForm1.Size = new System.Drawing.Size(1108, 571);
             this.thirteenForm1.TabIndex = 0;
             this.thirteenForm1.Text = "Beds Protector | GUI | Version: ";
-            this.thirteenForm1.Click += new System.EventHandler(this.thirteenForm1_Click);
             this.thirteenForm1.DragDrop += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox1_DragDrop);
             // 
             // thirteenTabControl1
@@ -102,7 +101,7 @@ protected override void Dispose(bool disposing)
             this.thirteenTabControl1.Controls.Add(this.tabPage2);
             this.thirteenTabControl1.ForeColor = System.Drawing.Color.White;
             this.thirteenTabControl1.Location = new System.Drawing.Point(0, 41);
-            this.thirteenTabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.thirteenTabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.thirteenTabControl1.Name = "thirteenTabControl1";
             this.thirteenTabControl1.SelectedIndex = 0;
             this.thirteenTabControl1.Size = new System.Drawing.Size(1109, 533);
@@ -117,13 +116,12 @@ protected override void Dispose(bool disposing)
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1101, 500);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Protection";
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // label2
             // 
@@ -139,13 +137,12 @@ protected override void Dispose(bool disposing)
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(223, 7);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(647, 238);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
             // 
             // groupBox2
             // 
@@ -158,9 +155,9 @@ protected override void Dispose(bool disposing)
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(56, 260);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(507, 149);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
@@ -175,7 +172,7 @@ protected override void Dispose(bool disposing)
             this.thirteenButton4.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenButton4.ForeColor = System.Drawing.Color.White;
             this.thirteenButton4.Location = new System.Drawing.Point(432, 50);
-            this.thirteenButton4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.thirteenButton4.Margin = new System.Windows.Forms.Padding(4);
             this.thirteenButton4.Name = "thirteenButton4";
             this.thirteenButton4.Size = new System.Drawing.Size(33, 30);
             this.thirteenButton4.TabIndex = 14;
@@ -187,7 +184,7 @@ protected override void Dispose(bool disposing)
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(313, 103);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox4.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(120, 27);
             this.checkBox4.TabIndex = 13;
@@ -204,7 +201,7 @@ protected override void Dispose(bool disposing)
             this.thirteenTextBox1.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenTextBox1.ForeColor = System.Drawing.Color.White;
             this.thirteenTextBox1.Location = new System.Drawing.Point(69, 50);
-            this.thirteenTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.thirteenTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.thirteenTextBox1.Name = "thirteenTextBox1";
             this.thirteenTextBox1.Size = new System.Drawing.Size(235, 29);
             this.thirteenTextBox1.TabIndex = 3;
@@ -219,7 +216,7 @@ protected override void Dispose(bool disposing)
             this.thirteenButton6.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenButton6.ForeColor = System.Drawing.Color.White;
             this.thirteenButton6.Location = new System.Drawing.Point(69, 96);
-            this.thirteenButton6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.thirteenButton6.Margin = new System.Windows.Forms.Padding(4);
             this.thirteenButton6.Name = "thirteenButton6";
             this.thirteenButton6.Size = new System.Drawing.Size(236, 37);
             this.thirteenButton6.TabIndex = 10;
@@ -235,7 +232,7 @@ protected override void Dispose(bool disposing)
             this.thirteenButton3.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenButton3.ForeColor = System.Drawing.Color.White;
             this.thirteenButton3.Location = new System.Drawing.Point(313, 50);
-            this.thirteenButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.thirteenButton3.Margin = new System.Windows.Forms.Padding(4);
             this.thirteenButton3.Name = "thirteenButton3";
             this.thirteenButton3.Size = new System.Drawing.Size(120, 30);
             this.thirteenButton3.TabIndex = 8;
@@ -271,9 +268,9 @@ protected override void Dispose(bool disposing)
             this.groupBox1.Controls.Add(this.antiTamper);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(571, 260);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(507, 213);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
@@ -283,7 +280,7 @@ protected override void Dispose(bool disposing)
             // 
             this.renameAssembly.AutoSize = true;
             this.renameAssembly.Location = new System.Drawing.Point(329, 111);
-            this.renameAssembly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.renameAssembly.Margin = new System.Windows.Forms.Padding(4);
             this.renameAssembly.Name = "renameAssembly";
             this.renameAssembly.Size = new System.Drawing.Size(167, 27);
             this.renameAssembly.TabIndex = 12;
@@ -294,7 +291,7 @@ protected override void Dispose(bool disposing)
             // 
             this.fakeNative.AutoSize = true;
             this.fakeNative.Location = new System.Drawing.Point(329, 78);
-            this.fakeNative.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fakeNative.Margin = new System.Windows.Forms.Padding(4);
             this.fakeNative.Name = "fakeNative";
             this.fakeNative.Size = new System.Drawing.Size(117, 27);
             this.fakeNative.TabIndex = 11;
@@ -305,7 +302,7 @@ protected override void Dispose(bool disposing)
             // 
             this.moduleFlood.AutoSize = true;
             this.moduleFlood.Location = new System.Drawing.Point(329, 44);
-            this.moduleFlood.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.moduleFlood.Margin = new System.Windows.Forms.Padding(4);
             this.moduleFlood.Name = "moduleFlood";
             this.moduleFlood.Size = new System.Drawing.Size(136, 27);
             this.moduleFlood.TabIndex = 10;
@@ -316,7 +313,7 @@ protected override void Dispose(bool disposing)
             // 
             this.mildRefProxy.AutoSize = true;
             this.mildRefProxy.Location = new System.Drawing.Point(329, 140);
-            this.mildRefProxy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mildRefProxy.Margin = new System.Windows.Forms.Padding(4);
             this.mildRefProxy.Name = "mildRefProxy";
             this.mildRefProxy.Size = new System.Drawing.Size(139, 27);
             this.mildRefProxy.TabIndex = 9;
@@ -327,7 +324,7 @@ protected override void Dispose(bool disposing)
             // 
             this.refProxy.AutoSize = true;
             this.refProxy.Location = new System.Drawing.Point(169, 140);
-            this.refProxy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.refProxy.Margin = new System.Windows.Forms.Padding(4);
             this.refProxy.Name = "refProxy";
             this.refProxy.Size = new System.Drawing.Size(151, 27);
             this.refProxy.TabIndex = 8;
@@ -338,7 +335,7 @@ protected override void Dispose(bool disposing)
             // 
             this.renamer.AutoSize = true;
             this.renamer.Location = new System.Drawing.Point(169, 107);
-            this.renamer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.renamer.Margin = new System.Windows.Forms.Padding(4);
             this.renamer.Name = "renamer";
             this.renamer.Size = new System.Drawing.Size(98, 27);
             this.renamer.TabIndex = 7;
@@ -349,7 +346,7 @@ protected override void Dispose(bool disposing)
             // 
             this.invalidMetadat.AutoSize = true;
             this.invalidMetadat.Location = new System.Drawing.Point(169, 78);
-            this.invalidMetadat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.invalidMetadat.Margin = new System.Windows.Forms.Padding(4);
             this.invalidMetadat.Name = "invalidMetadat";
             this.invalidMetadat.Size = new System.Drawing.Size(156, 27);
             this.invalidMetadat.TabIndex = 6;
@@ -360,7 +357,7 @@ protected override void Dispose(bool disposing)
             // 
             this.controlFlow.AutoSize = true;
             this.controlFlow.Location = new System.Drawing.Point(169, 44);
-            this.controlFlow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.controlFlow.Margin = new System.Windows.Forms.Padding(4);
             this.controlFlow.Name = "controlFlow";
             this.controlFlow.Size = new System.Drawing.Size(126, 27);
             this.controlFlow.TabIndex = 5;
@@ -371,7 +368,7 @@ protected override void Dispose(bool disposing)
             // 
             this.constants.AutoSize = true;
             this.constants.Location = new System.Drawing.Point(21, 174);
-            this.constants.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.constants.Margin = new System.Windows.Forms.Padding(4);
             this.constants.Name = "constants";
             this.constants.Size = new System.Drawing.Size(104, 27);
             this.constants.TabIndex = 4;
@@ -382,7 +379,7 @@ protected override void Dispose(bool disposing)
             // 
             this.calli.AutoSize = true;
             this.calli.Location = new System.Drawing.Point(21, 140);
-            this.calli.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.calli.Margin = new System.Windows.Forms.Padding(4);
             this.calli.Name = "calli";
             this.calli.Size = new System.Drawing.Size(117, 27);
             this.calli.TabIndex = 3;
@@ -393,7 +390,7 @@ protected override void Dispose(bool disposing)
             // 
             this.antiDump.AutoSize = true;
             this.antiDump.Location = new System.Drawing.Point(21, 107);
-            this.antiDump.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.antiDump.Margin = new System.Windows.Forms.Padding(4);
             this.antiDump.Name = "antiDump";
             this.antiDump.Size = new System.Drawing.Size(111, 27);
             this.antiDump.TabIndex = 2;
@@ -404,7 +401,7 @@ protected override void Dispose(bool disposing)
             // 
             this.antiDebug.AutoSize = true;
             this.antiDebug.Location = new System.Drawing.Point(21, 74);
-            this.antiDebug.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.antiDebug.Margin = new System.Windows.Forms.Padding(4);
             this.antiDebug.Name = "antiDebug";
             this.antiDebug.Size = new System.Drawing.Size(116, 27);
             this.antiDebug.TabIndex = 1;
@@ -415,13 +412,12 @@ protected override void Dispose(bool disposing)
             // 
             this.antiTamper.AutoSize = true;
             this.antiTamper.Location = new System.Drawing.Point(21, 44);
-            this.antiTamper.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.antiTamper.Margin = new System.Windows.Forms.Padding(4);
             this.antiTamper.Name = "antiTamper";
             this.antiTamper.Size = new System.Drawing.Size(121, 27);
             this.antiTamper.TabIndex = 0;
             this.antiTamper.Text = "Anti Tamper";
             this.antiTamper.UseVisualStyleBackColor = true;
-            this.antiTamper.CheckedChanged += new System.EventHandler(this.antiTamper_CheckedChanged);
             // 
             // label3
             // 
@@ -439,9 +435,9 @@ protected override void Dispose(bool disposing)
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.tabPage2.Controls.Add(this.richTextBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1101, 500);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Log";
@@ -452,9 +448,9 @@ protected override void Dispose(bool disposing)
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.ForeColor = System.Drawing.Color.White;
             this.richTextBox1.Location = new System.Drawing.Point(11, 7);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1063, 337);
+            this.richTextBox1.Size = new System.Drawing.Size(1063, 481);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -466,7 +462,7 @@ protected override void Dispose(bool disposing)
             this.thirteenButton2.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenButton2.ForeColor = System.Drawing.Color.White;
             this.thirteenButton2.Location = new System.Drawing.Point(1041, 0);
-            this.thirteenButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.thirteenButton2.Margin = new System.Windows.Forms.Padding(4);
             this.thirteenButton2.Name = "thirteenButton2";
             this.thirteenButton2.Size = new System.Drawing.Size(36, 23);
             this.thirteenButton2.TabIndex = 2;
@@ -482,7 +478,7 @@ protected override void Dispose(bool disposing)
             this.thirteenButton1.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
             this.thirteenButton1.ForeColor = System.Drawing.Color.White;
             this.thirteenButton1.Location = new System.Drawing.Point(1072, 0);
-            this.thirteenButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.thirteenButton1.Margin = new System.Windows.Forms.Padding(4);
             this.thirteenButton1.Name = "thirteenButton1";
             this.thirteenButton1.Size = new System.Drawing.Size(36, 23);
             this.thirteenButton1.TabIndex = 1;
@@ -497,10 +493,9 @@ protected override void Dispose(bool disposing)
             this.ClientSize = new System.Drawing.Size(1108, 571);
             this.Controls.Add(this.thirteenForm1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.thirteenForm1.ResumeLayout(false);
             this.thirteenTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

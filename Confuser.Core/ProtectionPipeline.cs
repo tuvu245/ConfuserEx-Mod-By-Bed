@@ -90,23 +90,21 @@ namespace Confuser.Core
 			foreach (ProtectionPhase pre in this.preStage[stage])
 			{
 				context.CheckCancellation();
-				context.Logger.DebugFormat("Executing '{0}' phase...", new object[]
-				{
-					pre.Name
-				});
-				pre.Execute(context, new ProtectionParameters(pre.Parent, ProtectionPipeline.Filter(context, targets(), pre)));
-			}
+                var targetList = Filter(context, targets(), pre);
+                if (targetList.Any())
+                    context.Logger.DebugFormat("Executing '{0}' phase...", pre.Name);
+                pre.Execute(context, new ProtectionParameters(pre.Parent, targetList));
+            }
 			context.CheckCancellation();
 			func(context);
 			context.CheckCancellation();
 			foreach (ProtectionPhase post in this.postStage[stage])
 			{
-				context.Logger.DebugFormat("Executing '{0}' phase...", new object[]
-				{
-					post.Name
-				});
-				post.Execute(context, new ProtectionParameters(post.Parent, ProtectionPipeline.Filter(context, targets(), post)));
-				context.CheckCancellation();
+                var targetList = Filter(context, targets(), post);
+                if (targetList.Any())
+                    context.Logger.DebugFormat("Executing '{0}' phase...", post.Name);
+                post.Execute(context, new ProtectionParameters(post.Parent, targetList));
+                context.CheckCancellation();
 			}
 		}
 
