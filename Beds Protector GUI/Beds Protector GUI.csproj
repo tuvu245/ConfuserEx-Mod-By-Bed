@@ -47,8 +47,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Teen">
-      <HintPath>C:\Users\buett\Documents\Visual Studio 2019\Projects\Divergent\Divergent\bin\Debug\Teen.dll</HintPath>
+    <Reference Include="Teen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\bin\Teen.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
