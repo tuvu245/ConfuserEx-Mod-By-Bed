@@ -23,7 +23,7 @@ namespace ConfuserEx {
 			app.Tabs.Add(new SettingsTabVM(app));
 			app.Tabs.Add(new ProtectTabVM(app));
 			app.Tabs.Add(new AboutTabVM(app));
-            label1.Content = label1.Content +" 1.3.4";
+            label1.Content = label1.Content +" 1.3.5";
             try
             {
                 label2.Content = label2.Content + " " + new WebClient().DownloadString("https://pastebin.com/raw/rQUCwMmL");
