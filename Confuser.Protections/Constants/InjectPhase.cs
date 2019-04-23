@@ -81,11 +81,13 @@ namespace Confuser.Protections.Constants {
 		void InjectHelpers(ConfuserContext context, ICompressionService compression, IRuntimeService rt, CEContext moduleCtx) {
 			IEnumerable<IDnlibDef> members = InjectHelper.Inject(rt.GetRuntimeType("Confuser.Runtime.Constant"), context.CurrentModule.GlobalType, context.CurrentModule);
 			foreach (IDnlibDef member in members) {
-				if (member.Name == "Get") {
-					context.CurrentModule.GlobalType.Remove((MethodDef)member);
-					continue;
-				}
-				if (member.Name == "b")
+                if (member.Name == "Get")
+                {
+                    context.CurrentModule.GlobalType.Remove((MethodDef)member);
+                    continue;
+                }
+               
+                if (member.Name == "b")
 					moduleCtx.BufferField = (FieldDef)member;
 				else if (member.Name == "Initialize")
 					moduleCtx.InitMethod = (MethodDef)member;

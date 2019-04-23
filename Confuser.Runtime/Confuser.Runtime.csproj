@@ -45,7 +45,6 @@
     </Compile>
     <Compile Include="Constant.cs" />
     <Compile Include="ModuleFlood.cs" />
-    <Compile Include="AntiDump.cs" />
     <Compile Include="AntiDebug.Win32.cs" />
     <Compile Include="AntiDebug.Antinet.cs" />
     <Compile Include="antinet\AntiManagedDebugger.cs" />

@@ -91,11 +91,6 @@ namespace Beds_Protector_GUI
                     SettingItem<Protection> protection = new SettingItem<Protection>("anti debug", SettingItemAction.Add);
                     rule.Add(protection);
                 }
-                if (antiDump.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("anti dump", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
                 if (calli.Checked)
                 {
                     SettingItem<Protection> protection = new SettingItem<Protection>("Calli Protection", SettingItemAction.Add);
@@ -160,6 +155,7 @@ namespace Beds_Protector_GUI
 
                 Process.Start("Confuser.CLI.exe", "-n temp.crproj").WaitForExit();
                 File.Delete("temp.crproj");
+            
             }
         }
 
@@ -179,7 +175,6 @@ namespace Beds_Protector_GUI
             if (checkBox4.Checked == true)
             {
                 antiDebug.Checked = true;
-                antiDump.Checked = true;
                 antiTamper.Checked = true;
                 renameAssembly.Checked = true;
                 renamer.Checked = true;
@@ -194,7 +189,6 @@ namespace Beds_Protector_GUI
             else
             {
                 antiDebug.Checked = false;
-                antiDump.Checked = false;
                 antiTamper.Checked = false;
                 renameAssembly.Checked = false;
                 renamer.Checked = false;

@@ -10,7 +10,7 @@ namespace Confuser.Protections {
 		bool IsTargeted(ConfuserContext context, MethodDef method);
 	}
 
-	[AfterProtection("Ki.AntiDebug", "Ki.AntiDump")]
+	[AfterProtection("Ki.AntiDebug"/*, "Ki.AntiDump"*/)]
 	[BeforeProtection("Ki.ControlFlow", "Ki.Constants")]
 	internal class ReferenceProxyProtection : Protection, IReferenceProxyService {
 		public const string _Id = "ref proxy";

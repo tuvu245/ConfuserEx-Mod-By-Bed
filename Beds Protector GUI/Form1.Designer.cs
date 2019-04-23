@@ -57,7 +57,6 @@ protected override void Dispose(bool disposing)
             this.controlFlow = new System.Windows.Forms.CheckBox();
             this.constants = new System.Windows.Forms.CheckBox();
             this.calli = new System.Windows.Forms.CheckBox();
-            this.antiDump = new System.Windows.Forms.CheckBox();
             this.antiDebug = new System.Windows.Forms.CheckBox();
             this.antiTamper = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -252,7 +251,6 @@ protected override void Dispose(bool disposing)
             this.groupBox1.Controls.Add(this.controlFlow);
             this.groupBox1.Controls.Add(this.constants);
             this.groupBox1.Controls.Add(this.calli);
-            this.groupBox1.Controls.Add(this.antiDump);
             this.groupBox1.Controls.Add(this.antiDebug);
             this.groupBox1.Controls.Add(this.antiTamper);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
@@ -266,7 +264,7 @@ protected override void Dispose(bool disposing)
             // mutations
             // 
             this.mutations.AutoSize = true;
-            this.mutations.Location = new System.Drawing.Point(127, 141);
+            this.mutations.Location = new System.Drawing.Point(16, 141);
             this.mutations.Name = "mutations";
             this.mutations.Size = new System.Drawing.Size(82, 21);
             this.mutations.TabIndex = 13;
@@ -356,7 +354,7 @@ protected override void Dispose(bool disposing)
             // constants
             // 
             this.constants.AutoSize = true;
-            this.constants.Location = new System.Drawing.Point(16, 141);
+            this.constants.Location = new System.Drawing.Point(16, 114);
             this.constants.Name = "constants";
             this.constants.Size = new System.Drawing.Size(81, 21);
             this.constants.TabIndex = 4;
@@ -366,22 +364,12 @@ protected override void Dispose(bool disposing)
             // calli
             // 
             this.calli.AutoSize = true;
-            this.calli.Location = new System.Drawing.Point(16, 114);
+            this.calli.Location = new System.Drawing.Point(16, 87);
             this.calli.Name = "calli";
             this.calli.Size = new System.Drawing.Size(91, 21);
             this.calli.TabIndex = 3;
             this.calli.Text = "Calli to Call";
             this.calli.UseVisualStyleBackColor = true;
-            // 
-            // antiDump
-            // 
-            this.antiDump.AutoSize = true;
-            this.antiDump.Location = new System.Drawing.Point(16, 87);
-            this.antiDump.Name = "antiDump";
-            this.antiDump.Size = new System.Drawing.Size(87, 21);
-            this.antiDump.TabIndex = 2;
-            this.antiDump.Text = "Anti Dump";
-            this.antiDump.UseVisualStyleBackColor = true;
             // 
             // antiDebug
             // 
@@ -511,7 +499,6 @@ protected override void Dispose(bool disposing)
         private System.Windows.Forms.CheckBox controlFlow;
         private System.Windows.Forms.CheckBox constants;
         private System.Windows.Forms.CheckBox calli;
-        private System.Windows.Forms.CheckBox antiDump;
         private System.Windows.Forms.CheckBox antiDebug;
         private System.Windows.Forms.CheckBox antiTamper;
         private System.Windows.Forms.CheckBox checkBox4;

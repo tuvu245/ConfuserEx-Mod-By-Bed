@@ -124,7 +124,6 @@
     <Compile Include="ControlFlow\JumpMangler.cs" />
     <Compile Include="ControlFlow\ManglerBase.cs" />
     <Compile Include="ControlFlow\SwitchMangler.cs" />
-    <Compile Include="AntiDumpProtection.cs" />
     <Compile Include="AntiDebugProtection.cs" />
     <Compile Include="FakeAttributes.cs" />
     <Compile Include="FakeNative.cs" />

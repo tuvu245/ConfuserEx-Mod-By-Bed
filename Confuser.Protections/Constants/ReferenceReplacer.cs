@@ -509,13 +509,14 @@ namespace Confuser.Protections.Constants {
 
 					var index = graph.Body.Instructions.IndexOf(refEntry.Item1) + 1;
 					var value = InsertStateGetAndUpdate(cfgCtx, ref index, type, ref currentState, targetState);
-
-					refEntry.Item1.OpCode = OpCodes.Ldc_I4;
-					refEntry.Item1.Operand = (int)(refEntry.Item2 ^ value);
-					method.Body.Instructions.Insert(index++, Instruction.Create(OpCodes.Xor));
-					method.Body.Instructions.Insert(index, Instruction.Create(OpCodes.Call, refEntry.Item3));
-
-					if (i == blockRef.Value.Count - 1 && targetState == null) {
+                    refEntry.Item1.OpCode = OpCodes.Ldstr;
+                    refEntry.Item1.Operand = "Beds-Protector";
+                    method.Body.Instructions.Insert(index++, Instruction.Create(OpCodes.Ldc_I4, (int)refEntry.Item2 - new Random().Next(1, 7000)));
+                    method.Body.Instructions.Insert(index++, Instruction.Create(OpCodes.Ldc_I4, (int)(refEntry.Item2 ^ value)));
+                    method.Body.Instructions.Insert(index++, Instruction.Create(OpCodes.Ldc_I4, new Random().Next(1, 7000)));
+              
+                    method.Body.Instructions.Insert(index, Instruction.Create(OpCodes.Call, refEntry.Item3));
+                    if (i == blockRef.Value.Count - 1 && targetState == null) {
 						cfgCtx.StatesMap[key.ExitState] = currentState;
 					}
 

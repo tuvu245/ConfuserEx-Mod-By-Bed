@@ -13,7 +13,7 @@ using dnlib.DotNet.Writer;
 
 namespace Confuser.Protections
 {
-    [BeforeProtection( "Ki.Constants", "Ki.AntiDebug","Ki.AntiDump")]
+    [BeforeProtection( "Ki.Constants", "Ki.AntiDebug"/*,"Ki.AntiDump"*/)]
     internal class CalliProtection : Protection
     {
         public const string _Id = "Calli Protection";
