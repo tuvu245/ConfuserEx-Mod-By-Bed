@@ -25,12 +25,7 @@ namespace Beds_Protector_GUI
         public Form1()
         {
             InitializeComponent();
-            string version = "Could no connect to server";
-            try
-            {
-                version = new WebClient().DownloadString("https://pastebin.com/raw/rQUCwMmL");
-            } catch { }
-            thirteenForm1.Text += version;
+
         }
 
         private void thirteenButton1_Click(object sender, EventArgs e) => Environment.Exit(0);
@@ -146,6 +141,11 @@ namespace Beds_Protector_GUI
                     SettingItem<Protection> protection = new SettingItem<Protection>("Mutations", SettingItemAction.Add);
                     rule.Add(protection);
                 }
+                if (local2field.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("local to field", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
 
                 proj.Rules.Add(rule); //add our Global rule to the project 
 
@@ -185,6 +185,7 @@ namespace Beds_Protector_GUI
                 mildRefProxy.Checked = true;
                 calli.Checked = true;
                 mutations.Checked = true;
+                local2field.Checked = true;
             }
             else
             {
@@ -199,6 +200,7 @@ namespace Beds_Protector_GUI
                 mildRefProxy.Checked = false;
                 calli.Checked = false;
                 mutations.Checked = false;
+                local2field.Checked = false;
             }
 
         }
@@ -291,5 +293,15 @@ namespace Beds_Protector_GUI
         public void WarnFormat(string format, params object[] args) => AppendToLog(" [WARN] {0}", string.Format(format, args));
 
         private void AppendToLog(string format, params object[] args) => richTextBox1.Text += (string.Format(format, args) + "\n");
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void thirteenForm1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
