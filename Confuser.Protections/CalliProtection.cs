@@ -97,8 +97,8 @@ namespace Confuser.Protections
                                             try
                                             {
 
-
-                                                if (method.Body.Instructions[i].OpCode == OpCodes.Call || method.Body.Instructions[i].OpCode == OpCodes.Callvirt/* || method.Body.Instructions[i].OpCode == OpCodes.Ldloc_S*/)
+                                            if (method.Body.Instructions[i].ToString().Contains("ISupportInitialize")) continue;
+                                            if (method.Body.Instructions[i].OpCode == OpCodes.Call || method.Body.Instructions[i].OpCode == OpCodes.Callvirt/* || method.Body.Instructions[i].OpCode == OpCodes.Ldloc_S*/)
                                                 {
                                                 
                                                    

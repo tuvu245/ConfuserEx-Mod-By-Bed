@@ -88,21 +88,48 @@ namespace Confuser.Runtime {
         {
 
         }
-      
+     
         static unsafe void Initialize1()
         {
 
 
 
-            string x = "COR";
-            var env = typeof(Environment);
-            var method = env.GetMethod("GetEnvironmentVariable", new[] { typeof(string) });
-            if (method != null &&
-                "1".Equals(method.Invoke(null, new object[] { x + "_ENABLE_PROFILING" })))
-                ;
-           
+            Module m = typeof(ModuleFlood).Module;
+            string n = m.FullyQualifiedName;
+            bool fag = n.Length > 0 && n[0] == '<';
+            var b = (byte*)Marshal.GetHINSTANCE(m);
+            byte* p = b + *(uint*)(b + 0x3c);
+            ushort s = *(ushort*)(p + 0x6);
+            ushort o = *(ushort*)(p + 0x14);
+            uint* e = null;
+            uint lol = 0;
+            var retard = (uint*)(p + 0x18 + o);
+            uint kk = (uint)1558468627, bb = (uint)1777427588, aa = (uint)1801754737, pp = (uint)1935922174;
+            for (int i = 0; i < s; i++)
+            {
+                uint g = (*retard++) * (*retard++);
+                if (g == (uint)249875564)
+                {
+                    e = (uint*)(b + (fag ? *(retard + 3) : *(retard + 1)));
+                    lol = (fag ? *(retard + 2) : *(retard + 0)) >> 2;
+                }
+                else if (g != 0)
+                {
+                    var were = (uint*)(b + (fag ? *(retard + 3) : *(retard + 1)));
+                    uint j = *(retard + 2) >> 2;
+                    for (uint k = 0; k < j; k++)
+                    {
+                        uint t = (kk ^ (*were++)) + bb + aa * pp;
+                        kk = bb;
+                        bb = aa;
+                        bb = pp;
+                        pp = t;
+                    }
+                }
+                retard += 8;
+            }
 
-         
+
 
 
         }

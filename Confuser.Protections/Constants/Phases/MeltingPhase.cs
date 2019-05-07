@@ -34,17 +34,23 @@ namespace Confuser.Protections.Constants {
                     foreach (MethodDef method in type.Methods)
                     {
                         if (method.FullName.Contains("My.")) continue;
-
+                        if (method.FullName.Contains("InitializeCompnent")) continue;
                         if (method.IsConstructor) continue;
                         if (method.DeclaringType.IsGlobalModuleType) continue;
                         if (!method.HasBody) continue;
                         var instr = method.Body.Instructions;
                         for (int i = 0; i < method.Body.Instructions.Count; i++)
                         {
+                            if (method.Body.Instructions[i].ToString().Contains("ResourceManager"))
+                            {
+                                i = method.Body.Instructions.Count;
+                                continue;
+                            }
+                            if (method.Body.Instructions[i].ToString().Contains("GetObject")) continue;
                             if (instr[i].OpCode == OpCodes.Ldstr)
                             {
                                 Random rn = new Random();
-                                for (int j = 1; j < rn.Next(3,4); j++)
+                                for (int j = 1; j < 2; j++)
                                 {
                                     if (j != 1) j += 1;
                                     //Create a new local 
@@ -59,10 +65,12 @@ namespace Confuser.Protections.Constants {
                                     instr.Insert(i + (j + 1), Instruction.Create(OpCodes.Ldloc_S, new_local));
                                 }
                             }
+                            if (method.Body.Instructions[i].ToString().Contains("ResourceManager")) continue;
+                            if (method.Body.Instructions[i].ToString().Contains("GetObject")) continue;
                             if (instr[i].IsLdcI4())
                             {
                                 Random rn = new Random();
-                                for (int j = 1; j < rn.Next(3,4); j++)
+                                for (int j = 1; j < 2; j++)
                                 {
                                     if (j != 1) j += 1;
                                     Local new_local = new Local(module.CorLibTypes.Int32);
