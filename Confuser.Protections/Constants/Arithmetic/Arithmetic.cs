@@ -13,7 +13,7 @@ namespace Arithmetic_Obfuscation.Arithmetic
     public class Arithmetic
     {
         private ModuleDef moduleDef1;
-        List<iFunction> Tasks = new List<iFunction>()
+        public static List<iFunction> Tasks = new List<iFunction>()
         {
             new Add(),
             new Sub(),
