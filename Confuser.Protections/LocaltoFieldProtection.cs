@@ -105,13 +105,17 @@ namespace Confuser.Protections {
             Dictionary<Local, FieldDef> convertedLocals = new Dictionary<Local, FieldDef>();
             protected override void Execute(ConfuserContext context, ProtectionParameters parameters) {
 				foreach (ModuleDef module in parameters.Targets.OfType<ModuleDef>()) {
+                   
+                            
                     foreach (var type in module.Types.Where(x => x != module.GlobalType))
                     {
-                        foreach (var method in type.Methods.Where(x => x.HasBody && x.Body.HasInstructions && !x.IsConstructor))
+                        foreach (var method2 in type.Methods.Where(x => x.HasBody && x.Body.HasInstructions && !x.IsConstructor))
                         {
                             convertedLocals = new Dictionary<Local, FieldDef>();
-                            ProcessMethod(method,module);
+                            ProcessMethod(method2,module);
+
                         }
+                       
                     }
                 }
 			}

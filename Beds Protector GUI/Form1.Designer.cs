@@ -46,6 +46,7 @@ protected override void Dispose(bool disposing)
             this.thirteenButton3 = new Teen.ThirteenButton();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.local2field = new System.Windows.Forms.CheckBox();
             this.mutations = new System.Windows.Forms.CheckBox();
             this.renameAssembly = new System.Windows.Forms.CheckBox();
             this.fakeNative = new System.Windows.Forms.CheckBox();
@@ -64,7 +65,7 @@ protected override void Dispose(bool disposing)
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.thirteenButton2 = new Teen.ThirteenButton();
             this.thirteenButton1 = new Teen.ThirteenButton();
-            this.local2field = new System.Windows.Forms.CheckBox();
+            this.hideMethods = new System.Windows.Forms.CheckBox();
             this.thirteenForm1.SuspendLayout();
             this.thirteenTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -242,6 +243,7 @@ protected override void Dispose(bool disposing)
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.groupBox1.Controls.Add(this.hideMethods);
             this.groupBox1.Controls.Add(this.local2field);
             this.groupBox1.Controls.Add(this.mutations);
             this.groupBox1.Controls.Add(this.renameAssembly);
@@ -263,6 +265,17 @@ protected override void Dispose(bool disposing)
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Protections";
+            // 
+            // local2field
+            // 
+            this.local2field.AutoSize = true;
+            this.local2field.Location = new System.Drawing.Point(127, 141);
+            this.local2field.Name = "local2field";
+            this.local2field.Size = new System.Drawing.Size(111, 21);
+            this.local2field.TabIndex = 14;
+            this.local2field.Text = "Locals to Fields";
+            this.local2field.UseVisualStyleBackColor = true;
+            this.local2field.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // mutations
             // 
@@ -456,16 +469,15 @@ protected override void Dispose(bool disposing)
             this.thirteenButton1.UseVisualStyleBackColor = false;
             this.thirteenButton1.Click += new System.EventHandler(this.thirteenButton1_Click);
             // 
-            // local2field
+            // hideMethods
             // 
-            this.local2field.AutoSize = true;
-            this.local2field.Location = new System.Drawing.Point(127, 141);
-            this.local2field.Name = "local2field";
-            this.local2field.Size = new System.Drawing.Size(111, 21);
-            this.local2field.TabIndex = 14;
-            this.local2field.Text = "Locals to Fields";
-            this.local2field.UseVisualStyleBackColor = true;
-            this.local2field.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.hideMethods.AutoSize = true;
+            this.hideMethods.Location = new System.Drawing.Point(247, 141);
+            this.hideMethods.Name = "hideMethods";
+            this.hideMethods.Size = new System.Drawing.Size(105, 21);
+            this.hideMethods.TabIndex = 15;
+            this.hideMethods.Text = "Hide Methods";
+            this.hideMethods.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -524,6 +536,7 @@ protected override void Dispose(bool disposing)
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.CheckBox mutations;
         private System.Windows.Forms.CheckBox local2field;
+        private System.Windows.Forms.CheckBox hideMethods;
     }
 }
 

@@ -146,6 +146,11 @@ namespace Beds_Protector_GUI
                     SettingItem<Protection> protection = new SettingItem<Protection>("local to field", SettingItemAction.Add);
                     rule.Add(protection);
                 }
+                if (hideMethods.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("Hide Methods", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
 
                 proj.Rules.Add(rule); //add our Global rule to the project 
 
@@ -186,6 +191,7 @@ namespace Beds_Protector_GUI
                 calli.Checked = true;
                 mutations.Checked = true;
                 local2field.Checked = true;
+                hideMethods.Checked = true;
             }
             else
             {
@@ -201,6 +207,7 @@ namespace Beds_Protector_GUI
                 calli.Checked = false;
                 mutations.Checked = false;
                 local2field.Checked = false;
+                hideMethods.Checked = false;
             }
 
         }

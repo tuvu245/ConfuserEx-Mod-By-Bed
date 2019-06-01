@@ -83,7 +83,7 @@ namespace Confuser.Protections.ReferenceProxy {
 
 		static RPContext ParseParameters(ModuleDef module, ConfuserContext context, ProtectionParameters parameters, RPStore store) {
 			var ret = new RPContext();
-			ret.Depth = parameters.GetParameter(context, module, "depth", 3);
+			ret.Depth = parameters.GetParameter(context, module, "depth", 4);
 			ret.InitCount = parameters.GetParameter(context, module, "initCount", 0x10);
 
 			ret.Random = store.random;
