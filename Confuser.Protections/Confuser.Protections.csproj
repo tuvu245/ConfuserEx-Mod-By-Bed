@@ -63,6 +63,7 @@
     <Compile Include="AntiTamper\NormalDeriver.cs" />
     <Compile Include="AntiTamper\NormalMode.cs" />
     <Compile Include="CalliProtection.cs" />
+    <Compile Include="MD5HashCheck.cs" />
     <Compile Include="Compress\Compressor.cs" />
     <Compile Include="Compress\CompressorContext.cs" />
     <Compile Include="Compress\DynamicDeriver.cs" />
