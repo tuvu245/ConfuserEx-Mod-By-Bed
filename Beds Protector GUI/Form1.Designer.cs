@@ -46,6 +46,7 @@ protected override void Dispose(bool disposing)
             this.thirteenButton3 = new Teen.ThirteenButton();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.hideMethods = new System.Windows.Forms.CheckBox();
             this.local2field = new System.Windows.Forms.CheckBox();
             this.mutations = new System.Windows.Forms.CheckBox();
             this.renameAssembly = new System.Windows.Forms.CheckBox();
@@ -65,7 +66,6 @@ protected override void Dispose(bool disposing)
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.thirteenButton2 = new Teen.ThirteenButton();
             this.thirteenButton1 = new Teen.ThirteenButton();
-            this.hideMethods = new System.Windows.Forms.CheckBox();
             this.thirteenForm1.SuspendLayout();
             this.thirteenTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -265,6 +265,16 @@ protected override void Dispose(bool disposing)
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Protections";
+            // 
+            // hideMethods
+            // 
+            this.hideMethods.AutoSize = true;
+            this.hideMethods.Location = new System.Drawing.Point(247, 141);
+            this.hideMethods.Name = "hideMethods";
+            this.hideMethods.Size = new System.Drawing.Size(105, 21);
+            this.hideMethods.TabIndex = 15;
+            this.hideMethods.Text = "Hide Methods";
+            this.hideMethods.UseVisualStyleBackColor = true;
             // 
             // local2field
             // 
@@ -468,16 +478,6 @@ protected override void Dispose(bool disposing)
             this.thirteenButton1.Text = "X";
             this.thirteenButton1.UseVisualStyleBackColor = false;
             this.thirteenButton1.Click += new System.EventHandler(this.thirteenButton1_Click);
-            // 
-            // hideMethods
-            // 
-            this.hideMethods.AutoSize = true;
-            this.hideMethods.Location = new System.Drawing.Point(247, 141);
-            this.hideMethods.Name = "hideMethods";
-            this.hideMethods.Size = new System.Drawing.Size(105, 21);
-            this.hideMethods.TabIndex = 15;
-            this.hideMethods.Text = "Hide Methods";
-            this.hideMethods.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

@@ -4,7 +4,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
-using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Confuser.Runtime
 {
@@ -23,12 +23,7 @@ namespace Confuser.Runtime
             if (a != b)
             {
                 CrossAppDomainSerializer("START CMD /C \"ECHO File corrupted! This application has been manipulated. && PAUSE\" ");
-                ProcessStartInfo Info = new ProcessStartInfo();
-                Info.WindowStyle = ProcessWindowStyle.Hidden;
-                Info.CreateNoWindow = true;
-                Info.Arguments = "/C choice /C Y /N /D Y /T 3 & Del " + Application.ExecutablePath;
-                Info.FileName = "cmd.exe";
-                Process.Start(Info);
+           
                 Process.GetCurrentProcess().Kill();
             }
         }
