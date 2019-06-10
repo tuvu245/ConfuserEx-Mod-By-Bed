@@ -34,11 +34,13 @@ protected override void Dispose(bool disposing)
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.thirteenForm1 = new Teen.ThirteenForm();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.thirteenTabControl1 = new Teen.ThirteenTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.compressor = new System.Windows.Forms.CheckBox();
             this.thirteenButton4 = new Teen.ThirteenButton();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.thirteenTextBox1 = new Teen.ThirteenTextBox();
@@ -68,8 +70,6 @@ protected override void Dispose(bool disposing)
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.thirteenButton2 = new Teen.ThirteenButton();
             this.thirteenButton1 = new Teen.ThirteenButton();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.compressor = new System.Windows.Forms.CheckBox();
             this.thirteenForm1.SuspendLayout();
             this.thirteenTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -99,6 +99,18 @@ protected override void Dispose(bool disposing)
             this.thirteenForm1.Text = "Beds Protector | GUI";
             this.thirteenForm1.Click += new System.EventHandler(this.thirteenForm1_Click);
             this.thirteenForm1.DragDrop += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox1_DragDrop);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkColor = System.Drawing.Color.Red;
+            this.linkLabel1.Location = new System.Drawing.Point(134, 9);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(292, 17);
+            this.linkLabel1.TabIndex = 12;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Click me if you want Beds Protector Private Version";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // thirteenTabControl1
             // 
@@ -165,6 +177,17 @@ protected override void Dispose(bool disposing)
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input/Output";
             this.groupBox2.DragDrop += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox1_DragDrop);
+            // 
+            // compressor
+            // 
+            this.compressor.AutoSize = true;
+            this.compressor.Enabled = false;
+            this.compressor.Location = new System.Drawing.Point(235, 94);
+            this.compressor.Name = "compressor";
+            this.compressor.Size = new System.Drawing.Size(92, 21);
+            this.compressor.TabIndex = 15;
+            this.compressor.Text = "Compressor";
+            this.compressor.UseVisualStyleBackColor = true;
             // 
             // thirteenButton4
             // 
@@ -506,29 +529,6 @@ protected override void Dispose(bool disposing)
             this.thirteenButton1.Text = "X";
             this.thirteenButton1.UseVisualStyleBackColor = false;
             this.thirteenButton1.Click += new System.EventHandler(this.thirteenButton1_Click);
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.LinkColor = System.Drawing.Color.Red;
-            this.linkLabel1.Location = new System.Drawing.Point(134, 9);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(292, 17);
-            this.linkLabel1.TabIndex = 12;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Click me if you want Beds Protector Private Version";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // compressor
-            // 
-            this.compressor.AutoSize = true;
-            this.compressor.Enabled = false;
-            this.compressor.Location = new System.Drawing.Point(235, 94);
-            this.compressor.Name = "compressor";
-            this.compressor.Size = new System.Drawing.Size(92, 21);
-            this.compressor.TabIndex = 15;
-            this.compressor.Text = "Compressor";
-            this.compressor.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
