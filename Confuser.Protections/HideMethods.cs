@@ -102,59 +102,64 @@ namespace Confuser.Protections
                 {
                     foreach (var type in module.Types)
                     {
-                        foreach (var method in type.Methods)
-                        {
-                            Local local1 = new Local(module.Import(typeof(int)).ToTypeSig());
-                            Local local2 = new Local(module.Import(typeof(bool)).ToTypeSig());
-
-                            method.Body.Variables.Add(local1);
-                            method.Body.Variables.Add(local2);
-
-                            Instruction operand = null;
-                            Instruction instruction = new Instruction(OpCodes.Ret);
-                            Instruction instruction2 = new Instruction(OpCodes.Ldc_I4_1);
-
-                            method.Body.Instructions.Insert(0, new Instruction(OpCodes.Ldc_I4_0));
-                            method.Body.Instructions.Insert(1, new Instruction(OpCodes.Stloc, local1));
-                            method.Body.Instructions.Insert(2, new Instruction(OpCodes.Br, instruction2));
-
-                            Instruction instruction3 = new Instruction(OpCodes.Ldloc, local1);
-
-                            method.Body.Instructions.Insert(3, instruction3);
-                            method.Body.Instructions.Insert(4, new Instruction(OpCodes.Ldc_I4_0));
-                            method.Body.Instructions.Insert(5, new Instruction(OpCodes.Ceq));
-                            method.Body.Instructions.Insert(6, new Instruction(OpCodes.Ldc_I4_1));
-                            method.Body.Instructions.Insert(7, new Instruction(OpCodes.Ceq));
-                            method.Body.Instructions.Insert(8, new Instruction(OpCodes.Stloc, local2));
-                            method.Body.Instructions.Insert(9, new Instruction(OpCodes.Ldloc, local2));
-                            method.Body.Instructions.Insert(10, new Instruction(OpCodes.Brtrue, method.Body.Instructions[sizeof(Decimal) - 6]));
-                            method.Body.Instructions.Insert(11, new Instruction(OpCodes.Ret));
-                            method.Body.Instructions.Insert(12, new Instruction(OpCodes.Calli));
-                            method.Body.Instructions.Insert(13, new Instruction(OpCodes.Sizeof, operand));
-                            method.Body.Instructions.Insert(method.Body.Instructions.Count, instruction2);
-                            method.Body.Instructions.Insert(method.Body.Instructions.Count, new Instruction(OpCodes.Stloc, local2));
-                            method.Body.Instructions.Insert(method.Body.Instructions.Count, new Instruction(OpCodes.Br, instruction3));
-                            method.Body.Instructions.Insert(method.Body.Instructions.Count, instruction);
-
-                            ExceptionHandler item2 = new ExceptionHandler(ExceptionHandlerType.Finally)
+                       
+                            foreach (var method in type.Methods)
                             {
-                                HandlerStart = method.Body.Instructions[10],
-                                HandlerEnd = method.Body.Instructions[11],
-                                TryEnd = method.Body.Instructions[14],
-                                TryStart = method.Body.Instructions[12]
-                            };
-
-                            bool flag3 = !method.Body.HasExceptionHandlers;
-
-                            if (flag3)
+                            if (method == module.EntryPoint)
                             {
-                                method.Body.ExceptionHandlers.Add(item2);
+                                Local local1 = new Local(module.Import(typeof(int)).ToTypeSig());
+                                Local local2 = new Local(module.Import(typeof(bool)).ToTypeSig());
+
+                                method.Body.Variables.Add(local1);
+                                method.Body.Variables.Add(local2);
+
+                                Instruction operand = null;
+                                Instruction instruction = new Instruction(OpCodes.Ret);
+                                Instruction instruction2 = new Instruction(OpCodes.Ldc_I4_1);
+
+                                method.Body.Instructions.Insert(0, new Instruction(OpCodes.Ldc_I4_0));
+                                method.Body.Instructions.Insert(1, new Instruction(OpCodes.Stloc, local1));
+                                method.Body.Instructions.Insert(2, new Instruction(OpCodes.Br, instruction2));
+
+                                Instruction instruction3 = new Instruction(OpCodes.Ldloc, local1);
+
+                                method.Body.Instructions.Insert(3, instruction3);
+                                method.Body.Instructions.Insert(4, new Instruction(OpCodes.Ldc_I4_0));
+                                method.Body.Instructions.Insert(5, new Instruction(OpCodes.Ceq));
+                                method.Body.Instructions.Insert(6, new Instruction(OpCodes.Ldc_I4_1));
+                                method.Body.Instructions.Insert(7, new Instruction(OpCodes.Ceq));
+                                method.Body.Instructions.Insert(8, new Instruction(OpCodes.Stloc, local2));
+                                method.Body.Instructions.Insert(9, new Instruction(OpCodes.Ldloc, local2));
+                                method.Body.Instructions.Insert(10, new Instruction(OpCodes.Brtrue, method.Body.Instructions[sizeof(Decimal) - 6]));
+                                method.Body.Instructions.Insert(11, new Instruction(OpCodes.Ret));
+                                method.Body.Instructions.Insert(12, new Instruction(OpCodes.Calli));
+                                method.Body.Instructions.Insert(13, new Instruction(OpCodes.Sizeof, operand));
+                                method.Body.Instructions.Insert(method.Body.Instructions.Count, instruction2);
+                                method.Body.Instructions.Insert(method.Body.Instructions.Count, new Instruction(OpCodes.Stloc, local2));
+                                method.Body.Instructions.Insert(method.Body.Instructions.Count, new Instruction(OpCodes.Br, instruction3));
+                                method.Body.Instructions.Insert(method.Body.Instructions.Count, instruction);
+
+                                ExceptionHandler item2 = new ExceptionHandler(ExceptionHandlerType.Finally)
+                                {
+                                    HandlerStart = method.Body.Instructions[10],
+                                    HandlerEnd = method.Body.Instructions[11],
+                                    TryEnd = method.Body.Instructions[14],
+                                    TryStart = method.Body.Instructions[12]
+                                };
+
+                                bool flag3 = !method.Body.HasExceptionHandlers;
+
+                                if (flag3)
+                                {
+                                    method.Body.ExceptionHandlers.Add(item2);
+                                }
+
+                                operand = new Instruction(OpCodes.Br, instruction);
+                                method.Body.OptimizeBranches();
+                                method.Body.OptimizeMacros();
                             }
-
-                            operand = new Instruction(OpCodes.Br, instruction);
-                            method.Body.OptimizeBranches();
-                            method.Body.OptimizeMacros();
                         }
+                           
                     }
                 }
             }

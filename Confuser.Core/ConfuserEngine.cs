@@ -331,11 +331,40 @@ namespace Confuser.Core
 			context.Logger.Debug("Watermarking...");
 			foreach (ModuleDefMD module3 in context.Modules)
 			{
+
 				TypeRef attrRef = module3.CorLibTypes.GetTypeRef("System", "Attribute");
 				TypeDefUser attrType = new TypeDefUser("", "Beds-Protector", attrRef);
 				module3.Types.Add(attrType);
 				marker.Mark(attrType, null);
-				MethodDefUser ctor = new MethodDefUser(".ctor", MethodSig.CreateInstance(module3.CorLibTypes.Void, module3.CorLibTypes.String), dnlib.DotNet.MethodImplAttributes.IL, dnlib.DotNet.MethodAttributes.FamANDAssem | dnlib.DotNet.MethodAttributes.Family | dnlib.DotNet.MethodAttributes.HideBySig | dnlib.DotNet.MethodAttributes.SpecialName | dnlib.DotNet.MethodAttributes.RTSpecialName);
+                TypeRef typeRef99 = module3.CorLibTypes.GetTypeRef("System", "Attribute");
+                TypeRef typeRef6 = module3.CorLibTypes.GetTypeRef("System", "Attribute");
+                TypeRef typeRef7 = module3.CorLibTypes.GetTypeRef("System", "Attribute");
+                TypeDefUser typeDefUser6 = new TypeDefUser("", "VMProtect", typeRef6);
+                module3.Types.Add(typeDefUser6);
+                marker.Mark(typeDefUser6, null);
+                TypeDefUser typeDefUser7 = new TypeDefUser("", "Reactor", typeRef7);
+                module3.Types.Add(typeDefUser7);
+                marker.Mark(typeDefUser7, null);
+                TypeDefUser typeDefUser = new TypeDefUser("", "de4fuckyou", typeRef99);
+                module3.Types.Add(typeDefUser);
+                marker.Mark(typeDefUser, null);
+                TypeRef typeRef2 = module3.CorLibTypes.GetTypeRef("System", "Attribute");
+                TypeDefUser typeDefUser2 = new TypeDefUser("", "BabelObfuscatorAttribute", typeRef2);
+                module3.Types.Add(typeDefUser2);
+                marker.Mark(typeDefUser2, null);
+                TypeRef typeRef3 = module3.CorLibTypes.GetTypeRef("System", "Attribute");
+                TypeDefUser typeDefUser3 = new TypeDefUser("", "CrytpoObfuscator", typeRef3);
+                module3.Types.Add(typeDefUser3);
+                marker.Mark(typeDefUser3, null);
+                TypeRef typeRef4 = module3.CorLibTypes.GetTypeRef("System", "Attribute");
+                TypeDefUser typeDefUser4 = new TypeDefUser("", "OiCuntJollyGoodDayYeHavin_____________________________________________________", typeRef4);
+                module3.Types.Add(typeDefUser4);
+                marker.Mark(typeDefUser4, null);
+                TypeRef typeRef5 = module3.CorLibTypes.GetTypeRef("System", "Attribute");
+                TypeDefUser typeDefUser5 = new TypeDefUser("", "ObfuscatedByGoliath", typeRef5);
+                module3.Types.Add(typeDefUser5);
+                marker.Mark(typeDefUser5, null);
+                MethodDefUser ctor = new MethodDefUser(".ctor", MethodSig.CreateInstance(module3.CorLibTypes.Void, module3.CorLibTypes.String), dnlib.DotNet.MethodImplAttributes.IL, dnlib.DotNet.MethodAttributes.FamANDAssem | dnlib.DotNet.MethodAttributes.Family | dnlib.DotNet.MethodAttributes.HideBySig | dnlib.DotNet.MethodAttributes.SpecialName | dnlib.DotNet.MethodAttributes.RTSpecialName);
 				ctor.Body = new CilBody();
 				ctor.Body.MaxStack = 1;
 				ctor.Body.Instructions.Add(OpCodes.Ldarg_0.ToInstruction());

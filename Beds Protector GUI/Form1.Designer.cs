@@ -46,6 +46,8 @@ protected override void Dispose(bool disposing)
             this.thirteenButton3 = new Teen.ThirteenButton();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.md5Checksum = new System.Windows.Forms.CheckBox();
+            this.eraseHeaders = new System.Windows.Forms.CheckBox();
             this.hideMethods = new System.Windows.Forms.CheckBox();
             this.local2field = new System.Windows.Forms.CheckBox();
             this.mutations = new System.Windows.Forms.CheckBox();
@@ -66,6 +68,8 @@ protected override void Dispose(bool disposing)
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.thirteenButton2 = new Teen.ThirteenButton();
             this.thirteenButton1 = new Teen.ThirteenButton();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.compressor = new System.Windows.Forms.CheckBox();
             this.thirteenForm1.SuspendLayout();
             this.thirteenTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -81,6 +85,7 @@ protected override void Dispose(bool disposing)
             this.thirteenForm1.AllowDrop = true;
             this.thirteenForm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.thirteenForm1.ColorScheme = Teen.ThirteenForm.ColorSchemes.Dark;
+            this.thirteenForm1.Controls.Add(this.linkLabel1);
             this.thirteenForm1.Controls.Add(this.thirteenTabControl1);
             this.thirteenForm1.Controls.Add(this.thirteenButton2);
             this.thirteenForm1.Controls.Add(this.thirteenButton1);
@@ -137,7 +142,7 @@ protected override void Dispose(bool disposing)
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(167, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(485, 193);
+            this.pictureBox1.Size = new System.Drawing.Size(509, 199);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -145,6 +150,7 @@ protected override void Dispose(bool disposing)
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.groupBox2.Controls.Add(this.compressor);
             this.groupBox2.Controls.Add(this.thirteenButton4);
             this.groupBox2.Controls.Add(this.checkBox4);
             this.groupBox2.Controls.Add(this.thirteenTextBox1);
@@ -178,7 +184,7 @@ protected override void Dispose(bool disposing)
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(235, 84);
+            this.checkBox4.Location = new System.Drawing.Point(235, 71);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(94, 21);
             this.checkBox4.TabIndex = 13;
@@ -243,6 +249,8 @@ protected override void Dispose(bool disposing)
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.groupBox1.Controls.Add(this.md5Checksum);
+            this.groupBox1.Controls.Add(this.eraseHeaders);
             this.groupBox1.Controls.Add(this.hideMethods);
             this.groupBox1.Controls.Add(this.local2field);
             this.groupBox1.Controls.Add(this.mutations);
@@ -266,20 +274,40 @@ protected override void Dispose(bool disposing)
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Protections";
             // 
+            // md5Checksum
+            // 
+            this.md5Checksum.AutoSize = true;
+            this.md5Checksum.Location = new System.Drawing.Point(127, 146);
+            this.md5Checksum.Name = "md5Checksum";
+            this.md5Checksum.Size = new System.Drawing.Size(115, 21);
+            this.md5Checksum.TabIndex = 17;
+            this.md5Checksum.Text = "MD5 Checksum";
+            this.md5Checksum.UseVisualStyleBackColor = true;
+            // 
+            // eraseHeaders
+            // 
+            this.eraseHeaders.AutoSize = true;
+            this.eraseHeaders.Location = new System.Drawing.Point(15, 146);
+            this.eraseHeaders.Name = "eraseHeaders";
+            this.eraseHeaders.Size = new System.Drawing.Size(107, 21);
+            this.eraseHeaders.TabIndex = 16;
+            this.eraseHeaders.Text = "Erase Headers";
+            this.eraseHeaders.UseVisualStyleBackColor = true;
+            // 
             // hideMethods
             // 
             this.hideMethods.AutoSize = true;
-            this.hideMethods.Location = new System.Drawing.Point(247, 141);
+            this.hideMethods.Location = new System.Drawing.Point(247, 121);
             this.hideMethods.Name = "hideMethods";
-            this.hideMethods.Size = new System.Drawing.Size(105, 21);
+            this.hideMethods.Size = new System.Drawing.Size(118, 21);
             this.hideMethods.TabIndex = 15;
-            this.hideMethods.Text = "Hide Methods";
+            this.hideMethods.Text = "Hide Entry Point";
             this.hideMethods.UseVisualStyleBackColor = true;
             // 
             // local2field
             // 
             this.local2field.AutoSize = true;
-            this.local2field.Location = new System.Drawing.Point(127, 141);
+            this.local2field.Location = new System.Drawing.Point(127, 121);
             this.local2field.Name = "local2field";
             this.local2field.Size = new System.Drawing.Size(111, 21);
             this.local2field.TabIndex = 14;
@@ -290,7 +318,7 @@ protected override void Dispose(bool disposing)
             // mutations
             // 
             this.mutations.AutoSize = true;
-            this.mutations.Location = new System.Drawing.Point(16, 141);
+            this.mutations.Location = new System.Drawing.Point(16, 121);
             this.mutations.Name = "mutations";
             this.mutations.Size = new System.Drawing.Size(82, 21);
             this.mutations.TabIndex = 13;
@@ -300,7 +328,7 @@ protected override void Dispose(bool disposing)
             // renameAssembly
             // 
             this.renameAssembly.AutoSize = true;
-            this.renameAssembly.Location = new System.Drawing.Point(247, 90);
+            this.renameAssembly.Location = new System.Drawing.Point(247, 68);
             this.renameAssembly.Name = "renameAssembly";
             this.renameAssembly.Size = new System.Drawing.Size(129, 21);
             this.renameAssembly.TabIndex = 12;
@@ -310,7 +338,7 @@ protected override void Dispose(bool disposing)
             // fakeNative
             // 
             this.fakeNative.AutoSize = true;
-            this.fakeNative.Location = new System.Drawing.Point(247, 63);
+            this.fakeNative.Location = new System.Drawing.Point(247, 43);
             this.fakeNative.Name = "fakeNative";
             this.fakeNative.Size = new System.Drawing.Size(93, 21);
             this.fakeNative.TabIndex = 11;
@@ -320,7 +348,7 @@ protected override void Dispose(bool disposing)
             // moduleFlood
             // 
             this.moduleFlood.AutoSize = true;
-            this.moduleFlood.Location = new System.Drawing.Point(247, 36);
+            this.moduleFlood.Location = new System.Drawing.Point(247, 16);
             this.moduleFlood.Name = "moduleFlood";
             this.moduleFlood.Size = new System.Drawing.Size(103, 21);
             this.moduleFlood.TabIndex = 10;
@@ -330,7 +358,7 @@ protected override void Dispose(bool disposing)
             // mildRefProxy
             // 
             this.mildRefProxy.AutoSize = true;
-            this.mildRefProxy.Location = new System.Drawing.Point(247, 114);
+            this.mildRefProxy.Location = new System.Drawing.Point(247, 94);
             this.mildRefProxy.Name = "mildRefProxy";
             this.mildRefProxy.Size = new System.Drawing.Size(107, 21);
             this.mildRefProxy.TabIndex = 9;
@@ -340,7 +368,7 @@ protected override void Dispose(bool disposing)
             // refProxy
             // 
             this.refProxy.AutoSize = true;
-            this.refProxy.Location = new System.Drawing.Point(127, 114);
+            this.refProxy.Location = new System.Drawing.Point(127, 94);
             this.refProxy.Name = "refProxy";
             this.refProxy.Size = new System.Drawing.Size(117, 21);
             this.refProxy.TabIndex = 8;
@@ -350,7 +378,7 @@ protected override void Dispose(bool disposing)
             // renamer
             // 
             this.renamer.AutoSize = true;
-            this.renamer.Location = new System.Drawing.Point(127, 87);
+            this.renamer.Location = new System.Drawing.Point(127, 67);
             this.renamer.Name = "renamer";
             this.renamer.Size = new System.Drawing.Size(77, 21);
             this.renamer.TabIndex = 7;
@@ -360,7 +388,7 @@ protected override void Dispose(bool disposing)
             // invalidMetadat
             // 
             this.invalidMetadat.AutoSize = true;
-            this.invalidMetadat.Location = new System.Drawing.Point(127, 63);
+            this.invalidMetadat.Location = new System.Drawing.Point(127, 43);
             this.invalidMetadat.Name = "invalidMetadat";
             this.invalidMetadat.Size = new System.Drawing.Size(121, 21);
             this.invalidMetadat.TabIndex = 6;
@@ -370,7 +398,7 @@ protected override void Dispose(bool disposing)
             // controlFlow
             // 
             this.controlFlow.AutoSize = true;
-            this.controlFlow.Location = new System.Drawing.Point(127, 36);
+            this.controlFlow.Location = new System.Drawing.Point(127, 16);
             this.controlFlow.Name = "controlFlow";
             this.controlFlow.Size = new System.Drawing.Size(96, 21);
             this.controlFlow.TabIndex = 5;
@@ -380,7 +408,7 @@ protected override void Dispose(bool disposing)
             // constants
             // 
             this.constants.AutoSize = true;
-            this.constants.Location = new System.Drawing.Point(16, 114);
+            this.constants.Location = new System.Drawing.Point(16, 94);
             this.constants.Name = "constants";
             this.constants.Size = new System.Drawing.Size(81, 21);
             this.constants.TabIndex = 4;
@@ -390,7 +418,7 @@ protected override void Dispose(bool disposing)
             // calli
             // 
             this.calli.AutoSize = true;
-            this.calli.Location = new System.Drawing.Point(16, 87);
+            this.calli.Location = new System.Drawing.Point(16, 67);
             this.calli.Name = "calli";
             this.calli.Size = new System.Drawing.Size(91, 21);
             this.calli.TabIndex = 3;
@@ -400,7 +428,7 @@ protected override void Dispose(bool disposing)
             // antiDebug
             // 
             this.antiDebug.AutoSize = true;
-            this.antiDebug.Location = new System.Drawing.Point(16, 60);
+            this.antiDebug.Location = new System.Drawing.Point(16, 40);
             this.antiDebug.Name = "antiDebug";
             this.antiDebug.Size = new System.Drawing.Size(90, 21);
             this.antiDebug.TabIndex = 1;
@@ -410,7 +438,7 @@ protected override void Dispose(bool disposing)
             // antiTamper
             // 
             this.antiTamper.AutoSize = true;
-            this.antiTamper.Location = new System.Drawing.Point(16, 36);
+            this.antiTamper.Location = new System.Drawing.Point(16, 16);
             this.antiTamper.Name = "antiTamper";
             this.antiTamper.Size = new System.Drawing.Size(95, 21);
             this.antiTamper.TabIndex = 0;
@@ -479,6 +507,29 @@ protected override void Dispose(bool disposing)
             this.thirteenButton1.UseVisualStyleBackColor = false;
             this.thirteenButton1.Click += new System.EventHandler(this.thirteenButton1_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkColor = System.Drawing.Color.Red;
+            this.linkLabel1.Location = new System.Drawing.Point(134, 9);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(292, 17);
+            this.linkLabel1.TabIndex = 12;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Click me if you want Beds Protector Private Version";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // compressor
+            // 
+            this.compressor.AutoSize = true;
+            this.compressor.Enabled = false;
+            this.compressor.Location = new System.Drawing.Point(235, 94);
+            this.compressor.Name = "compressor";
+            this.compressor.Size = new System.Drawing.Size(92, 21);
+            this.compressor.TabIndex = 15;
+            this.compressor.Text = "Compressor";
+            this.compressor.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,6 +540,7 @@ protected override void Dispose(bool disposing)
             this.Name = "Form1";
             this.Text = "Form1";
             this.thirteenForm1.ResumeLayout(false);
+            this.thirteenForm1.PerformLayout();
             this.thirteenTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -537,6 +589,10 @@ protected override void Dispose(bool disposing)
         private System.Windows.Forms.CheckBox mutations;
         private System.Windows.Forms.CheckBox local2field;
         private System.Windows.Forms.CheckBox hideMethods;
+        private System.Windows.Forms.CheckBox md5Checksum;
+        private System.Windows.Forms.CheckBox eraseHeaders;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.CheckBox compressor;
     }
 }
 

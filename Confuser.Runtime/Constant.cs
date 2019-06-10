@@ -49,7 +49,8 @@ namespace Confuser.Runtime {
         {
             if (Equals(Assembly.GetCallingAssembly(), Assembly.GetExecutingAssembly()))
             {
-                id = (uint)Mutation.Placeholder((int)id);
+                if (Equals(Assembly.GetCallingAssembly(), Assembly.GetEntryAssembly()))
+                    id = (uint)Mutation.Placeholder((int)id);
                 uint t = id >> 30;
                 uint coon = neo;
                 T ret = default(T);

@@ -40,7 +40,7 @@
             "Clean ref proxy";
 
         public override string Name =>
-            "Clelaner Reference Proxy Protection";
+            "Mild Reference Proxy Protection";
 
         public override ProtectionPreset Preset =>
             ProtectionPreset.Normal;

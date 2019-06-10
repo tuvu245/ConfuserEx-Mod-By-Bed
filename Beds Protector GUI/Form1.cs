@@ -151,6 +151,16 @@ namespace Beds_Protector_GUI
                     SettingItem<Protection> protection = new SettingItem<Protection>("Hide Methods", SettingItemAction.Add);
                     rule.Add(protection);
                 }
+                if (md5Checksum.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("MD5 Hash Check", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
+                if (eraseHeaders.Checked)
+                {
+                    SettingItem<Protection> protection = new SettingItem<Protection>("erase headers", SettingItemAction.Add);
+                    rule.Add(protection);
+                }
 
                 proj.Rules.Add(rule); //add our Global rule to the project 
 
@@ -191,6 +201,7 @@ namespace Beds_Protector_GUI
                 calli.Checked = true;
                 mutations.Checked = true;
                 local2field.Checked = true;
+                eraseHeaders.Checked = true;
                 hideMethods.Checked = true;
             }
             else
@@ -208,6 +219,7 @@ namespace Beds_Protector_GUI
                 mutations.Checked = false;
                 local2field.Checked = false;
                 hideMethods.Checked = false;
+                eraseHeaders.Checked = false;
             }
 
         }
@@ -309,6 +321,11 @@ namespace Beds_Protector_GUI
         private void thirteenForm1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Add me on Discord (Bed#9654) and we will discuss matters. Lowering price of it since there hasent been sales.");
         }
     }
 }
