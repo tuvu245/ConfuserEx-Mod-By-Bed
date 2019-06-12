@@ -14,6 +14,10 @@ Added Features (Mods)
 * Call Virt Protection
 * String Field Protection
 * Call to Calli
+* MD5 Runtime Check
+* New and Improved Anti Dump/ Anti Memory Dumping
+* Improved Anti Tamper
+* Native Dependancy included in multiple protections
 * A lot more coming soon
 
 
