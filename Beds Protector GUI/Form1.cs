@@ -66,6 +66,7 @@ namespace Beds_Protector_GUI
 
 
                 ConfuserProject proj = new ConfuserProject();
+                
                 proj.BaseDirectory = Path.GetDirectoryName(thirteenTextBox1.Text);
                 proj.OutputDirectory = Path.Combine(Path.GetDirectoryName(thirteenTextBox1.Text) + @"\Confused"); //output directory
 
@@ -73,95 +74,120 @@ namespace Beds_Protector_GUI
                 ProjectModule module = new ProjectModule(); //create a instance of ProjectModule
                 module.Path = Path.GetFileName(thirteenTextBox1.Text); //sets the module name]
                 proj.Add(module); //adds module to project
-
                 Rule rule = new Rule("true", ProtectionPreset.None, false); //creates a Global Rule, with no preset and "true" patern, without inherit
+                if (groupBox1.Enabled == true)
+                {
+                    if (antiTamper.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("anti tamper", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (antiDebug.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("anti debug", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (calli.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("Calli Protection", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (constants.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("constants", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (controlFlow.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("ctrl flow", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (invalidMetadat.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("invalid metadata", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (renamer.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("rename", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (refProxy.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("ref proxy", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (mildRefProxy.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("Clean ref proxy", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (moduleFlood.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("module flood", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (fakeNative.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("Fake Native", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (renameAssembly.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("Rename Module", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (renameAssembly.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("Mutations", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (local2field.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("local to field", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (hideMethods.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("Hide Methods", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (md5Checksum.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("MD5 Hash Check", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    if (eraseHeaders.Checked)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>("erase headers", SettingItemAction.Add);
+                        rule.Add(protection);
+                    }
+                    proj.PluginPaths.Clear();
+                }
+                else if (fastVirt.Checked)
+                {
+                    string[] array = { "MD5 Hash Check", "erase headers", "virt", "Rename Module" };
+                    foreach (string a in array)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>(a, SettingItemAction.Add);
 
-                if (antiTamper.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("anti tamper", SettingItemAction.Add);
-                    rule.Add(protection);
+                        rule.Add(protection);
+                    }
                 }
-                if (antiDebug.Checked)
+                else if (strongVirt.Checked)
                 {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("anti debug", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (calli.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("Calli Protection", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (constants.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("constants", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (controlFlow.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("ctrl flow", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (invalidMetadat.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("invalid metadata", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (renamer.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("rename", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (refProxy.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("ref proxy", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (mildRefProxy.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("Clean ref proxy", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (moduleFlood.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("module flood", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (fakeNative.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("Fake Native", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (renameAssembly.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("Rename Module", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (renameAssembly.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("Mutations", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (local2field.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("local to field", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (hideMethods.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("Hide Methods", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (md5Checksum.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("MD5 Hash Check", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
-                if (eraseHeaders.Checked)
-                {
-                    SettingItem<Protection> protection = new SettingItem<Protection>("erase headers", SettingItemAction.Add);
-                    rule.Add(protection);
-                }
 
+                    string[] array = {"MD5 Hash Check", "erase headers", "virt", "constants", "Clean ref proxy", "Rename Module","anti tamper" };
+                    foreach (string a in array)
+                    {
+                        SettingItem<Protection> protection = new SettingItem<Protection>(a, SettingItemAction.Add);
+
+                        rule.Add(protection);
+                    }
+                      
+                    
+                }
+                
                 proj.Rules.Add(rule); //add our Global rule to the project 
 
                 XmlDocument doc = proj.Save(); //convert our project to xml document
@@ -187,6 +213,7 @@ namespace Beds_Protector_GUI
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
+            if (groupBox1.Enabled == true)
             if (checkBox4.Checked == true)
             {
                 antiDebug.Checked = true;
@@ -271,7 +298,24 @@ namespace Beds_Protector_GUI
         }
 
         public void ErrorFormat(string format, params object[] args) => AppendToLog("[ERROR] {0}", string.Format(format, args));
-
+        public void clearProtections()
+        {
+            antiDebug.Checked = false;
+            antiTamper.Checked = false;
+            renameAssembly.Checked = false;
+            renamer.Checked = false;
+            constants.Checked = false;
+            controlFlow.Checked = false;
+            moduleFlood.Checked = false;
+            refProxy.Checked = false;
+            mildRefProxy.Checked = false;
+            calli.Checked = false;
+            mutations.Checked = false;
+            local2field.Checked = false;
+            hideMethods.Checked = false;
+            eraseHeaders.Checked = false;
+           
+        }
         public void Finish(bool successful)
         {
             DateTime now = DateTime.Now;
@@ -326,6 +370,29 @@ namespace Beds_Protector_GUI
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("Add me on Discord (Bed#9654) and we will discuss matters. Lowering price of it since there hasent been sales.");
+        }
+
+        private void koivmCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (koivmCheck.Checked)
+            {
+                groupBox1.Enabled = false;
+                groupBox3.Enabled = true;
+                clearProtections();
+            }
+            else
+            {
+                groupBox1.Enabled = true;
+                groupBox3.Enabled = false;
+                strongVirt.Checked = false;
+                fastVirt.Checked = false;
+            }
+
+        }
+
+        private void fastVirt_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

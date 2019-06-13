@@ -484,7 +484,8 @@ namespace Confuser.Core
 		// Token: 0x06000112 RID: 274 RVA: 0x00009C4C File Offset: 0x00007E4C
 		private static void Debug(ConfuserContext context)
 		{
-			context.Logger.Info("Finalizing...");
+            context.Logger.Warn("Be sure to check out the GUI, it makes things 10x easier and faster!");
+            context.Logger.Info("Finalizing...");
 			for (int i = 0; i < context.OutputModules.Count; i++)
 			{
 				if (context.OutputSymbols[i] != null)
