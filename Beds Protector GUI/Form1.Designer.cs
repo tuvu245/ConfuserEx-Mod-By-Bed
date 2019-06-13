@@ -37,9 +37,13 @@ protected override void Dispose(bool disposing)
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.thirteenTabControl1 = new Teen.ThirteenTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.strongVirt = new System.Windows.Forms.RadioButton();
+            this.fastVirt = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.koivmCheck = new System.Windows.Forms.CheckBox();
             this.thirteenButton4 = new Teen.ThirteenButton();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.thirteenTextBox1 = new Teen.ThirteenTextBox();
@@ -68,18 +72,14 @@ protected override void Dispose(bool disposing)
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.thirteenButton2 = new Teen.ThirteenButton();
             this.thirteenButton1 = new Teen.ThirteenButton();
-            this.koivmCheck = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.fastVirt = new System.Windows.Forms.RadioButton();
-            this.strongVirt = new System.Windows.Forms.RadioButton();
             this.thirteenForm1.SuspendLayout();
             this.thirteenTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // thirteenForm1
@@ -143,6 +143,42 @@ protected override void Dispose(bool disposing)
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Protection";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.strongVirt);
+            this.groupBox3.Controls.Add(this.fastVirt);
+            this.groupBox3.Enabled = false;
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(26, 338);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(385, 58);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Virtualization";
+            // 
+            // strongVirt
+            // 
+            this.strongVirt.AutoSize = true;
+            this.strongVirt.Location = new System.Drawing.Point(190, 24);
+            this.strongVirt.Name = "strongVirt";
+            this.strongVirt.Size = new System.Drawing.Size(189, 21);
+            this.strongVirt.TabIndex = 1;
+            this.strongVirt.TabStop = true;
+            this.strongVirt.Text = "Slow/Very Strong(Not Stable)";
+            this.strongVirt.UseVisualStyleBackColor = true;
+            // 
+            // fastVirt
+            // 
+            this.fastVirt.AutoSize = true;
+            this.fastVirt.Location = new System.Drawing.Point(6, 24);
+            this.fastVirt.Name = "fastVirt";
+            this.fastVirt.Size = new System.Drawing.Size(187, 21);
+            this.fastVirt.TabIndex = 0;
+            this.fastVirt.TabStop = true;
+            this.fastVirt.Text = "Fast Performace/Most Stable";
+            this.fastVirt.UseVisualStyleBackColor = true;
+            this.fastVirt.CheckedChanged += new System.EventHandler(this.fastVirt_CheckedChanged);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -180,6 +216,17 @@ protected override void Dispose(bool disposing)
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input/Output";
             this.groupBox2.DragDrop += new System.Windows.Forms.DragEventHandler(this.thirteenTextBox1_DragDrop);
+            // 
+            // koivmCheck
+            // 
+            this.koivmCheck.AutoSize = true;
+            this.koivmCheck.Location = new System.Drawing.Point(235, 94);
+            this.koivmCheck.Name = "koivmCheck";
+            this.koivmCheck.Size = new System.Drawing.Size(142, 21);
+            this.koivmCheck.TabIndex = 15;
+            this.koivmCheck.Text = "Enable Virtualization";
+            this.koivmCheck.UseVisualStyleBackColor = true;
+            this.koivmCheck.CheckedChanged += new System.EventHandler(this.koivmCheck_CheckedChanged);
             // 
             // thirteenButton4
             // 
@@ -512,53 +559,6 @@ protected override void Dispose(bool disposing)
             this.thirteenButton1.UseVisualStyleBackColor = false;
             this.thirteenButton1.Click += new System.EventHandler(this.thirteenButton1_Click);
             // 
-            // koivmCheck
-            // 
-            this.koivmCheck.AutoSize = true;
-            this.koivmCheck.Location = new System.Drawing.Point(235, 94);
-            this.koivmCheck.Name = "koivmCheck";
-            this.koivmCheck.Size = new System.Drawing.Size(142, 21);
-            this.koivmCheck.TabIndex = 15;
-            this.koivmCheck.Text = "Enable Virtualization";
-            this.koivmCheck.UseVisualStyleBackColor = true;
-            this.koivmCheck.CheckedChanged += new System.EventHandler(this.koivmCheck_CheckedChanged);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.strongVirt);
-            this.groupBox3.Controls.Add(this.fastVirt);
-            this.groupBox3.Enabled = false;
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(26, 338);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(385, 58);
-            this.groupBox3.TabIndex = 12;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Virtualization";
-            // 
-            // fastVirt
-            // 
-            this.fastVirt.AutoSize = true;
-            this.fastVirt.Location = new System.Drawing.Point(6, 24);
-            this.fastVirt.Name = "fastVirt";
-            this.fastVirt.Size = new System.Drawing.Size(187, 21);
-            this.fastVirt.TabIndex = 0;
-            this.fastVirt.TabStop = true;
-            this.fastVirt.Text = "Fast Performace/Most Stable";
-            this.fastVirt.UseVisualStyleBackColor = true;
-            this.fastVirt.CheckedChanged += new System.EventHandler(this.fastVirt_CheckedChanged);
-            // 
-            // strongVirt
-            // 
-            this.strongVirt.AutoSize = true;
-            this.strongVirt.Location = new System.Drawing.Point(190, 24);
-            this.strongVirt.Name = "strongVirt";
-            this.strongVirt.Size = new System.Drawing.Size(189, 21);
-            this.strongVirt.TabIndex = 1;
-            this.strongVirt.TabStop = true;
-            this.strongVirt.Text = "Slow/Very Strong(Not Stable)";
-            this.strongVirt.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,14 +573,14 @@ protected override void Dispose(bool disposing)
             this.thirteenTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }

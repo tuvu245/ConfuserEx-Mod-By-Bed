@@ -13,6 +13,6 @@
 #endif
 
 
-[assembly: AssemblyVersion("1.4")]
-[assembly: AssemblyFileVersion("1.4")]
-[assembly: AssemblyInformationalVersion("v1.4 | Public Version @Github")]
+[assembly: AssemblyVersion("1.4.1")]
+[assembly: AssemblyFileVersion("1.4.1")]
+[assembly: AssemblyInformationalVersion("v1.4.1 | Public Version @Github")]
