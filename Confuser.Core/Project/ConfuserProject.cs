@@ -422,7 +422,7 @@ namespace Confuser.Core.Project {
 		public ConfuserProject() {
 			ProbePaths = new List<string>();
 			PluginPaths = new List<string>();
-            PluginPaths.Add(Directory.GetCurrentDirectory() + "\\KoiVM.Confuser.exe");
+         
 			Rules = new List<Rule>();
 		}
 

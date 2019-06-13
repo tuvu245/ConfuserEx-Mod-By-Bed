@@ -66,7 +66,7 @@ namespace Beds_Protector_GUI
 
 
                 ConfuserProject proj = new ConfuserProject();
-                
+                proj.PluginPaths.Add(Directory.GetCurrentDirectory() + "\\KoiVM.Confuser.exe");
                 proj.BaseDirectory = Path.GetDirectoryName(thirteenTextBox1.Text);
                 proj.OutputDirectory = Path.Combine(Path.GetDirectoryName(thirteenTextBox1.Text) + @"\Confused"); //output directory
 
