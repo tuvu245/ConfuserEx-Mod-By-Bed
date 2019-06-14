@@ -30,11 +30,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfuserEx", "ConfuserEx\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beds Protector GUI", "Beds Protector GUI\Beds Protector GUI.csproj", "{862E287D-5E84-439E-A263-583F7D0E04B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoiVM", "KoiVM\KoiVM.csproj", "{9E333771-BC67-4120-9C67-D15311C0F67C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoiVM.Confuser", "KoiVM.Confuser\KoiVM.Confuser.csproj", "{45B6B86A-D081-4CCB-A548-33D669EF195B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoiVM.Runtime", "KoiVM.Runtime\KoiVM.Runtime.csproj", "{1A1DA722-FE8A-4B49-86ED-DC582F0B0B47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoiVM", "KoiVM\KoiVM.csproj", "{9E333771-BC67-4120-9C67-D15311C0F67C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,12 +97,6 @@ Global
 		{862E287D-5E84-439E-A263-583F7D0E04B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{862E287D-5E84-439E-A263-583F7D0E04B6}.Trace|Any CPU.ActiveCfg = Release|Any CPU
 		{862E287D-5E84-439E-A263-583F7D0E04B6}.Trace|Any CPU.Build.0 = Release|Any CPU
-		{9E333771-BC67-4120-9C67-D15311C0F67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E333771-BC67-4120-9C67-D15311C0F67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E333771-BC67-4120-9C67-D15311C0F67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E333771-BC67-4120-9C67-D15311C0F67C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E333771-BC67-4120-9C67-D15311C0F67C}.Trace|Any CPU.ActiveCfg = Trace|Any CPU
-		{9E333771-BC67-4120-9C67-D15311C0F67C}.Trace|Any CPU.Build.0 = Trace|Any CPU
 		{45B6B86A-D081-4CCB-A548-33D669EF195B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{45B6B86A-D081-4CCB-A548-33D669EF195B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45B6B86A-D081-4CCB-A548-33D669EF195B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -115,6 +109,12 @@ Global
 		{1A1DA722-FE8A-4B49-86ED-DC582F0B0B47}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A1DA722-FE8A-4B49-86ED-DC582F0B0B47}.Trace|Any CPU.ActiveCfg = Trace|Any CPU
 		{1A1DA722-FE8A-4B49-86ED-DC582F0B0B47}.Trace|Any CPU.Build.0 = Trace|Any CPU
+		{9E333771-BC67-4120-9C67-D15311C0F67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E333771-BC67-4120-9C67-D15311C0F67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E333771-BC67-4120-9C67-D15311C0F67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E333771-BC67-4120-9C67-D15311C0F67C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E333771-BC67-4120-9C67-D15311C0F67C}.Trace|Any CPU.ActiveCfg = Trace|Any CPU
+		{9E333771-BC67-4120-9C67-D15311C0F67C}.Trace|Any CPU.Build.0 = Trace|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

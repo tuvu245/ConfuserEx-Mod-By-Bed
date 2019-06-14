@@ -113,7 +113,7 @@
       <Name>KoiVM.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="..\KoiVM\KoiVM.csproj">
-      <Project>{9E333771-BC67-4120-9C67-D15311C0F67C}</Project>
+      <Project>{9e333771-bc67-4120-9c67-d15311c0f67c}</Project>
       <Name>KoiVM</Name>
     </ProjectReference>
   </ItemGroup>
